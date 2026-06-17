@@ -47,9 +47,24 @@ REQUIRED_DIMENSIONS = [
     "AI Executability and Handoff Clarity",
 ]
 
+MOJIBAKE_SEQUENCES = [
+    [0xFFFD],
+    [0x7476, 0x52EB],
+    [0x4E36, 0x5D87],
+    [0x7487, 0x5CF0],
+    [0x697E, 0x5C69],
+    [0x5BC7, 0x544A],
+    [0x5BB8, 0x63D2],
+    [0x9429, 0xE1C6],
+    [0x6DC7, 0xE1C6],
+    [0x934F, 0x4E48],
+    [0x9707, 0x20AC],
+    [0x951F, 0x65A4],
+    [0x20AC, 0x201C],
+]
+
 BAD_PATTERNS = [
-    ("replacement character", re.compile(r"\ufffd")),
-    ("mojibake marker", re.compile(r"�|����|锟")),
+    ("mojibake", re.compile("|".join(re.escape("".join(chr(codepoint) for codepoint in seq)) for seq in MOJIBAKE_SEQUENCES))),
     ("possible secret", re.compile(r"sk-[A-Za-z0-9]{20,}|api[_-]?key\s*[:=]|password\s*[:=]|secret\s*[:=]|token\s*[:=]", re.I)),
 ]
 
@@ -97,8 +112,6 @@ def collect_failures(root: Path) -> list[str]:
                 failures.append(f"not valid UTF-8: {rel_path}")
                 continue
             for label, pattern in BAD_PATTERNS:
-                if rel_path.as_posix() == "scripts/check_paradigm_skill.py" and label in {"replacement character", "mojibake marker"}:
-                    continue
                 if pattern.search(text):
                     failures.append(f"{rel_path} contains {label}")
 

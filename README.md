@@ -1,16 +1,16 @@
 # self_skills
 
-> 中文为主的个人 Codex Skills 仓库，用来沉淀我在工程开发、项目文档、Prompt 打磨和仓库审查中的常用工作流。
+> 中文为主的个人 Codex Skills 仓库，用来沉淀工程开发、项目文档、Prompt 打磨、商业化评审和交付汇报中的常用工作流。
 
 ## 简介
 
-这个仓库存放我自己维护的 Codex skills。它们不是通用插件市场的合集，而是围绕真实项目协作整理出来的一组“工作习惯工具”：
+这个仓库只收录我自己维护、愿意长期迭代的 Codex skills。它不是官方 skill 或第三方 skill 的合集，而是一套围绕真实项目协作整理出来的工作习惯工具：
 
-- 让 AI 写代码前先澄清边界、复用已有结构、控制复杂度。
+- 让 AI 写代码前先澄清边界、复用已有结构、控制复杂度，并做最小闭环验证。
 - 把模糊中文需求改成另一个 AI Agent 可以直接执行的 prompt。
-- 按内部项目规范整理 `README.md`、`docs/` 和 `agent.md`。
+- 按内部规范整理 `README.md`、`docs/` 和 `agent.md`。
 - 在项目提交、交付或评审前检查仓库结构和文档完整性。
-- 从市场经理视角评审产品吸引力、用户留存、市场匹配和商业化成熟度。
+- 从市场经理角度评估产品吸引力、用户留存、市场匹配和商业化成熟度。
 - 把迁移、改造、接口替换和联调工作整理成甲方能看懂的技术汇报。
 
 ## Skills 列表
@@ -35,7 +35,7 @@
 ai-coding-discipline
 ```
 
-适合让 Codex 在实现前先看现有代码、拆模块、明确边界、做增量验证。当前版本已经补充执行清单、压力场景、通用 prompt 模板和只读自检脚本。
+适合让 Codex 在实现前先看现有代码、拆模块、明确边界、做增量验证。当前版本已经压缩为轻量入口，详细执行清单、压力场景和通用 prompt 模板放在 `references/` 中。
 
 ### 分析项目质量
 
@@ -112,14 +112,17 @@ client-technical-reporting
 project-structure-review
 ```
 
-适合检查项目是否具备可交付的 README、结构、依赖说明、工程配置和架构说明。
+适合检查项目是否具备可交付的 README、目录结构、依赖说明、工程配置和架构说明。
 
 ## 仓库结构
 
 ```text
 self_skills/
   README.md
+  scripts/
+    audit_skills.py
   skills/
+    TRIGGER_TESTS.md
     ai-coding-discipline/
     ai-coding-paradigm/
     client-technical-reporting/
@@ -134,9 +137,9 @@ self_skills/
 ```text
 skill-name/
   SKILL.md
-  agents/openai.yaml        # 可选：Codex UI 元数据
+  agents/openai.yaml        # Codex UI 元数据
   references/               # 可选：模板、规范、详细参考
-  scripts/                  # 可选：辅助脚本
+  scripts/                  # 可选：只读审计或辅助脚本
 ```
 
 ## 安装方式
@@ -161,36 +164,48 @@ Copy-Item -Recurse .\self_skills\skills\* "$env:USERPROFILE\.codex\skills"
 
 安装或更新后，重启 Codex 让新 skill 生效。
 
+## 质量检查
+
+仓库提供一套只读审计脚本，用来检查 skill 元数据、`agents/openai.yaml`、触发测试样例、明显乱码、敏感信息和过长 `SKILL.md`：
+
+```powershell
+python .\scripts\audit_skills.py
+```
+
+触发测试样例集中维护在：
+
+```text
+skills/TRIGGER_TESTS.md
+```
+
+如果修改了某个 skill，也建议运行该 skill 自带的 `scripts/check_*.py`，再运行官方 `quick_validate.py`。
+
 ## 维护边界
 
-这个仓库只收录我自己维护、愿意长期调整的 skills。
+这个仓库不收录：
 
-不收录：
-
-- Codex 官方系统 skills：`.codex/skills/.system`
-- 插件缓存 skills：`.codex/plugins/cache`
+- Codex 官方系统 skills，例如 `.codex/skills/.system`
+- 插件缓存 skills，例如 `.codex/plugins/cache`
 - 第三方仓库安装的 skills
 
-第三方 skills 应该保留原始来源链接，不直接复制到这里维护。
+第三方 skills 应保留原始来源链接，不直接复制到这里长期维护。
 
 ## 质量状态
 
 | Skill | 状态 | 说明 |
 |---|---|---|
-| `project-structure-review` | 稳定 | 有只读审查脚本，适合直接用于项目交付前检查 |
-| `ai-coding-discipline` | 稳定 | 已从原则型说明升级为执行闸门，包含执行清单、压力场景、Prompt 模板和只读自检脚本 |
+| `ai-coding-discipline` | 稳定 | 已压缩为轻量执行闸门，细节下沉到 references，并包含只读自检脚本 |
+| `ai-coding-paradigm` | 稳定 | 工程成熟度评审 skill，包含十维评分清单、AI prompt 模板和自检脚本 |
 | `client-technical-reporting` | 可用 | 轻量甲方技术汇报 skill，适合迁移、接口替换、模块问题定位和联调事项整理 |
-| `internal-project-doc-standardizer` | 稳定 | 已升级为 audit/generate/split/sync/repair 五模式文档闸门，包含模板、审查脚本和 skill 自检脚本 |
+| `internal-project-doc-standardizer` | 稳定 | audit/generate/split/sync/repair 五模式文档闸门，包含模板、审查脚本和 skill 自检脚本 |
 | `market-commercialization-strategist` | 可用 | 轻量 `SKILL.md` + 重型 Markdown 手册，适合市场经理视角、产品商业化和网页端复用 |
-| `project-prompt-polisher` | 稳定 | 已升级为轻量入口 + 多场景 Prompt 模板 + 自检脚本，适合高频打磨中文任务 prompt |
-| `ai-coding-paradigm` | 稳定 | 已升级为工程成熟度评审 skill，包含十维评分清单、AI prompt 模板和自检脚本 |
+| `project-prompt-polisher` | 稳定 | 轻量入口 + 多场景 Prompt 模板 + 自检脚本，适合高频打磨中文任务 prompt |
+| `project-structure-review` | 稳定 | 有只读审查脚本，适合直接用于项目交付前检查 |
 
 ## English Summary
 
 `self_skills` is a personal Codex skills collection focused on practical engineering workflows.
 
 It includes skills for disciplined coding, engineering paradigm analysis, client-facing technical reporting, internal project documentation standardization, market commercialization strategy, Chinese prompt polishing, and project structure review.
-
-`ai-coding-discipline` has been upgraded from a principle-style reminder into an execution-gate skill with a checklist, pressure scenarios, prompt template, and read-only quality check script.
 
 This repository intentionally keeps only self-maintained skills. Official Codex system skills, plugin cache skills, and third-party skills should stay linked to their original sources.

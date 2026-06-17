@@ -16,13 +16,10 @@ REQUIRED_FILES = [
 ]
 
 REQUIRED_SECTIONS = [
-    "## Core Contract",
-    "## When To Use",
-    "## Execution Gate",
+    "## Core Gate",
+    "## Engineering Rules",
     "## Stop Conditions",
-    "## Anti-Patterns",
-    "## Pressure Rules",
-    "## Quick Reference",
+    "## Output Discipline",
     "## Resource Use",
     "## Common Mistakes",
 ]
