@@ -1,86 +1,108 @@
 ---
 name: ai-coding-paradigm
-description: Use when analyzing code quality, architecture boundaries, delivery flow, testing strategy, observability, security posture, or when prompting AI to reason about engineering maturity, module design, and implementation tradeoffs.
+description: Use when analyzing code quality, architecture boundaries, delivery flow, testing strategy, observability, security posture, engineering maturity, module design, implementation tradeoffs, or when turning a rough feature idea into an AI-executable engineering prompt.
 ---
 
 # AI Coding Paradigm
 
-用这个 skill 从工程范式层面判断一个项目是否“做对了”，而不只是“能跑”。重点看模块边界、交付链路、测试策略、可观测性、安全、回滚和 AI 可执行性。
+## Overview
 
-默认先给出结论，再给出依据和改进建议。不要只讲原则，要落到项目结构、接口、流程和落地动作。
+Use this skill to judge whether a project, feature, module, or prompt is engineered well, not merely whether it can run. Focus on boundaries, contracts, verification, observability, safety, delivery, and AI executability.
 
-## 核心判断
+Default to a direct conclusion first, then concrete evidence and prioritized improvements. Avoid abstract architecture vocabulary unless it is tied to actual files, modules, interfaces, tests, or delivery steps.
 
-优先检查以下问题：
+## Review Modes
 
-- 需求边界是否清楚，还是把多个问题混在一起。
-- 模块职责是否单一，还是功能、I/O、配置、缓存、格式化混在一起。
-- 接口和数据契约是否稳定，还是上下游约定模糊。
-- 测试是否覆盖关键路径、边界条件和回归风险。
-- 日志、监控、错误处理、重试和回滚是否足够。
-- 安全、权限、敏感信息和环境变量是否有明确边界。
-- 这个任务是否适合继续演进，还是应该先拆解或重构。
+| Mode | Use When | Output |
+|---|---|---|
+| `maturity-review` | Reviewing a project or feature for engineering maturity | Score, strengths, gaps, priority improvements |
+| `boundary-review` | A module/component/API feels tangled or hard to change | Responsibility map, coupling risks, split recommendations |
+| `delivery-review` | Preparing for handoff, release, acceptance, or joint debugging | Verification, rollback, observability, deployment risks |
+| `prompt-hardening` | Turning a rough task into an AI-executable engineering prompt | Copy-ready prompt with scope, contracts, tests, and constraints |
+| `risk-review` | Checking security, data, permission, environment, or operational risk | Risk list, severity, mitigation path |
 
-## 输出方式
+## Core Workflow
 
-按下面的顺序输出，必要时简化，但不要漏掉结论：
+1. Identify the target: repository, module, feature, API, UI flow, prompt, or delivery process.
+2. Choose the review mode.
+3. Inspect concrete evidence: files, responsibilities, contracts, tests, logs, config, deployment, and docs when available.
+4. Score or judge the ten engineering dimensions.
+5. Separate issues into:
+   - must fix before delivery
+   - should fix next iteration
+   - can improve later
+6. If the user wants implementation help, output a copy-ready prompt instead of broad advice.
 
-1. 总体判断
-2. 主要优点
-3. 主要问题
-4. 风险与影响
-5. 建议的改进顺序
-6. 如果需要，给出可直接执行的 AI prompt
+## Ten Engineering Dimensions
 
-## 常见使用场景
+For detailed scoring, read `references/paradigm-checklist.md`.
 
-### 1. 分析项目成熟度
+1. Requirement and boundary clarity
+2. Single responsibility and module cohesion
+3. Dependency direction and layering
+4. Interface and data contracts
+5. Validation and error handling
+6. Testability and regression protection
+7. Observability and diagnosability
+8. Security, permission, and data safety
+9. Delivery, rollback, and environment readiness
+10. AI executability and handoff clarity
 
-适合在评估一个项目是否可维护、可扩展、可交付时使用。重点看：
+## Output Contract
 
-- 是否存在明显的架构分层
-- 是否有重复实现或职责交叉
-- 是否存在“先做出来再说”的临时耦合
-- 是否已经具备交付、联调、验收所需的工程条件
+Use this structure for reviews:
 
-### 2. 打磨 AI 实现提示词
+```text
+总体判断：
+<成熟 / 基本可用 / 风险较高 / 不建议继续扩展，附一句理由>
 
-适合把“做个功能”转成更成熟的工程 prompt。要求 AI 在实现前先想清楚：
+评分：
+| 维度 | 分数(0-2) | 依据 | 建议 |
+|---|---:|---|---|
 
-- 应该复用什么
-- 需要改哪些文件
-- 先做哪一小步
-- 用什么命令验证
+主要优点：
+- ...
 
-### 3. 检查工程边界
+主要问题：
+- ...
 
-适合检查模块切分、组件职责、服务层和数据层是否清晰。尤其在以下情况要用：
+优先级建议：
+- 交付前必须处理：
+- 下一轮建议处理：
+- 后续可增强：
 
-- 一个文件太大
-- 一个组件承担太多责任
-- API、UI、状态和配置互相缠在一起
-- 迁移或重构后边界变得模糊
+如需交给 AI 实现：
+<可复制 prompt，必要时读取 references/prompt-templates.md>
+```
 
-## 快速检查表
+## When to Read References
 
-| 维度 | 要看什么 |
-|---|---|
-| 结构 | 文件和模块是否按职责拆分 |
-| 契约 | 输入、输出、状态、异常是否明确 |
-| 交付 | 是否有验证命令、验收方式和回滚路径 |
-| 维护 | 是否容易继续改，不会越改越乱 |
-| AI 可执行性 | 这个任务能否被另一个 Agent 直接接手 |
+Read `references/paradigm-checklist.md` when:
 
-## 常见问题
+- the user asks for scoring, review, audit, maturity, or architecture analysis
+- the project is large or has multiple modules
+- you need to produce a defensible quality judgment
 
-- 只讲架构名词，不讲实际边界。
-- 只看成功路径，不看失败路径。
-- 不区分“临时方案”和“最终方案”。
-- 忽略测试、日志、回滚和权限。
-- 把所有建议都变成大重构，反而破坏当前交付。
+Read `references/prompt-templates.md` when:
 
-## 参考资源
+- the user wants a stronger AI coding prompt
+- the output needs to guide another agent/developer
+- the request involves implementation sequencing, verification, rollback, or boundaries
 
-- `references/discipline-checklist.md`：工程纪律清单
-- `references/prompt-template.md`：可执行 prompt 模板
-- `references/pressure-scenarios.md`：压力场景与反直觉测试
+## Quality Gate
+
+Before finalizing:
+
+- Tie every major claim to concrete evidence or mark it as an inference.
+- Do not recommend a rewrite when a boundary repair or adapter would solve the issue.
+- Do not ignore tests, logs, permissions, environment variables, rollback, or API compatibility.
+- Separate immediate delivery risks from long-term refactors.
+- If writing a prompt, include scope, unchanged constraints, contracts, verification, and reporting requirements.
+
+## Common Failure Modes
+
+- Saying "架构不清晰" without naming the actual boundary problem.
+- Focusing only on code style while ignoring contracts, tests, delivery, and observability.
+- Treating temporary compatibility code as final design.
+- Suggesting broad refactors without migration path or regression protection.
+- Letting an AI prompt say "全部优化完善" without scope, contract, or acceptance criteria.

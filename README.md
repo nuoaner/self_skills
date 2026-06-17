@@ -183,7 +183,7 @@ Copy-Item -Recurse .\self_skills\skills\* "$env:USERPROFILE\.codex\skills"
 | `internal-project-doc-standardizer` | 稳定 | 已升级为 audit/generate/split/sync/repair 五模式文档闸门，包含模板、审查脚本和 skill 自检脚本 |
 | `market-commercialization-strategist` | 可用 | 轻量 `SKILL.md` + 重型 Markdown 手册，适合市场经理视角、产品商业化和网页端复用 |
 | `project-prompt-polisher` | 稳定 | 已升级为轻量入口 + 多场景 Prompt 模板 + 自检脚本，适合高频打磨中文任务 prompt |
-| `ai-coding-paradigm` | 可用 | 偏分析型，适合做工程成熟度和提示词加固；后续可补充仓库内 references |
+| `ai-coding-paradigm` | 稳定 | 已升级为工程成熟度评审 skill，包含十维评分清单、AI prompt 模板和自检脚本 |
 
 ## English Summary
 
