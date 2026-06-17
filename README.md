@@ -11,7 +11,7 @@ This repository collects reusable skills I maintain for my own Codex setup. The 
 | `ai-coding-discipline` | Enforces disciplined engineering habits while planning, writing, refactoring, or reviewing code. |
 | `ai-coding-paradigm` | Helps analyze engineering maturity, code quality, architecture boundaries, testing, delivery flow, and AI-friendly implementation prompts. |
 | `internal-project-doc-standardizer` | Standardizes internal project documentation: `README.md`, `docs/`, `agent.md`, status enums, templates, and documentation audits. |
-| `project-prompt-polisher` | Rewrites rough Chinese product/UI/frontend requests into implementation-ready prompts for the drone supervision and smart-agriculture platform direction. |
+| `project-prompt-polisher` | Rewrites rough Chinese task requests into implementation-ready prompts for product, UI/frontend, backend/API, documentation, testing, refactoring, automation, and agent handoff work. |
 | `project-structure-review` | Audits project repositories against submission and handoff standards: structure, naming, README completeness, dependency notes, tooling disclosure, and architecture materials. |
 
 ## Repository Layout
@@ -67,4 +67,5 @@ Those skills should stay linked to their original sources. This repository is fo
 
 - Some skills include Chinese project conventions and are intentionally tailored to my workflow.
 - `internal-project-doc-standardizer` includes internal documentation templates and a read-only audit script.
+- `project-prompt-polisher` is intentionally generic; project-specific context should be provided in the user request rather than hardcoded in the skill.
 - Scripts should be reviewed before running in a new environment.

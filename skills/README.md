@@ -12,6 +12,6 @@ This directory contains personal Codex skills.
 - `internal-project-doc-standardizer`: internal README/docs/agent.md standardization.
 - `project-structure-review`: repository structure and submission readiness review.
 
-## Product Prompting
+## Prompting
 
-- `project-prompt-polisher`: rewrite rough Chinese product and UI requests into executable prompts.
+- `project-prompt-polisher`: rewrite rough Chinese task requests into executable prompts across product, UI/frontend, backend/API, docs, tests, refactors, automation, and handoff work.
