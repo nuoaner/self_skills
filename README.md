@@ -180,7 +180,7 @@ Copy-Item -Recurse .\self_skills\skills\* "$env:USERPROFILE\.codex\skills"
 | `project-structure-review` | 稳定 | 有只读审查脚本，适合直接用于项目交付前检查 |
 | `ai-coding-discipline` | 稳定 | 已从原则型说明升级为执行闸门，包含执行清单、压力场景、Prompt 模板和只读自检脚本 |
 | `client-technical-reporting` | 可用 | 轻量甲方技术汇报 skill，适合迁移、接口替换、模块问题定位和联调事项整理 |
-| `internal-project-doc-standardizer` | 可用 | 有模板和审查脚本，适合继续扩展生成能力；仍建议继续检查中文编码和枚举表达 |
+| `internal-project-doc-standardizer` | 稳定 | 已升级为 audit/generate/split/sync/repair 五模式文档闸门，包含模板、审查脚本和 skill 自检脚本 |
 | `market-commercialization-strategist` | 可用 | 轻量 `SKILL.md` + 重型 Markdown 手册，适合市场经理视角、产品商业化和网页端复用 |
 | `project-prompt-polisher` | 稳定 | 已升级为轻量入口 + 多场景 Prompt 模板 + 自检脚本，适合高频打磨中文任务 prompt |
 | `ai-coding-paradigm` | 可用 | 偏分析型，适合做工程成熟度和提示词加固；后续可补充仓库内 references |
