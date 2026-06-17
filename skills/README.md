@@ -6,6 +6,7 @@ This directory contains personal Codex skills.
 
 - `ai-coding-discipline`: execution-gate skill for disciplined implementation, reuse, boundaries, incremental verification, and maintainability.
 - `ai-coding-paradigm`: engineering analysis and AI-assisted development prompting.
+- `market-commercialization-strategist`: market-manager lens for user attraction, retention, product-market fit, monetization, landing pages, README positioning, and commercial maturity.
 
 ## Documentation
 
