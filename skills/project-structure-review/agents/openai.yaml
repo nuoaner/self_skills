@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Structure Review"
+  short_description: "Audit team project structure standards."
+  default_prompt: "Use $project-structure-review to audit this repository against team submission standards."

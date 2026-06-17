@@ -1,0 +1,4 @@
+interface:
+  display_name: "项目文档标准化"
+  short_description: "按内部规范审查和生成 README、docs、agent.md"
+  default_prompt: "按内部项目文档规范检查或整理当前项目的 README、docs 和 agent.md。"
