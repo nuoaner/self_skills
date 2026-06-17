@@ -1,197 +1,178 @@
 ---
 name: ai-coding-discipline
-description: "Enforce disciplined engineering behavior when Codex writes, modifies, refactors, or plans code. Use when the user asks to build features, fix bugs, refactor modules, design architecture, scaffold projects, or optimize code quality and wants the AI to follow stable coding habits: clarify requirements first, avoid duplicate work, keep functions focused, preserve modular structure, handle boundaries and errors, validate incrementally, reuse existing code, separate config from logic, maintain consistent style, and leave code maintainable. Also use for Chinese requests such as °´¹æ·¶Ğ´´úÂë, ±ÜÃâÖØ¸´¹¤×÷, ´úÂëĞ´µÃ¹æ·¶Ò»µã, °´¹¤³Ì»¯·½Ê½ÊµÏÖ, ÏÈÉè¼ÆÔÙ±àÂë, or ²»ÒªĞ´ÂÒ."
+description: Use when writing, modifying, refactoring, reviewing, or planning code where maintainability, reuse, clear boundaries, incremental verification, error handling, or engineering discipline matters; also use for Chinese requests such as æŒ‰è§„èŒƒå†™ä»£ç , å·¥ç¨‹åŒ–å®ç°, å…ˆè®¾è®¡å†ç¼–ç , ä¸è¦é‡å¤é€ è½®å­, ä»£ç å†™ç¨³ä¸€ç‚¹, ä¸è¦å†™ä¹±.
 ---
 
 # AI Coding Discipline
 
-Use this skill as an operating mode for implementation work. The goal is not to comment on engineering discipline after the fact, but to make Codex follow disciplined engineering habits while doing the work.
+Use this skill as an execution gate for engineering work. Its job is to make the agent behave like a disciplined maintainer while coding, not merely explain good habits afterward.
 
-Mirror the user's language. Stay practical. Prefer small verifiable progress over one-shot heroic rewrites.
+Mirror the user's language. Prefer small verified progress over broad unverified rewrites.
 
-## What This Skill Enforces
+## Core Contract
 
-When this skill is active, Codex should default to these behaviors:
+When this skill is active, the agent must preserve these properties unless the user explicitly accepts the tradeoff:
 
-- Clarify the task before writing code.
-- Decompose work into modules, steps, and contracts before implementation.
-- Reuse existing code and patterns before creating new abstractions.
-- Keep functions and files focused.
-- Handle boundary conditions and failure cases, not only the happy path.
-- Separate configuration, infrastructure, and business logic.
-- Validate incrementally while building.
-- Keep naming, structure, and style consistent with the codebase.
-- Leave the code easier to extend and debug than before.
+- Existing behavior stays stable unless the task requires changing it.
+- New code follows current project structure, naming, style, and dependency patterns.
+- Responsibilities stay separated: orchestration, domain logic, I/O, configuration, and formatting should not collapse into one blob.
+- Edge cases, invalid input, dependency failures, and rollback or recovery paths are considered before completion.
+- Every meaningful change has a verification path: test, build, lint, smoke check, script output, or documented manual check.
 
-## Activation Rule
+## When To Use
 
-Apply this skill when the user wants code written, changed, planned, or refactored and cares about quality, maintainability, repeatability, or engineering discipline.
+Use this skill for:
 
-Strong triggers include:
+- feature implementation
+- bug fixes
+- refactoring
+- architecture or module design
+- repository scaffolding
+- performance or quality cleanup
+- prompts that ask another agent to write code carefully
 
-- °´¹æ·¶Ğ´´úÂë
-- °´ÕÕ¹¤³Ì»¯·½Ê½ÊµÏÖ
-- ²»ÒªÖØ¸´ÔìÂÖ×Ó
-- °ïÎÒ°Ñ´úÂëĞ´ÎÈÒ»µã
-- ÏÈÉè¼ÆÔÙ±àÂë
-- ²»Òª°ÑÂß¼­Ğ´ÂÒ
-- Refactor this cleanly
-- Implement this with good engineering discipline
+Strong Chinese triggers include: æŒ‰è§„èŒƒå†™ä»£ç , å·¥ç¨‹åŒ–å®ç°, ä¸è¦é‡å¤é€ è½®å­, ä»£ç å†™ç¨³ä¸€ç‚¹, å…ˆè®¾è®¡å†ç¼–ç , ä¸è¦å†™ä¹±, ä¿æŒå¯ç»´æŠ¤, å°æ­¥éªŒè¯.
 
-Do not use this skill when the request is purely analytical and does not involve implementation behavior.
+Do not use it for purely conceptual discussion with no implementation, review, planning, or prompt-writing outcome.
 
-## Default Workflow
+## Execution Gate
 
-Follow this order unless the user explicitly asks for a different one.
+Before editing code, pass these gates in order. If a gate cannot be completed, say what is missing and choose the lowest-risk fallback.
 
-### 1. Clarify The Task
+### 1. Understand The Work
 
-Before coding, determine:
+Identify:
 
-- What the input is
-- What the output is
-- What the core steps are
-- What can fail or become ambiguous
+- requested outcome
+- affected users or workflows
+- input, output, and state changes
+- explicit non-goals
+- likely regression risks
 
-If the task is underspecified, make reasonable assumptions and state them briefly. Do not block on minor ambiguity unless it changes the design materially.
+Ask only when ambiguity changes behavior, data, security, or irreversible work. Otherwise make a reasonable assumption and state it briefly.
 
-### 2. Inspect Before Creating
+### 2. Inspect Before Adding
 
-Before adding new code:
+Search before creating:
 
-- Read the existing structure
-- Reuse existing helpers, patterns, and modules
-- Check whether the functionality already exists in another form
+- project structure and entry points
+- nearby modules and tests
+- existing helpers, services, hooks, utilities, types, schemas, and configuration
+- conventions for errors, logging, validation, styling, naming, and tests
 
-Avoid duplicate work. Prefer extension over reinvention.
+If a reusable path exists, prefer extending it over creating a parallel mechanism.
 
-### 3. Design The Shape First
+### 3. Shape The Change
 
-Before implementation, define:
+Before implementation, define the smallest useful design:
 
-- Module responsibilities
-- Function boundaries
-- Input and output contracts
-- Error handling strategy
-- Validation points
+- files or modules to touch
+- responsibility of each changed unit
+- public contracts: function signatures, API shape, events, props, data schema, CLI args, or file format
+- validation and failure behavior
+- verification command or manual check
 
-For non-trivial work, keep top-level flow simple and push detail into focused units.
+For non-trivial work, tell the user this shape before editing. Keep it short.
 
-### 4. Build The Smallest Working Slice
+### 4. Implement A Small Closed Loop
 
-Implement a minimal end-to-end path first:
+Build one verified slice first:
 
-- One narrow flow
-- One clear interface
-- One verified behavior
+- one behavior
+- one entry point
+- one verification path
 
-Prefer "first working closed loop" over "partial complexity everywhere."
+Do not spread partial complexity across many files before one flow works.
 
-### 5. Validate Incrementally
+### 5. Verify Before Expanding
 
-After each meaningful step:
+After each meaningful change, run the narrowest useful verification. Examples:
 
-- Check that the code compiles or runs
-- Test the function or module just changed
-- Verify assumptions against actual behavior
+- focused unit test
+- type check or build
+- lint for touched code
+- smoke script
+- browser or API check
+- documented manual reproduction
 
-Do not accumulate a large unverified batch of work.
+Do not claim completion based only on code inspection.
 
-### 6. Refine For Maintainability
+### 6. Refactor Only While Green
 
-While implementing, actively:
+After verification passes, improve structure without changing behavior:
 
-- Extract repeated logic
-- Replace magic numbers with named constants
-- Move hardcoded configuration out of core logic
-- Split oversized functions or files
-- Tighten naming where the purpose is unclear
+- remove duplication
+- tighten names
+- extract focused helpers
+- move configuration out of logic
+- isolate I/O from domain logic
+- reduce hidden coupling
 
-## Non-Negotiable Rules
+Re-run relevant verification after refactoring.
 
-Always do these unless the user explicitly requests otherwise:
+## Stop Conditions
 
-1. One function should have one clear job.
-2. Prefer descriptive names over clever names.
-3. Separate configuration from code.
-4. Treat invalid input and dependency failure as normal design cases.
-5. Reuse mature libraries or existing project utilities when appropriate.
-6. Keep logs and errors useful for diagnosis.
-7. Preserve project conventions unless there is a strong reason to improve them.
-8. Leave comments only when they explain why, constraints, or hidden traps.
+Stop and realign with the user before continuing when:
 
-## Anti-Patterns To Avoid
+- the change requires deleting data, migrations, secrets, credentials, broad rewrites, or destructive commands
+- the requested shortcut would skip necessary verification for a risky behavior change
+- the existing design contradicts the requested implementation path
+- the change touches unrelated modules only to make the current idea convenient
+- the task is actually multiple independent projects hidden in one request
 
-Do not produce these unless forced by the existing system:
+## Anti-Patterns
 
-- Giant functions mixing I/O, logic, formatting, and persistence
-- New helper code that duplicates existing utilities
-- Hidden assumptions about input shape or environment
-- Hardcoded ports, paths, tokens, thresholds, or model names in logic
-- Happy-path-only code with no validation or fallback
-- Cross-layer shortcuts such as UI calling storage details directly
-- Generic dumping-ground files like a bloated `utils.py`
-- Unexplained broad refactors that increase risk without need
+Avoid:
 
-## Architecture Bias
+- giant functions mixing I/O, business logic, validation, persistence, and formatting
+- duplicate helper code that ignores existing utilities
+- hidden assumptions about environment, file paths, locale, time, network, or data shape
+- hardcoded secrets, tokens, ports, model names, thresholds, or user-specific paths in core logic
+- happy-path-only behavior with no invalid input handling
+- vague catch-all modules such as overloaded `utils`, `common`, or `helpers`
+- broad refactors not required by the task
+- "fixing" tests by weakening assertions instead of correcting behavior
 
-Default to this structure when it fits:
+## Pressure Rules
 
-- Input layer: collect or parse external data
-- Processing layer: perform core logic
-- Output layer: return, render, persist, or emit results
-- Support layer: config, logging, time, file, network, shared utilities
+Under time pressure, do less work with stronger verification. Do not do more work with weaker verification.
 
-When possible, keep the top-level orchestration readable enough that another engineer can understand the main flow without reading every implementation detail.
-
-## Testing And Verification Discipline
-
-At minimum, think in these categories:
-
-- Normal path
-- Boundary condition
-- Invalid input
-- Dependency or I/O failure
-- Regression risk from the current change
-
-If tests already exist, extend them. If they do not, add the lightest useful verification for the risk level.
+If the user says "just do it quickly", still inspect first, make a small change, and verify. If the user asks to skip tests, explain the risk and run the lightest alternative check available.
 
 ## Output Discipline
 
-When responding during implementation, prefer this structure:
+During work, keep updates concise:
 
-### Task Understanding
+- task understanding and assumption
+- files or modules being inspected
+- design shape before substantial edits
+- verification evidence after checks
+- remaining risk, if any
 
-State the task and any key assumptions.
+Do not bury failures. If verification fails, report the failure and next diagnostic step.
 
-### Plan Or Module Shape
+## Quick Reference
 
-For non-trivial work, briefly state the structure before coding.
-
-### Implementation
-
-Make the change in focused increments.
-
-### Verification
-
-State what was checked and what remains unverified.
-
-### Residual Risk
-
-Mention any important caveat, tradeoff, or missing coverage.
-
-## If The User Wants A Prompt
-
-If the user asks for a reusable coding prompt, produce a prompt that instructs the coding agent to:
-
-1. Clarify the task and boundary conditions first.
-2. Inspect and reuse existing code before adding new structures.
-3. Propose module boundaries and contracts before implementation.
-4. Build the smallest working slice first.
-5. Validate incrementally.
-6. Report assumptions, verification status, and remaining risks.
+| Moment | Required behavior |
+|---|---|
+| Before coding | Inspect existing structure and reuse paths |
+| Before design | Define inputs, outputs, constraints, and failure modes |
+| Before broad changes | Find the smallest safe slice |
+| Before completion | Run fresh verification and read the result |
+| If blocked | State the blocker, evidence, and safe next step |
+| If asked for a prompt | Produce a copyable prompt using the template |
 
 ## Resource Use
 
-- Read [workflow-checklist.md](references/workflow-checklist.md) when you need a compact execution checklist during implementation.
-- Read [prompt-template.md](references/prompt-template.md) when the user wants a reusable write-code-with-discipline prompt.
+- Use [discipline-checklist.md](references/discipline-checklist.md) as the execution checklist for implementation work.
+- Use [prompt-template.md](references/prompt-template.md) when the user wants a reusable coding prompt.
+- Use [pressure-scenarios.md](references/pressure-scenarios.md) when testing whether this skill resists shortcuts and rationalizations.
+
+## Common Mistakes
+
+- Treating this skill as advice instead of a gate.
+- Creating new abstractions before searching for existing ones.
+- Reporting "done" without fresh verification evidence.
+- Refactoring unrelated code to make the task feel cleaner.
+- Adding comments that explain what code obviously does instead of why a constraint exists.
+- Asking the user minor questions instead of making safe assumptions.

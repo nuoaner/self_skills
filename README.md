@@ -15,7 +15,7 @@
 
 | Skill | 主要用途 | 适合场景 |
 |---|---|---|
-| `ai-coding-discipline` | 工程化编码纪律 | 写功能、修 bug、重构、架构设计时，要求 AI 保持代码清晰、边界明确、可验证 |
+| `ai-coding-discipline` | 工程化编码纪律 | 写功能、修 bug、重构、架构设计时，要求 AI 先检查现有结构、复用已有实现、按最小闭环实现并验证 |
 | `ai-coding-paradigm` | 工程范式分析与 Prompt 加固 | 分析代码质量、模块边界、测试、契约、可观测性、安全和发布流程 |
 | `internal-project-doc-standardizer` | 内部项目文档标准化 | 创建或审查 `README.md`、`docs/`、`agent.md`，检查状态枚举、模板和文档合规性 |
 | `project-prompt-polisher` | 中文任务 Prompt 打磨 | 把口语化产品、前端、后端、文档、测试、重构或自动化需求改成可执行 prompt |
@@ -31,7 +31,7 @@
 ai-coding-discipline
 ```
 
-适合让 Codex 在实现前先看现有代码、拆模块、明确边界、做增量验证。
+适合让 Codex 在实现前先看现有代码、拆模块、明确边界、做增量验证。当前版本已经补充执行清单、压力场景、通用 prompt 模板和只读自检脚本。
 
 ### 分析项目质量
 
@@ -152,15 +152,17 @@ Copy-Item -Recurse .\self_skills\skills\* "$env:USERPROFILE\.codex\skills"
 | Skill | 状态 | 说明 |
 |---|---|---|
 | `project-structure-review` | 稳定 | 有只读审查脚本，适合直接用于项目交付前检查 |
-| `internal-project-doc-standardizer` | 可用 | 有模板和审查脚本，适合继续扩展生成能力 |
-| `project-prompt-polisher` | 可用 | 已改成通用中文 Prompt 打磨 skill |
-| `ai-coding-discipline` | 可用 | 偏行为约束型，适合日常编码前加载 |
-| `ai-coding-paradigm` | 可用 | 偏分析型，适合做工程成熟度和提示词加固 |
+| `ai-coding-discipline` | 稳定 | 已从原则型说明升级为执行闸门，包含执行清单、压力场景、Prompt 模板和只读自检脚本 |
+| `internal-project-doc-standardizer` | 可用 | 有模板和审查脚本，适合继续扩展生成能力；仍建议继续检查中文编码和枚举表达 |
+| `project-prompt-polisher` | 可用 | 已改成通用中文 Prompt 打磨 skill；建议继续清理示例编码和增加压力样例 |
+| `ai-coding-paradigm` | 可用 | 偏分析型，适合做工程成熟度和提示词加固；后续可补充仓库内 references |
 
 ## English Summary
 
 `self_skills` is a personal Codex skills collection focused on practical engineering workflows.
 
 It includes skills for disciplined coding, engineering paradigm analysis, internal project documentation standardization, Chinese prompt polishing, and project structure review.
+
+`ai-coding-discipline` has been upgraded from a principle-style reminder into an execution-gate skill with a checklist, pressure scenarios, prompt template, and read-only quality check script.
 
 This repository intentionally keeps only self-maintained skills. Official Codex system skills, plugin cache skills, and third-party skills should stay linked to their original sources.
