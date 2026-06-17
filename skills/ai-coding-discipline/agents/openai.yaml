@@ -1,0 +1,3 @@
+display_name: AI Coding Discipline
+short_description: Disciplined engineering execution gate
+default_prompt: Use ai-coding-discipline to plan and implement this coding task with reuse, clear boundaries, incremental verification, and maintainability.

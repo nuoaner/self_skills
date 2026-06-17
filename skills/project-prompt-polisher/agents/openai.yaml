@@ -1,0 +1,3 @@
+display_name: Project Prompt Polisher
+short_description: Polish Chinese task prompts for agents
+default_prompt: Use project-prompt-polisher to rewrite this rough Chinese task request into an implementation-ready prompt with scope, constraints, acceptance criteria, and verification.

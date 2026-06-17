@@ -1,6 +1,6 @@
 ---
 name: project-structure-review
-description: Audit and normalize team project repositories against submission standards for project structure, folder and file naming, README completeness, dependency/version documentation, lint/tooling disclosure, and architecture diagrams. Use when Codex is asked to check whether a project follows team conventions, prepare a project for application/submission/review, generate a remediation checklist, or help standardize a repository before handoff.
+description: Use when auditing or normalizing team project repositories against submission, application, handoff, or review standards for project structure, folder and file naming, README completeness, dependency/version documentation, lint/tooling disclosure, and architecture diagrams.
 ---
 
 # Project Structure Review
