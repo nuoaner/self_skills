@@ -1,20 +1,96 @@
 # self_skills
 
-Personal Codex skills for engineering workflow, project documentation, prompt polishing, and repository review.
+> 中文为主的个人 Codex Skills 仓库，用来沉淀我在工程开发、项目文档、Prompt 打磨和仓库审查中的常用工作流。
 
-This repository collects reusable skills I maintain for my own Codex setup. The focus is practical project work: turning vague requests into executable plans, keeping code changes disciplined, standardizing README/docs, and reviewing repositories before handoff or submission.
+## 简介
 
-## Skills
+这个仓库存放我自己维护的 Codex skills。它们不是通用插件市场的合集，而是围绕真实项目协作整理出来的一组“工作习惯工具”：
 
-| Skill | Purpose |
-|---|---|
-| `ai-coding-discipline` | Enforces disciplined engineering habits while planning, writing, refactoring, or reviewing code. |
-| `ai-coding-paradigm` | Helps analyze engineering maturity, code quality, architecture boundaries, testing, delivery flow, and AI-friendly implementation prompts. |
-| `internal-project-doc-standardizer` | Standardizes internal project documentation: `README.md`, `docs/`, `agent.md`, status enums, templates, and documentation audits. |
-| `project-prompt-polisher` | Rewrites rough Chinese task requests into implementation-ready prompts for product, UI/frontend, backend/API, documentation, testing, refactoring, automation, and agent handoff work. |
-| `project-structure-review` | Audits project repositories against submission and handoff standards: structure, naming, README completeness, dependency notes, tooling disclosure, and architecture materials. |
+- 让 AI 写代码前先澄清边界、复用已有结构、控制复杂度。
+- 把模糊中文需求改成另一个 AI Agent 可以直接执行的 prompt。
+- 按内部项目规范整理 `README.md`、`docs/` 和 `agent.md`。
+- 在项目提交、交付或评审前检查仓库结构和文档完整性。
 
-## Repository Layout
+## Skills 列表
+
+| Skill | 主要用途 | 适合场景 |
+|---|---|---|
+| `ai-coding-discipline` | 工程化编码纪律 | 写功能、修 bug、重构、架构设计时，要求 AI 保持代码清晰、边界明确、可验证 |
+| `ai-coding-paradigm` | 工程范式分析与 Prompt 加固 | 分析代码质量、模块边界、测试、契约、可观测性、安全和发布流程 |
+| `internal-project-doc-standardizer` | 内部项目文档标准化 | 创建或审查 `README.md`、`docs/`、`agent.md`，检查状态枚举、模板和文档合规性 |
+| `project-prompt-polisher` | 中文任务 Prompt 打磨 | 把口语化产品、前端、后端、文档、测试、重构或自动化需求改成可执行 prompt |
+| `project-structure-review` | 项目结构审查 | 项目提交、交付、验收、申请或团队交接前，检查目录结构、命名、README 和工程说明 |
+
+## 推荐使用方式
+
+### 写代码前
+
+优先使用：
+
+```text
+ai-coding-discipline
+```
+
+适合让 Codex 在实现前先看现有代码、拆模块、明确边界、做增量验证。
+
+### 分析项目质量
+
+优先使用：
+
+```text
+ai-coding-paradigm
+```
+
+适合从工程范式角度检查项目：需求边界、模块职责、接口契约、测试、日志、安全、发布和回滚。
+
+### 整理项目文档
+
+优先使用：
+
+```text
+internal-project-doc-standardizer
+```
+
+适合初始化或检查标准项目文档结构：
+
+```text
+README.md
+agent.md
+docs/standard.md
+docs/requirements.md
+docs/architecture.md
+docs/api.md
+docs/database.md
+docs/deploy.md
+docs/test.md
+docs/changelog.md
+```
+
+### 打磨中文需求
+
+优先使用：
+
+```text
+project-prompt-polisher
+```
+
+示例：
+
+```text
+用 project-prompt-polisher 帮我把这个需求改成 Codex 能直接执行的 prompt：登录接口帮我完善一下。
+```
+
+### 项目提交前审查
+
+优先使用：
+
+```text
+project-structure-review
+```
+
+适合检查项目是否具备可交付的 README、结构、依赖说明、工程配置和架构说明。
+
+## 仓库结构
 
 ```text
 self_skills/
@@ -27,45 +103,64 @@ self_skills/
     project-structure-review/
 ```
 
-Each skill follows the standard skill layout:
+每个 skill 通常遵循以下结构：
 
 ```text
 skill-name/
   SKILL.md
-  agents/openai.yaml        # optional UI metadata
-  references/               # optional detailed guidance or templates
-  scripts/                  # optional helper scripts
+  agents/openai.yaml        # 可选：Codex UI 元数据
+  references/               # 可选：模板、规范、详细参考
+  scripts/                  # 可选：辅助脚本
 ```
 
-## Install
+## 安装方式
 
-Install one skill manually by copying its folder into your Codex skills directory:
+克隆仓库：
 
 ```powershell
-Copy-Item -Recurse .\skills\internal-project-doc-standardizer "$env:USERPROFILE\.codex\skills\internal-project-doc-standardizer"
+git clone https://github.com/nuoaner/self_skills.git
 ```
 
-Or clone this repository and copy selected folders into:
+复制单个 skill 到 Codex skills 目录：
 
-```text
-C:\Users\<your-user>\.codex\skills
+```powershell
+Copy-Item -Recurse .\self_skills\skills\project-prompt-polisher "$env:USERPROFILE\.codex\skills\project-prompt-polisher"
 ```
 
-Restart Codex after installing or updating skills so the app can rediscover them.
+复制全部 skills：
 
-## What Is Not Included
+```powershell
+Copy-Item -Recurse .\self_skills\skills\* "$env:USERPROFILE\.codex\skills"
+```
 
-This repository intentionally does not vendor:
+安装或更新后，重启 Codex 让新 skill 生效。
 
-- Codex system skills from `.codex/skills/.system`
-- Plugin cache skills from `.codex/plugins/cache`
-- Third-party skills installed from external repositories
+## 维护边界
 
-Those skills should stay linked to their original sources. This repository is for skills I want to maintain directly.
+这个仓库只收录我自己维护、愿意长期调整的 skills。
 
-## Notes
+不收录：
 
-- Some skills include Chinese project conventions and are intentionally tailored to my workflow.
-- `internal-project-doc-standardizer` includes internal documentation templates and a read-only audit script.
-- `project-prompt-polisher` is intentionally generic; project-specific context should be provided in the user request rather than hardcoded in the skill.
-- Scripts should be reviewed before running in a new environment.
+- Codex 官方系统 skills：`.codex/skills/.system`
+- 插件缓存 skills：`.codex/plugins/cache`
+- 第三方仓库安装的 skills
+
+第三方 skills 应该保留原始来源链接，不直接复制到这里维护。
+
+## 质量状态
+
+| Skill | 状态 | 说明 |
+|---|---|---|
+| `project-structure-review` | 稳定 | 有只读审查脚本，适合直接用于项目交付前检查 |
+| `internal-project-doc-standardizer` | 可用 | 有模板和审查脚本，适合继续扩展生成能力 |
+| `project-prompt-polisher` | 可用 | 已改成通用中文 Prompt 打磨 skill |
+| `ai-coding-discipline` | 可用 | 偏行为约束型，适合日常编码前加载 |
+| `ai-coding-paradigm` | 可用 | 偏分析型，适合做工程成熟度和提示词加固 |
+
+## English Summary
+
+`self_skills` is a personal Codex skills collection focused on practical engineering workflows.
+
+It includes skills for disciplined coding, engineering paradigm analysis, internal project documentation standardization, Chinese prompt polishing, and project structure review.
+
+This repository intentionally keeps only self-maintained skills. Official Codex system skills, plugin cache skills, and third-party skills should stay linked to their original sources.
