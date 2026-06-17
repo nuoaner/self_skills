@@ -10,6 +10,7 @@ This directory contains personal Codex skills.
 
 ## Documentation
 
+- `client-technical-reporting`: Chinese client-facing technical delivery reports for migration, API replacement, changed locations, troubleshooting, joint debugging confirmations, and summaries.
 - `internal-project-doc-standardizer`: internal README/docs/agent.md standardization.
 - `project-structure-review`: repository structure and submission readiness review.
 

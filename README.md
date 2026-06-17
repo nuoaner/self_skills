@@ -11,6 +11,7 @@
 - 按内部项目规范整理 `README.md`、`docs/` 和 `agent.md`。
 - 在项目提交、交付或评审前检查仓库结构和文档完整性。
 - 从市场经理视角评审产品吸引力、用户留存、市场匹配和商业化成熟度。
+- 把迁移、改造、接口替换和联调工作整理成甲方能看懂的技术汇报。
 
 ## Skills 列表
 
@@ -18,6 +19,7 @@
 |---|---|---|
 | `ai-coding-discipline` | 工程化编码纪律 | 写功能、修 bug、重构、架构设计时，要求 AI 先检查现有结构、复用已有实现、按最小闭环实现并验证 |
 | `ai-coding-paradigm` | 工程范式分析与 Prompt 加固 | 分析代码质量、模块边界、测试、契约、可观测性、安全和发布流程 |
+| `client-technical-reporting` | 甲方技术汇报整理 | 迁移、改造、接口替换、问题定位或联调阶段后，整理甲方可读、技术可追踪的汇报材料 |
 | `internal-project-doc-standardizer` | 内部项目文档标准化 | 创建或审查 `README.md`、`docs/`、`agent.md`，检查状态枚举、模板和文档合规性 |
 | `market-commercialization-strategist` | 市场经理与商业化策略 | 设计项目、产品、页面、功能、README 或商业方案时，评估用户吸引力、留存依赖、市场匹配、定价和商业成熟度 |
 | `project-prompt-polisher` | 中文任务 Prompt 打磨 | 把口语化产品、前端、后端、文档、测试、重构或自动化需求改成可执行 prompt |
@@ -92,6 +94,16 @@ market-commercialization-strategist
 
 适合在产品设计、功能规划、落地页、README、商业方案或定价前，检查项目是否有清晰目标用户、用户吸引力、留存机制、市场差异、付费理由和商业化成熟度。
 
+### 给甲方做技术汇报
+
+优先使用：
+
+```text
+client-technical-reporting
+```
+
+适合在一次迁移、改造、接口替换、问题修复或联调阶段后，按“本次做了什么、迁移方式、主要改动位置、真实接口后续在哪改、模块问题定位、后续联调需确认事项、总结”的结构整理给甲方。
+
 ### 项目提交前审查
 
 优先使用：
@@ -110,6 +122,7 @@ self_skills/
   skills/
     ai-coding-discipline/
     ai-coding-paradigm/
+    client-technical-reporting/
     internal-project-doc-standardizer/
     market-commercialization-strategist/
     project-prompt-polisher/
@@ -166,6 +179,7 @@ Copy-Item -Recurse .\self_skills\skills\* "$env:USERPROFILE\.codex\skills"
 |---|---|---|
 | `project-structure-review` | 稳定 | 有只读审查脚本，适合直接用于项目交付前检查 |
 | `ai-coding-discipline` | 稳定 | 已从原则型说明升级为执行闸门，包含执行清单、压力场景、Prompt 模板和只读自检脚本 |
+| `client-technical-reporting` | 可用 | 轻量甲方技术汇报 skill，适合迁移、接口替换、模块问题定位和联调事项整理 |
 | `internal-project-doc-standardizer` | 可用 | 有模板和审查脚本，适合继续扩展生成能力；仍建议继续检查中文编码和枚举表达 |
 | `market-commercialization-strategist` | 可用 | 轻量 `SKILL.md` + 重型 Markdown 手册，适合市场经理视角、产品商业化和网页端复用 |
 | `project-prompt-polisher` | 可用 | 已改成通用中文 Prompt 打磨 skill；建议继续清理示例编码和增加压力样例 |
@@ -175,7 +189,7 @@ Copy-Item -Recurse .\self_skills\skills\* "$env:USERPROFILE\.codex\skills"
 
 `self_skills` is a personal Codex skills collection focused on practical engineering workflows.
 
-It includes skills for disciplined coding, engineering paradigm analysis, internal project documentation standardization, market commercialization strategy, Chinese prompt polishing, and project structure review.
+It includes skills for disciplined coding, engineering paradigm analysis, client-facing technical reporting, internal project documentation standardization, market commercialization strategy, Chinese prompt polishing, and project structure review.
 
 `ai-coding-discipline` has been upgraded from a principle-style reminder into an execution-gate skill with a checklist, pressure scenarios, prompt template, and read-only quality check script.
 

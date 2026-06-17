@@ -1,0 +1,3 @@
+display_name: Client Technical Reporting
+short_description: Client-facing technical delivery reports
+default_prompt: Use client-technical-reporting to organize this work into a Chinese client-facing technical report with migration method, changed locations, API replacement points, troubleshooting, joint debugging confirmations, and summary.
