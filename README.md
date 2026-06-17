@@ -182,7 +182,7 @@ Copy-Item -Recurse .\self_skills\skills\* "$env:USERPROFILE\.codex\skills"
 | `client-technical-reporting` | 可用 | 轻量甲方技术汇报 skill，适合迁移、接口替换、模块问题定位和联调事项整理 |
 | `internal-project-doc-standardizer` | 可用 | 有模板和审查脚本，适合继续扩展生成能力；仍建议继续检查中文编码和枚举表达 |
 | `market-commercialization-strategist` | 可用 | 轻量 `SKILL.md` + 重型 Markdown 手册，适合市场经理视角、产品商业化和网页端复用 |
-| `project-prompt-polisher` | 可用 | 已改成通用中文 Prompt 打磨 skill；建议继续清理示例编码和增加压力样例 |
+| `project-prompt-polisher` | 稳定 | 已升级为轻量入口 + 多场景 Prompt 模板 + 自检脚本，适合高频打磨中文任务 prompt |
 | `ai-coding-paradigm` | 可用 | 偏分析型，适合做工程成熟度和提示词加固；后续可补充仓库内 references |
 
 ## English Summary
