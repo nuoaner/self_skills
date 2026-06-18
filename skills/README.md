@@ -17,3 +17,7 @@ This directory contains personal Codex skills.
 ## Prompting
 
 - `project-prompt-polisher`: rewrite rough Chinese task requests into executable prompts across product, UI/frontend, backend/API, docs, tests, refactors, automation, and handoff work.
+
+## Content
+
+- `wechat-article-image-planner`: plan cover art, inline illustrations, summary posters, visual prompts, placement, and optional imagegen2 generation for finalized WeChat Official Account articles.

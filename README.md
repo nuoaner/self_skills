@@ -24,6 +24,7 @@
 | `market-commercialization-strategist` | 市场经理与商业化策略 | 设计项目、产品、页面、功能、README 或商业方案时，评估用户吸引力、留存依赖、市场匹配、定价和商业成熟度 |
 | `project-prompt-polisher` | 中文任务 Prompt 打磨 | 把口语化产品、前端、后端、文档、测试、重构或自动化需求改成可执行 prompt |
 | `project-structure-review` | 项目结构审查 | 项目提交、交付、验收、申请或团队交接前，检查目录结构、命名、README 和工程说明 |
+| `wechat-article-image-planner` | 公众号文章配图规划 | 在公众号文章定稿后，规划封面、文中插图和总结海报，并按需生成 imagegen2 可执行提示词 |
 
 ## 推荐使用方式
 
@@ -130,6 +131,7 @@ self_skills/
     market-commercialization-strategist/
     project-prompt-polisher/
     project-structure-review/
+    wechat-article-image-planner/
 ```
 
 每个 skill 通常遵循以下结构：
@@ -201,11 +203,12 @@ skills/TRIGGER_TESTS.md
 | `market-commercialization-strategist` | 可用 | 轻量 `SKILL.md` + 重型 Markdown 手册，适合市场经理视角、产品商业化和网页端复用 |
 | `project-prompt-polisher` | 稳定 | 轻量入口 + 多场景 Prompt 模板 + 自检脚本，适合高频打磨中文任务 prompt |
 | `project-structure-review` | 稳定 | 有只读审查脚本，适合直接用于项目交付前检查 |
+| `wechat-article-image-planner` | 可用 | 定稿公众号文章的配图规划 skill，包含视觉锚点提取、封面/插图/海报规划、imagegen2 参数建议和自检脚本 |
 
 ## English Summary
 
 `self_skills` is a personal Codex skills collection focused on practical engineering workflows.
 
-It includes skills for disciplined coding, engineering paradigm analysis, client-facing technical reporting, internal project documentation standardization, market commercialization strategy, Chinese prompt polishing, and project structure review.
+It includes skills for disciplined coding, engineering paradigm analysis, client-facing technical reporting, internal project documentation standardization, market commercialization strategy, Chinese prompt polishing, project structure review, and WeChat article image planning.
 
 This repository intentionally keeps only self-maintained skills. Official Codex system skills, plugin cache skills, and third-party skills should stay linked to their original sources.

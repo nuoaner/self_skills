@@ -2,6 +2,17 @@
 
 这些样例用于人工或脚本审计 skill 触发边界。每个 skill 至少包含 should-trigger 和 should-not-trigger，用来避免过度触发或漏触发。
 
+## wechat-article-image-planner
+
+Should trigger:
+- "This is my finalized WeChat article. Please plan the cover image and three inline illustrations."
+- "公众号文章已经定稿了，帮我做配图规划，输出 imagegen2 prompts。"
+- "根据这篇文章生成公众号封面和文中插图，用 imagegen2。"
+
+Should not trigger:
+- "帮我从零写一篇公众号长文，先不用考虑配图。"
+- "生成一张普通产品海报，不是公众号文章配图。"
+
 ## ai-coding-discipline
 
 Should trigger:

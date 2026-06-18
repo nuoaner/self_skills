@@ -1,0 +1,4 @@
+interface:
+  display_name: "WeChat Article Image Planner"
+  short_description: "Plan and generate images for finalized WeChat articles"
+  default_prompt: "Use $wechat-article-image-planner to plan article cover and inline images, then call imagegen2 if generation is requested."
