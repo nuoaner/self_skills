@@ -5,35 +5,35 @@ Use this reference when the prompt needs more than the default structure.
 ## Universal Prompt Skeleton
 
 ```text
-请基于当前项目完成以下任务，先阅读相关代码/文档，复用已有结构、组件、工具函数和工程约定，避免重复造轮子。
+Please complete the following task based on the current project. First read relevant code and documentation, reuse existing structure, components, utilities, and engineering conventions, and avoid duplicate mechanisms.
 
-背景：
-<已知上下文，不确定的不要编造>
+Background:
+<Known context. Do not invent uncertain facts.>
 
-目标：
-<期望达成的具体结果>
+Goal:
+<Specific expected result>
 
-修改范围：
-- <文件/目录/模块/页面/API/文档>
+Change scope:
+- <File/directory/module/page/API/document>
 
-具体要求：
-1. <可执行要求>
-2. <可执行要求>
-3. <可执行要求>
+Requirements:
+1. <Executable requirement>
+2. <Executable requirement>
+3. <Executable requirement>
 
-约束：
-- 不要修改与本任务无关的功能。
-- 不要破坏现有路由、权限、接口、数据结构、样式规范或用户流程。
-- 如发现当前描述与项目实际不一致，先以项目实际为准，并在结果中说明。
+Constraints:
+- Do not modify functionality unrelated to this task.
+- Do not break existing routes, permissions, APIs, data structures, style conventions, or user flows.
+- If the current request conflicts with the actual project, follow the project facts and explain the mismatch.
 
-验收标准：
-1. <可观察结果>
-2. <测试/构建/截图/API/文档检查>
+Acceptance criteria:
+1. <Observable result>
+2. <Test/build/screenshot/API/docs check>
 
-交付说明：
-- 说明改了哪些文件。
-- 说明如何验证。
-- 说明仍需确认的问题。
+Delivery note:
+- List modified files.
+- Explain how to verify.
+- State remaining questions.
 ```
 
 ## UI / Frontend Prompt
@@ -49,21 +49,21 @@ Add these dimensions when polishing UI work:
 Template:
 
 ```text
-请基于当前项目优化 <页面/组件>，保持现有业务逻辑、接口调用、路由跳转和权限判断不变，只调整本次明确要求的交互与展示。
+Improve <page/component> in the current project. Keep existing business logic, API calls, route navigation, and permission checks unchanged. Only adjust the interaction and display requirements explicitly listed here.
 
-目标：
-<用户看到/操作时应获得什么改善>
+Goal:
+<What improvement the user should see or feel>
 
-具体要求：
-1. 明确主次操作层级，避免页面拥挤或误操作。
-2. 处理加载、空数据、错误、禁用和权限不足状态。
-3. 保证桌面端和移动端布局稳定，不产生遮挡、错位或异常横向滚动。
-4. 复用项目已有组件、样式变量和交互规范。
+Requirements:
+1. Clarify primary, secondary, and dangerous actions to reduce crowding and accidental operations.
+2. Handle loading, empty, error, disabled, and permission-denied states.
+3. Keep desktop and mobile layouts stable without overlap, misalignment, or unexpected horizontal scrolling.
+4. Reuse existing components, style variables, and interaction conventions.
 
-验收标准：
-1. 页面在目标尺寸下展示正常。
-2. 原有功能仍可触发。
-3. 提供截图或说明验证方式。
+Acceptance criteria:
+1. The page renders correctly at target viewport sizes.
+2. Existing functionality still works.
+3. Screenshots or verification steps are provided.
 ```
 
 ## Backend / API Prompt
@@ -79,19 +79,19 @@ Add these dimensions:
 Template:
 
 ```text
-请基于当前项目完善 <接口/服务>，保持现有客户端调用兼容，重点补强参数校验、错误处理、权限边界和可验证性。
+Improve <API/service> in the current project while keeping existing client calls compatible. Strengthen validation, error handling, permission boundaries, and verifiability.
 
-具体要求：
-1. 明确请求参数、必填字段、字段格式和默认值。
-2. 明确成功与失败返回结构，避免泄露敏感信息。
-3. 覆盖权限不足、参数缺失、资源不存在、状态冲突等异常场景。
-4. 保留现有认证、日志和中间件约定，除非发现明确缺陷。
-5. 增加或更新测试用例。
+Requirements:
+1. Define request parameters, required fields, field formats, and defaults.
+2. Define success and failure response structures without leaking sensitive information.
+3. Cover permission denied, missing parameters, missing resources, status conflicts, and other major failure cases.
+4. Preserve existing authentication, logging, and middleware conventions unless a clear defect is found.
+5. Add or update tests.
 
-验收标准：
-1. 正常请求返回符合约定。
-2. 主要异常场景返回稳定错误码和提示。
-3. 测试覆盖成功路径和失败路径。
+Acceptance criteria:
+1. Valid requests return the agreed response.
+2. Major failure cases return stable error codes and messages.
+3. Tests cover success and failure paths.
 ```
 
 ## Documentation Prompt
@@ -107,18 +107,18 @@ Add these dimensions:
 Template:
 
 ```text
-请基于当前项目整理 <README/docs/说明文档>，保持项目事实准确，不编造功能、接口、部署方式或负责人信息。
+Organize <README/docs/documentation> for the current project. Keep project facts accurate and do not invent features, APIs, deployment methods, or owners.
 
-具体要求：
-1. 先阅读现有 README、docs 和项目结构，识别过期、重复或缺失内容。
-2. 补充项目简介、运行方式、目录结构、核心功能、配置说明、文档索引和后续计划。
-3. 将详细需求、接口、数据库、部署、测试、变更记录拆到 docs 中，README 只保留入口信息。
-4. 示例配置必须使用占位符，不要写入真实 token、密码、密钥或连接串。
+Requirements:
+1. Read the existing README, docs, and project structure first. Identify stale, duplicated, or missing content.
+2. Add project summary, run instructions, directory structure, core features, configuration notes, documentation index, and next plan.
+3. Move detailed requirements, APIs, database, deployment, testing, and changelog content into docs. Keep README as the entry point.
+4. Use placeholders in example configuration. Do not write real tokens, passwords, keys, or connection strings.
 
-验收标准：
-1. README 可作为项目入口。
-2. docs 链接有效。
-3. 没有明显过期描述或真实敏感信息。
+Acceptance criteria:
+1. README works as a project entrance.
+2. docs links are valid.
+3. No obviously stale statements or real secrets remain.
 ```
 
 ## Testing / Debugging Prompt
@@ -134,24 +134,24 @@ Add these dimensions:
 Template:
 
 ```text
-请基于当前项目定位并修复以下问题，不要直接大范围重写。先复现或推断最小复现场景，再定位根因，最后做最小修复。
+Diagnose and fix the following issue in the current project. Do not rewrite broadly. First reproduce or infer the smallest reproduction, identify the root cause, then make the smallest fix.
 
-问题现象：
-<现象>
+Symptom:
+<Symptom>
 
-期望结果：
-<期望>
+Expected result:
+<Expected>
 
-要求：
-1. 先检查相关日志、调用链、状态流和边界条件。
-2. 给出根因判断，不要只改表面现象。
-3. 做最小范围修复，避免影响无关模块。
-4. 增加或更新回归验证。
+Requirements:
+1. Inspect relevant logs, call chain, state flow, and boundary conditions.
+2. Explain the root cause; do not only patch the visible symptom.
+3. Fix the smallest relevant scope and avoid unrelated modules.
+4. Add or update regression verification.
 
-验收标准：
-1. 原问题不再出现。
-2. 相关正常流程不回归。
-3. 说明验证命令或验证步骤。
+Acceptance criteria:
+1. The original issue no longer appears.
+2. Related normal flows do not regress.
+3. Verification command or steps are reported.
 ```
 
 ## Refactor Prompt
@@ -167,18 +167,18 @@ Add these dimensions:
 Template:
 
 ```text
-请对 <模块/文件/目录> 做小步重构，目标是提升可维护性和边界清晰度，必须保持外部行为、接口契约和用户流程不变。
+Refactor <module/file/directory> in small steps to improve maintainability and boundary clarity. External behavior, API contracts, and user flows must remain unchanged.
 
-具体要求：
-1. 先说明当前职责混杂或重复点。
-2. 按单一职责拆分模块，保留现有对外调用方式或提供兼容层。
-3. 删除重复逻辑前确认已有复用点。
-4. 补充或更新测试，证明行为未变化。
+Requirements:
+1. Explain current responsibility mixing or duplication first.
+2. Split modules by single responsibility while preserving existing external calls or providing a compatibility layer.
+3. Confirm reusable points before deleting duplicated logic.
+4. Add or update tests to prove behavior has not changed.
 
-验收标准：
-1. 外部行为不变。
-2. 模块职责更清晰。
-3. 测试或构建通过。
+Acceptance criteria:
+1. External behavior is unchanged.
+2. Module responsibilities are clearer.
+3. Tests or build pass.
 ```
 
 ## Automation / Script Prompt
@@ -194,18 +194,18 @@ Add these dimensions:
 Template:
 
 ```text
-请基于当前项目编写或完善 <脚本/自动化流程>，要求输入输出明确、可重复执行、错误可诊断。
+Write or improve <script/automation flow> in the current project. Inputs and outputs must be explicit, execution must be repeatable, and errors must be diagnosable.
 
-具体要求：
-1. 明确输入参数、默认值、输出文件或执行结果。
-2. 对可能修改文件、调用外部服务或删除数据的操作提供 dry-run 或确认机制。
-3. 增加日志和错误提示，失败时能定位到具体步骤。
-4. 保证重复执行不会产生不可控副作用。
+Requirements:
+1. Define input parameters, defaults, output files, or execution results.
+2. Provide dry-run or confirmation for operations that modify files, call external services, or delete data.
+3. Add logs and error messages so failures identify the failing step.
+4. Ensure repeated execution does not cause uncontrolled side effects.
 
-验收标准：
-1. 正常输入可得到预期输出。
-2. 异常输入有明确错误提示。
-3. 说明运行命令和验证方式。
+Acceptance criteria:
+1. Valid input produces expected output.
+2. Invalid input has a clear error message.
+3. Run command and verification method are documented.
 ```
 
 ## Handoff Prompt
@@ -213,27 +213,27 @@ Template:
 Use when the polished prompt is for another Codex thread, another AI agent, or another developer.
 
 ```text
-请接手以下任务。开始前先阅读项目结构、README/agent.md 以及相关模块代码，不要假设上下文。
+Take over the following task. Before starting, read the project structure, README/agent.md, and relevant module code. Do not assume missing context.
 
-任务目标：
-<目标>
+Goal:
+<Goal>
 
-已知背景：
-<事实>
+Known facts:
+<Facts>
 
-需要修改：
-- <范围>
+Change:
+- <Scope>
 
-不能修改：
-- <边界>
+Do not change:
+- <Boundary>
 
-验收标准：
-- <标准>
+Acceptance criteria:
+- <Criteria>
 
-交付要求：
-- 列出修改文件。
-- 列出验证命令和结果。
-- 标明未完成或需确认事项。
+Delivery requirements:
+- List modified files.
+- List verification commands and results.
+- Mark unfinished or unconfirmed items.
 ```
 
 ## Pressure Examples
@@ -243,7 +243,7 @@ Use when the polished prompt is for another Codex thread, another AI agent, or a
 Input:
 
 ```text
-这个页面按钮太乱了，帮我优化一下
+The buttons on this page are messy. Help me improve it.
 ```
 
 Expected polishing focus:
@@ -257,7 +257,7 @@ Expected polishing focus:
 Input:
 
 ```text
-登录接口帮我完善一下
+Improve the login API.
 ```
 
 Expected polishing focus:
@@ -272,7 +272,7 @@ Expected polishing focus:
 Input:
 
 ```text
-项目有点乱，帮我整理一下
+The project is messy. Help me organize it.
 ```
 
 Expected polishing focus:

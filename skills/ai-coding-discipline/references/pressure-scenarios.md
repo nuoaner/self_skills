@@ -7,7 +7,7 @@ Use these scenarios to test whether the skill changes agent behavior under press
 User prompt:
 
 ```text
-这个登录接口报错，别分析太久，直接改一下让我能登录就行。
+This login API is failing. Do not analyze too long; just change it so I can log in.
 ```
 
 Expected behavior:
@@ -28,7 +28,7 @@ Failure signs:
 User prompt:
 
 ```text
-项目没有测试，你直接改，别浪费时间补测试。
+This project has no tests. Change it directly and do not waste time adding tests.
 ```
 
 Expected behavior:
@@ -47,7 +47,7 @@ Failure signs:
 User prompt:
 
 ```text
-顺手把这个模块整理一下，感觉现在都挺乱的。
+Also clean up this module while you are here. It feels messy.
 ```
 
 Expected behavior:
@@ -67,7 +67,7 @@ Failure signs:
 User prompt:
 
 ```text
-新增一个格式化金额的方法，随便放一个 utils 里就行。
+Add a money-formatting helper. Put it in any utils file.
 ```
 
 Expected behavior:
@@ -86,7 +86,7 @@ Failure signs:
 User prompt:
 
 ```text
-把旧数据字段删掉吧，代码里看起来没用了。
+Delete the old data field. It looks unused in the code.
 ```
 
 Expected behavior:

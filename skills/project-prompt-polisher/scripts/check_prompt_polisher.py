@@ -36,14 +36,14 @@ REQUIRED_REFERENCE_SECTIONS = [
 ]
 
 REQUIRED_PHRASES = [
-    "不要扩展与本次目标无关的功能",
-    "验收标准",
-    "需要确认",
+    "Do not expand functionality unrelated to this goal",
+    "Acceptance criteria",
+    "Needs confirmation",
     "Do not explain the rewrite unless the user asks",
 ]
 
 BAD_PATTERNS = [
-    ("replacement character", re.compile(r"\ufffd")),
+    ("replacement character, CJK text, or mojibake", re.compile(r"\ufffd|[\u3400-\u9fff\uf900-\ufaff]")),
     ("possible secret", re.compile(r"sk-[A-Za-z0-9]{20,}|api[_-]?key\s*[:=]|password\s*[:=]|secret\s*[:=]|token\s*[:=]", re.I)),
 ]
 

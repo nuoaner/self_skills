@@ -5,89 +5,89 @@ Use these templates when the user wants an AI-executable engineering prompt rath
 ## Feature Implementation Prompt
 
 ```text
-请基于当前项目实现 <功能>。开始前先阅读相关 README/agent.md、现有模块结构、路由/API/状态管理/组件约定，优先复用已有实现，避免重复造轮子。
+Implement <feature> in the current project. Before editing, read the relevant README/agent.md, existing module structure, routes, APIs, state management, and component conventions. Prefer existing implementation paths and avoid duplicate mechanisms.
 
-目标：
-<期望用户行为或业务结果>
+Goal:
+<Expected user behavior or business result>
 
-范围：
-- 需要修改：
-- 不需要修改：
+Scope:
+- Change:
+- Do not change:
 
-工程约束：
-- 保持现有架构、代码风格、权限、路由、接口契约和数据结构兼容，除非下方明确要求。
-- 先定义模块边界和数据契约，再实现细节。
-- 不要引入与本次目标无关的大重构。
+Engineering constraints:
+- Keep existing architecture, code style, permissions, routes, API contracts, and data structures compatible unless explicitly required below.
+- Define module boundaries and data contracts before implementing details.
+- Do not introduce broad refactors unrelated to this goal.
 
-实现要求：
-1. <具体实现步骤>
-2. <异常/空状态/权限/边界处理>
-3. <日志/可观测性/错误提示>
+Implementation requirements:
+1. <Concrete implementation step>
+2. <Error, empty-state, permission, or boundary handling>
+3. <Logging, observability, or error messaging>
 
-验证要求：
-- 运行 <测试/构建/检查命令>。
-- 验证成功路径和关键失败路径。
-- 汇报修改文件、验证结果、风险和未确认事项。
+Verification requirements:
+- Run <test/build/check command>.
+- Verify the success path and key failure paths.
+- Report modified files, verification results, risks, and unconfirmed items.
 ```
 
 ## Refactor Prompt
 
 ```text
-请对 <模块/目录/文件> 做小步重构，目标是降低耦合、明确职责、提高可维护性。必须保持外部行为、接口契约、路由、权限和用户流程不变。
+Refactor <module/directory/file> in small steps to reduce coupling, clarify responsibilities, and improve maintainability. External behavior, API contracts, routes, permissions, and user flows must remain unchanged.
 
-开始前：
-1. 先列出当前职责混杂点和依赖关系。
-2. 识别可复用的已有组件/工具/服务。
-3. 给出最小拆分方案。
+Before editing:
+1. List current responsibility mixing and dependency issues.
+2. Identify reusable existing components, utilities, or services.
+3. Propose the smallest split or repair plan.
 
-实施要求：
-- 每次只做可验证的小步调整。
-- 保留兼容层或迁移路径。
-- 不删除未确认仍在使用的入口。
+Implementation requirements:
+- Make only verifiable small adjustments.
+- Preserve compatibility layers or migration paths.
+- Do not delete entry points that may still be used.
 
-验收：
-- 原功能不回归。
-- 模块职责更清晰。
-- 测试/构建/手动验证通过。
+Acceptance:
+- Existing behavior does not regress.
+- Module responsibilities are clearer.
+- Tests, build, or manual verification pass.
 ```
 
 ## API Contract Prompt
 
 ```text
-请梳理并完善 <接口/服务> 的工程契约，重点保证前后端联调稳定、错误可诊断、后续可维护。
+Clarify and strengthen the engineering contract for <API/service>, focusing on stable frontend-backend integration, diagnosable errors, and maintainability.
 
-要求：
-1. 明确 endpoint、method、请求字段、响应字段、错误码、分页/过滤/排序规则。
-2. 明确鉴权、权限、参数校验和异常场景。
-3. 检查 mock 数据与真实接口字段是否一致。
-4. 更新相关文档或类型定义。
-5. 增加或说明验证方式。
+Requirements:
+1. Specify endpoint, method, request fields, response fields, error codes, pagination, filtering, and sorting rules.
+2. Specify authentication, permissions, validation, and exception scenarios.
+3. Check whether mock data matches the real API shape.
+4. Update related documentation or type definitions.
+5. Add or describe verification.
 
-输出：
-- 契约说明
-- 修改文件
-- 验证结果
-- 仍需甲方/后端/前端确认事项
+Output:
+- Contract summary
+- Modified files
+- Verification result
+- Items still requiring client/backend/frontend confirmation
 ```
 
 ## Delivery Readiness Prompt
 
 ```text
-请从交付准备角度检查当前项目/模块是否可以进入联调、验收或上线。
+Review whether the current project/module is ready for joint debugging, acceptance, or release.
 
-检查维度：
-1. 功能边界和验收标准
-2. 接口契约和 mock/真实接口切换点
-3. 配置、环境变量和部署路径
-4. 测试、构建和手动验证
-5. 日志、错误定位和回滚方案
-6. 权限、安全和敏感信息
-7. 文档和交接说明
+Check:
+1. Functional boundaries and acceptance criteria
+2. API contracts and mock/real API switching points
+3. Configuration, environment variables, and deployment path
+4. Tests, build, and manual verification
+5. Logs, issue diagnosis, and rollback plan
+6. Permissions, security, and sensitive information
+7. Documentation and handoff notes
 
-输出：
-- 总体结论
-- 阻塞项
-- 非阻塞风险
-- 建议处理顺序
-- 可交付说明
+Output:
+- Overall conclusion
+- Blockers
+- Non-blocking risks
+- Recommended handling order
+- Delivery note
 ```

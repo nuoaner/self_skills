@@ -1,37 +1,41 @@
-# 数据库设计
+# Database Documentation
 
-## 1. 数据库状态枚举
+## 1. Database Status Enum
 
-数据库状态只能使用：`待设计` / `已设计` / `已迁移` / `已上线` / `已废弃`。
+Database status must use only: `pending-design` / `designed` / `migrated` / `online` / `deprecated`.
 
-## 2. 数据表总览
+## 2. Tables
 
-| 表编号 | 表名 | 用途 | 状态 | 负责人 | 备注 |
-|---|---|---|---|---|---|
-| DB-001 | users | 用户信息表 | 待设计 | 待填写 | 待填写 |
-
-## 3. 数据表详情模板
-
-### DB-待填写：表名
-
-- 表名：待填写
-- 用途：待填写
-- 当前状态：待设计 / 已设计 / 已迁移 / 已上线 / 已废弃
-
-| 字段名 | 类型 | 是否必填 | 默认值 | 说明 |
-|---|---|---|---|---|
-| id | bigint | 是 | 无 | 主键 ID |
-| created_at | datetime | 是 | 当前时间 | 创建时间 |
-| updated_at | datetime | 是 | 当前时间 | 更新时间 |
-
-## 4. 表关系说明
-
-| 主表 | 从表 | 关系 | 说明 |
+| Table | Description | Status | Owner |
 |---|---|---|---|
-| 待填写 | 待填写 | 一对一 / 一对多 / 多对多 | 待填写 |
+| example_table | TBD | pending-design | TBD |
 
-## 5. 迁移记录
+## 3. Table Details
 
-| 日期 | 迁移内容 | 涉及表 | 执行人 | 结果 |
+### example_table
+
+- Description: TBD
+- Status: pending-design
+
+| Field | Type | Nullable | Default | Description |
 |---|---|---|---|---|
-| 待填写 | 待填写 | 待填写 | 待填写 | 成功 / 失败 |
+| id | bigint | no | auto increment | Primary key |
+| created_at | datetime | no | current timestamp | Created time |
+
+## 4. Relationships
+
+| Source Table | Field | Target Table | Target Field | Description |
+|---|---|---|---|---|
+| TBD | TBD | TBD | TBD | TBD |
+
+## 5. Migration Records
+
+| Version | Date | Change | Rollback | Status |
+|---|---|---|---|---|
+| TBD | TBD | TBD | TBD | pending-design |
+
+## 6. Data Safety Notes
+
+- Do not record production credentials or connection strings here.
+- Use `.env.example` for variable names and placeholder values.
+- Document rollback and backup requirements before destructive changes.

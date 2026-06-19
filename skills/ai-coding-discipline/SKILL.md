@@ -1,6 +1,6 @@
 ---
 name: ai-coding-discipline
-description: Use when writing, modifying, refactoring, reviewing, or planning code where maintainability, reuse, clear boundaries, incremental verification, error handling, or engineering discipline matters; also use for Chinese requests such as 按规范写代码, 工程化实现, 先设计再编码, 不要重复造轮子, 代码写稳一点, 不要写乱.
+description: Use when writing, modifying, refactoring, reviewing, or planning code where maintainability, reuse, clear boundaries, incremental verification, error handling, or engineering discipline matters; also use for Chinese-language requests that ask to write standardized code, implement in an engineering-oriented way, design before coding, avoid reinventing existing mechanisms, keep code stable, or avoid messy code.
 ---
 
 # AI Coding Discipline

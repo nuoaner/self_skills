@@ -1,64 +1,59 @@
-# 接口文档
+# API Documentation
 
-## 1. 接口状态枚举
+## 1. API Status Enum
 
-接口状态只能使用：`待设计` / `待实现` / `已实现` / `待联调` / `已上线` / `已废弃`。
+API status must use only: `pending-design` / `pending-implementation` / `implemented` / `pending-joint-debugging` / `online` / `deprecated`.
 
-## 2. 接口总表
+## 2. API List
 
-| 接口编号 | 接口名称 | 方法 | 地址 | 所属模块 | 权限要求 | 状态 | 负责人 |
-|---|---|---|---|---|---|---|---|
-| API-001 | 用户登录 | POST | /api/login | 用户模块 | 无需登录 | 待实现 | 待填写 |
+| API ID | Method | Path | Description | Status | Owner |
+|---|---|---|---|---|---|
+| API-001 | GET | /api/example | TBD | pending-design | TBD |
 
-## 3. 接口详情模板
+## 3. API Details
 
-### API-待填写：接口名称
+### API-001 TBD
 
-- 请求方式：`GET / POST / PUT / DELETE`
-- 接口地址：`/api/example`
-- 功能说明：待填写
-- 所属模块：待填写
-- 权限要求：无需登录 / 需要登录 / 管理员
-- 当前状态：待设计 / 待实现 / 已实现 / 待联调 / 已上线 / 已废弃
+- Method: GET
+- Path: `/api/example`
+- Status: pending-design
+- Auth: TBD
+- Permission: TBD
 
-#### 请求参数
+#### Request Params
 
-| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| Field | Type | Required | Description | Example |
 |---|---|---|---|---|
-| username | string | 是 | 用户名 | admin |
+| id | string | yes | TBD | TBD |
 
-#### 请求示例
+#### Request Body
 
 ```json
 {
-  "username": "admin",
-  "password": "<example-password>"
+  "example": "TBD"
 }
 ```
 
-#### 返回参数
-
-| 字段名 | 类型 | 说明 | 示例 |
-|---|---|---|---|
-| code | number | 状态码 | 200 |
-| message | string | 提示信息 | success |
-| data | object | 返回数据 | {} |
-
-#### 返回示例
+#### Success Response
 
 ```json
 {
-  "code": 200,
-  "message": "success",
+  "code": 0,
+  "message": "ok",
   "data": {}
 }
 ```
 
-#### 错误码
+#### Error Response
 
-| 状态码 | 含义 | 处理方式 |
+| Code | Meaning | Handling |
 |---|---|---|
-| 400 | 请求参数错误 | 检查请求参数 |
-| 401 | 未登录或 token 无效 | 重新登录 |
-| 403 | 无权限 | 联系管理员 |
-| 500 | 服务端错误 | 查看服务日志 |
+| TBD | TBD | TBD |
+
+## 4. Joint Debugging Notes
+
+| Item | Status | Notes |
+|---|---|---|
+| Endpoint confirmed | pending | TBD |
+| Field mapping confirmed | pending | TBD |
+| Error format confirmed | pending | TBD |

@@ -1,63 +1,52 @@
-# 运行、环境与部署说明
+# Deploy And Runtime
 
-## 1. 环境要求
+## 1. Environment
 
-| 环境 | 版本 / 说明 | 是否必需 |
+| Item | Value | Notes |
 |---|---|---|
-| Node.js | 待填写 | 条件必需 |
-| Python / Java / Go / 其他 | 待填写 | 条件必需 |
-| 数据库 | 待填写 | 条件必需 |
-| Redis / MQ / 其他中间件 | 待填写 | 可选 |
-| 操作系统 | 待填写 | 必需 |
+| Runtime | TBD | TBD |
+| Package manager | TBD | TBD |
+| Database | TBD | TBD |
+| Middleware | TBD | TBD |
 
-## 2. 环境变量
+## 2. Environment Variables
 
-必须提供 `.env.example`，不得提交真实密钥。
+Use `.env.example` for names and placeholder values. Do not write real secrets.
 
-| 变量名 | 说明 | 示例 | 是否必填 |
+| Variable | Required | Example | Description |
 |---|---|---|---|
-| DATABASE_URL | 数据库连接地址 | mysql://<user>:<password>@localhost:3306/<db> | 是 |
-| JWT_SECRET | JWT 密钥 | <example-secret> | 是 |
+| APP_ENV | yes | local | Runtime environment |
+| DATABASE_URL | yes | placeholder://user:password@host/db | Database connection placeholder |
 
-## 3. 本地运行
-
-### 3.1 前端运行
+## 3. Local Run
 
 ```bash
-cd frontend
-npm install
-npm run dev
+<install command>
+<run command>
 ```
 
-### 3.2 后端运行
+## 4. Build
 
 ```bash
-cd backend
-# 根据项目技术栈填写启动命令
+<build command>
 ```
 
-### 3.3 数据库初始化
+## 5. Deploy
 
-```bash
-# 根据项目技术栈填写数据库初始化命令
-```
+| Step | Command / Action | Expected Result |
+|---|---|---|
+| 1 | TBD | TBD |
+| 2 | TBD | TBD |
 
-## 4. 构建
+## 6. Rollback
 
-```bash
-# 根据项目技术栈填写构建命令
-```
+| Scenario | Rollback Action | Verification |
+|---|---|---|
+| TBD | TBD | TBD |
 
-## 5. 部署
+## 7. Operations Notes
 
-| 环境 | 部署方式 | 地址 | 负责人 | 说明 |
-|---|---|---|---|---|
-| 测试环境 | 待填写 | 待填写 | 待填写 | 待填写 |
-| 生产环境 | 待填写 | 待填写 | 待填写 | 待填写 |
-
-## 6. 回滚方案
-
-- 触发条件：待填写
-- 回滚步骤：待填写
-- 数据处理：待填写
-- 负责人：待填写
+- Logging location: TBD
+- Health check: TBD
+- Backup strategy: TBD
+- Monitoring: TBD

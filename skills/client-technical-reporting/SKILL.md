@@ -1,6 +1,6 @@
 ---
 name: client-technical-reporting
-description: Use when preparing a Chinese client-facing technical report, delivery note, migration summary, integration update, handoff explanation, or progress report for customers who understand some technology, especially after code migration, module refactoring, API replacement, bug fixing, or joint debugging.
+description: Use when preparing a Chinese or English client-facing technical report, delivery note, migration summary, integration update, handoff explanation, or progress report for customers who understand some technology, especially after code migration, module refactoring, API replacement, bug fixing, or joint debugging.
 ---
 
 # Client Technical Reporting
@@ -16,28 +16,28 @@ The report should answer: what changed, how it was migrated, where it changed, w
 Always organize the report with these seven sections:
 
 ```text
-1. 本次做了什么
-2. 迁移方式
-3. 主要改动位置
-4. 真实接口后续在哪改
-5. 模块问题定位
-6. 后续联调需确认的事项
-7. 总结
+1. What was completed in this phase
+2. Migration approach
+3. Main changed locations
+4. Where to connect real APIs later
+5. Module issue diagnosis
+6. Follow-up items requiring joint confirmation
+7. Summary
 ```
 
 ## Writing Rules
 
-- Use Chinese by default.
+- Use the user's language by default.
 - Keep the tone professional, cooperative, and evidence-based.
 - Use module names, page names, file paths, API names, and config names when available.
 - Distinguish completed work, temporary adaptation, mock data, pending real API integration, and items requiring client confirmation.
-- Avoid vague claims such as "已优化" without explaining the changed scope.
+- Avoid vague claims such as "optimized" without explaining the changed scope.
 - Avoid excessive source-code detail unless the client explicitly asks for it.
-- Do not invent paths, endpoints, owners, dates, test results, or client decisions. Mark unknowns as "待确认".
+- Do not invent paths, endpoints, owners, dates, test results, or client decisions. Mark unknowns as "to be confirmed".
 
 ## Section Guidance
 
-### 1. 本次做了什么
+### 1. What Was Completed In This Phase
 
 Summarize the actual delivered scope in plain language.
 
@@ -48,7 +48,7 @@ Include:
 - Visible result for the client.
 - Any temporary mock, placeholder, or compatibility layer.
 
-### 2. 迁移方式
+### 2. Migration Approach
 
 Explain the migration strategy and why it was chosen.
 
@@ -62,19 +62,19 @@ Common patterns:
 
 Mention risk controls such as preserving route names, keeping old field mapping, isolating API adapters, or maintaining fallback logic.
 
-### 3. 主要改动位置
+### 3. Main Changed Locations
 
 List key changed locations. Prefer a table.
 
 ```text
-| 位置 | 改动内容 | 说明 |
+| Location | Change | Notes |
 |---|---|---|
 | src/... | ... | ... |
 ```
 
 Use paths, module names, pages, components, stores, services, configs, SQL files, or deployment files depending on the project.
 
-### 4. 真实接口后续在哪改
+### 4. Where To Connect Real APIs Later
 
 Point out where real APIs should be connected later.
 
@@ -89,14 +89,14 @@ Include:
 
 If exact API details are not available, state what needs to be provided by the client.
 
-### 5. 模块问题定位
+### 5. Module Issue Diagnosis
 
 Give the client a practical troubleshooting map.
 
 Use this pattern:
 
 ```text
-现象 -> 优先检查位置 -> 可能原因 -> 建议处理方式
+Symptom -> First place to check -> Possible cause -> Suggested handling
 ```
 
 Cover likely issues:
@@ -107,7 +107,7 @@ Cover likely issues:
 - Style abnormal: scoped style, design system, asset path.
 - Build or deployment failure: dependency, environment variable, base path, proxy config.
 
-### 6. 后续联调需确认的事项
+### 6. Follow-Up Items Requiring Joint Confirmation
 
 List client-side confirmations as clear action items.
 
@@ -121,53 +121,53 @@ Include:
 - Deployment environment, domain, proxy, and cross-origin requirements.
 - Acceptance criteria and test account/data.
 
-Use "需甲方确认" instead of assigning blame.
+Use "requires client confirmation" instead of assigning blame.
 
-### 7. 总结
+### 7. Summary
 
 Summarize the delivery state and next step.
 
 Good summary pattern:
 
 ```text
-本次已完成 [scope]，当前通过 [mock/adapter/config] 保证页面和流程可运行。
-后续重点是与甲方确认 [API/字段/权限/环境]，再将临时数据或适配层切换为真实接口。
+This phase completed [scope]. The current page and workflow are runnable through [mock/adapter/config].
+The next focus is to confirm [API/fields/permissions/environment] with the client, then replace temporary data or adapters with real APIs.
 ```
 
 ## Output Template
 
 ```markdown
-# 项目阶段汇报
+# Project Phase Report
 
-## 1. 本次做了什么
-
-- ...
-
-## 2. 迁移方式
+## 1. What Was Completed In This Phase
 
 - ...
 
-## 3. 主要改动位置
+## 2. Migration Approach
 
-| 位置 | 改动内容 | 说明 |
+- ...
+
+## 3. Main Changed Locations
+
+| Location | Change | Notes |
 |---|---|---|
 | ... | ... | ... |
 
-## 4. 真实接口后续在哪改
+## 4. Where To Connect Real APIs Later
 
 - ...
 
-## 5. 模块问题定位
+## 5. Module Issue Diagnosis
 
-| 问题现象 | 优先检查位置 | 可能原因 | 建议处理 |
+| Symptom | First Place To Check | Possible Cause | Suggested Handling |
 |---|---|---|---|
 | ... | ... | ... | ... |
 
-## 6. 后续联调需确认的事项
+## 6. Follow-Up Items Requiring Joint Confirmation
 
-- 需甲方确认：...
+- Requires client confirmation: ...
 
-## 7. 总结
+## 7. Summary
 
 ...
 ```

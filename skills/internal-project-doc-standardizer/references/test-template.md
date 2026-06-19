@@ -1,43 +1,43 @@
-# 测试与验收
+# Testing And Acceptance
 
-## 1. 测试状态枚举
+## 1. Test Status Enum
 
-测试状态只能使用：`未测试` / `测试中` / `通过` / `不通过` / `阻塞` / `不适用`。
+Test status must use only: `untested` / `testing` / `passed` / `failed` / `blocked` / `not-applicable`.
 
-## 2. 测试清单
+## 2. Test Checklist
 
-| 测试编号 | 测试项 | 所属模块 | 测试方式 | 状态 | 负责人 | 备注 |
+| Test ID | Test Item | Module | Method | Status | Owner | Notes |
 |---|---|---|---|---|---|---|
-| T-001 | 前端页面访问测试 | 前端 | 手动 / 自动化 | 未测试 | 待填写 | 待填写 |
-| T-002 | 后端接口返回测试 | 后端 | 手动 / 自动化 | 未测试 | 待填写 | 待填写 |
-| T-003 | 数据库读写测试 | 数据库 | 手动 / 自动化 | 未测试 | 待填写 | 待填写 |
-| T-004 | 登录流程测试 | 用户模块 | 手动 / 自动化 | 未测试 | 待填写 | 待填写 |
-| T-005 | 核心业务流程测试 | 核心业务 | 手动 / 自动化 | 未测试 | 待填写 | 待填写 |
-| T-006 | 构建测试 | 工程 | 手动 / 自动化 | 未测试 | 待填写 | 待填写 |
+| T-001 | Frontend page access | Frontend | manual / automated | untested | TBD | TBD |
+| T-002 | Backend API response | Backend | manual / automated | untested | TBD | TBD |
+| T-003 | Database read/write | Database | manual / automated | untested | TBD | TBD |
+| T-004 | Login flow | User module | manual / automated | untested | TBD | TBD |
+| T-005 | Core business flow | Core module | manual / automated | untested | TBD | TBD |
+| T-006 | Build check | Engineering | manual / automated | untested | TBD | TBD |
 
-## 3. 测试记录模板
+## 3. Test Record Template
 
-### 测试编号：T-待填写
+### Test ID: T-TBD
 
-- 测试项：待填写
-- 测试时间：待填写
-- 测试人：待填写
-- 测试环境：待填写
-- 测试步骤：待填写
-- 预期结果：待填写
-- 实际结果：待填写
-- 测试结论：通过 / 不通过 / 阻塞
-- 关联问题：待填写
+- Test item: TBD
+- Test time: TBD
+- Tester: TBD
+- Environment: TBD
+- Steps: TBD
+- Expected result: TBD
+- Actual result: TBD
+- Conclusion: passed / failed / blocked
+- Related issue: TBD
 
-## 4. 项目验收标准
+## 4. Project Acceptance Criteria
 
-项目进入“已上线”或“维护中”前，至少满足：
+Before a project enters `online` or `maintenance`, it should satisfy:
 
-- README.md 已更新，能够指导新成员运行项目。
-- 核心功能状态为“已完成”。
-- 必要接口文档已更新。
-- 必要数据库设计已更新。
-- 本地运行流程可执行。
-- 主要测试项通过。
-- 已知高优先级问题已解决或有明确处理方案。
-- agent.md 已记录最近一次 AI/Agent 操作结果。
+- README.md is updated and can guide new contributors to run the project.
+- Core feature status is `completed`.
+- Required API documentation is updated.
+- Required database design is updated.
+- Local run flow is executable.
+- Main test items are `passed`.
+- Known high-priority issues are resolved or have clear handling plans.
+- agent.md records the latest AI/Agent operation result.

@@ -19,9 +19,9 @@ Look for:
 
 Red flags:
 
-- "顺便一起优化".
+- "Optimize it while you are here."
 - No owner for edge cases.
-- Ambiguous terms such as "完善", "优化", "处理一下" without target behavior.
+- Ambiguous terms such as "improve", "optimize", or "handle this" without target behavior.
 
 ## 2. Single Responsibility and Module Cohesion
 
@@ -149,7 +149,7 @@ Look for:
 
 Red flags:
 
-- "帮我全部优化一下".
+- "Help me optimize everything."
 - No target files or modules.
 - No acceptance criteria.
 

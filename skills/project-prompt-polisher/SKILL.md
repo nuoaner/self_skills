@@ -9,7 +9,7 @@ description: Use when the user asks to polish, optimize, rewrite, clarify, stren
 
 Rewrite rough Chinese requests into prompts another Codex or AI coding agent can execute with minimal ambiguity. Preserve the user's intent while making scope, constraints, acceptance criteria, verification, and non-regression requirements explicit.
 
-Default to a copy-ready Chinese prompt. Do not explain the rewrite unless the user asks.
+Default to a copy-ready Chinese or English prompt that matches the user's language. Do not explain the rewrite unless the user asks.
 
 ## Fast Workflow
 
@@ -33,30 +33,30 @@ Default to a copy-ready Chinese prompt. Do not explain the rewrite unless the us
 Use this structure by default:
 
 ```text
-请基于当前项目完成以下修改，保持现有架构、代码风格、业务逻辑和数据流不变，除非下方明确要求调整。
+Please complete the following changes based on the current project. Keep the existing architecture, code style, business logic, and data flow unchanged unless the requirements below explicitly say otherwise.
 
-目标：
-<1-2 句话说明要解决的问题和期望结果>
+Goal:
+<Explain the problem to solve and expected result in 1-2 sentences.>
 
-修改范围：
-- <页面/组件/模块/API/文档/脚本/目录>
+Change scope:
+- <Page/component/module/API/document/script/directory>
 
-具体要求：
-1. <可执行改动点>
-2. <可执行改动点>
-3. <可执行改动点>
+Requirements:
+1. <Executable change>
+2. <Executable change>
+3. <Executable change>
 
-约束：
-- 不要扩展与本次目标无关的功能。
-- 不要破坏现有路由、权限、接口、数据结构或用户流程。
-- 复用项目已有组件、工具函数、样式规范和工程约定。
+Constraints:
+- Do not expand functionality unrelated to this goal.
+- Do not break existing routes, permissions, APIs, data structures, or user flows.
+- Reuse existing components, utilities, style conventions, and engineering patterns.
 
-验收标准：
-1. <用户或开发者能验证的结果>
-2. <测试、构建、截图、接口返回、文档检查等验证方式>
+Acceptance criteria:
+1. <User- or developer-verifiable result>
+2. <Verification method such as tests, build, screenshot, API response, or documentation audit>
 
-需要确认：
-- <仅列出会影响实现的重要未知项；没有则省略>
+Needs confirmation:
+- <Only list unknowns that affect implementation. Omit this section if there are none.>
 ```
 
 ## When to Read References
@@ -78,12 +78,12 @@ Before returning, check:
 - Unchanged areas are protected.
 - Scope drift is blocked.
 - Verification is actionable.
-- Missing facts are visible as `需要确认`, not silently invented.
+- Missing facts are visible as `Needs confirmation`, not silently invented.
 - The final output is copy-ready and does not include analysis unless requested.
 
 ## Common Failure Modes
 
-- Keeping the user's vague verb, such as "优化一下", without defining the actual change.
+- Keeping the user's vague verb, such as "optimize it", without defining the actual change.
 - Forgetting non-regression constraints.
 - Adding broad architecture work when the user asked for a narrow change.
 - Inventing business background, file paths, API contracts, or dates.

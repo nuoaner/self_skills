@@ -23,28 +23,28 @@ REQUIRED_FILES = [
 ]
 
 README_SECTIONS = [
-    "项目基本信息",
-    "项目概述",
-    "快速开始",
-    "工程结构",
-    "当前进度",
-    "文档索引",
-    "已知问题",
-    "下一步",
-    "AI / Agent 使用提示",
+    "Project Basic Information",
+    "Project Overview",
+    "Quick Start",
+    "Project Structure",
+    "Current Progress",
+    "Documentation Index",
+    "Known Issues",
+    "Next Steps",
+    "AI / Agent Usage Prompt",
 ]
 
 ENUMS = {
-    "project_status": ["规划中", "开发中", "联调中", "测试中", "已上线", "维护中", "暂停", "已归档"],
-    "feature_status": ["待规划", "待实现", "开发中", "待联调", "待测试", "已完成", "已废弃"],
-    "api_status": ["待设计", "待实现", "已实现", "待联调", "已上线", "已废弃"],
-    "database_status": ["待设计", "已设计", "已迁移", "已上线", "已废弃"],
-    "test_status": ["未测试", "测试中", "通过", "不通过", "阻塞", "不适用"],
-    "issue_status": ["待处理", "处理中", "已解决", "暂不处理", "已关闭"],
+    "project_status": ["planned", "in-development", "joint-debugging", "testing", "online", "maintenance", "paused", "archived"],
+    "feature_status": ["pending-planning", "pending-implementation", "in-development", "pending-joint-debugging", "pending-testing", "completed", "deprecated"],
+    "api_status": ["pending-design", "pending-implementation", "implemented", "pending-joint-debugging", "online", "deprecated"],
+    "database_status": ["pending-design", "designed", "migrated", "online", "deprecated"],
+    "test_status": ["untested", "testing", "passed", "failed", "blocked", "not-applicable"],
+    "issue_status": ["pending", "in-progress", "resolved", "deferred", "closed"],
 }
 
 SECRET_PATTERNS = [
-    re.compile(r"(?i)(api[_-]?key|secret|token|password|passwd|private[_-]?key)\s*[:=]\s*['\"]?[^\\s'\"<>]+"),
+    re.compile(r"(?i)(api[_-]?key|secret|token|password|passwd|private[_-]?key)\s*[:=]\s*['\"]?[^\s'\"<>]+"),
     re.compile(r"-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY-----"),
 ]
 
@@ -93,7 +93,7 @@ def audit(root: Path) -> dict:
         if not path.exists() or path.is_dir():
             continue
         text = read_text(path)
-        count = text.count("待填写")
+        count = text.count("TBD")
         if count:
             result["placeholder_counts"][rel] = count
         for pattern in SECRET_PATTERNS:
@@ -102,15 +102,20 @@ def audit(root: Path) -> dict:
                 break
 
     allowed = set().union(*ENUMS.values())
+    header_values = {"status", "current status", "test status", "database status", "api status"}
+    bad_generic_values = {"done", "doing", "not-started", "finished", "todo"}
     for rel in ["README.md", "docs/requirements.md", "docs/api.md", "docs/database.md", "docs/test.md"]:
         path = root / rel
         if not path.exists():
             continue
         suspicious = []
         for value in find_status_values(read_text(path)):
-            if value in ("状态", "当前状态", "测试状态", "数据库状态", "接口状态"):
+            normalized = value.strip().lower()
+            if normalized in header_values:
                 continue
-            if value in ["完成", "进行中", "未开始", "已完成 / 未完成", "TODO"]:
+            if normalized in bad_generic_values:
+                suspicious.append(value)
+            elif "status" in normalized and value not in allowed:
                 suspicious.append(value)
         if suspicious:
             result["status_notes"].append({"file": rel, "values": sorted(set(suspicious))})

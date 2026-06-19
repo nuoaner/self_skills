@@ -13,24 +13,12 @@ SKILLS_DIR = ROOT / "skills"
 TRIGGER_TESTS = SKILLS_DIR / "TRIGGER_TESTS.md"
 
 NAME_RE = re.compile(r"^[a-z0-9-]+$")
-MOJIBAKE_SEQUENCES = [
-    [0xFFFD],
-    [0x7476, 0x52EB],
-    [0x4E36, 0x5D87],
-    [0x7487, 0x5CF0],
-    [0x697E, 0x5C69],
-    [0x5BC7, 0x544A],
-    [0x5BB8, 0x63D2],
-    [0x9429, 0xE1C6],
-    [0x6DC7, 0xE1C6],
-    [0x934F, 0x4E48],
-    [0x9707, 0x20AC],
-    [0x951F, 0x65A4],
-    [0x20AC, 0x201C],
-]
-BAD_TEXT_RE = re.compile("|".join(re.escape("".join(chr(codepoint) for codepoint in seq)) for seq in MOJIBAKE_SEQUENCES))
-SECRET_RE = re.compile(r"sk-[A-Za-z0-9]{20,}|api[_-]?key\s*[:=]|password\s*[:=]|secret\s*[:=]|token\s*[:=]", re.I)
-PLACEHOLDER_RE = re.compile(r"\bTODO\b|FIXME|待补充|这里填写", re.I)
+BAD_TEXT_RE = re.compile(r"\ufffd|[\u3400-\u9fff\uf900-\ufaff]")
+SECRET_RE = re.compile(
+    r"sk-[A-Za-z0-9]{20,}|api[_-]?key\s*[:=]|password\s*[:=]|secret\s*[:=]|token\s*[:=]",
+    re.I,
+)
+PLACEHOLDER_RE = re.compile(r"\bTODO\b|FIXME", re.I)
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], list[str]]:
@@ -62,7 +50,7 @@ def check_text_file(path: Path, root: Path) -> list[str]:
 
     errors: list[str] = []
     if BAD_TEXT_RE.search(text):
-        errors.append(f"{rel}: contains mojibake or replacement characters")
+        errors.append(f"{rel}: contains replacement characters, CJK text, or mojibake")
     if SECRET_RE.search(text):
         errors.append(f"{rel}: may contain a real secret")
     return errors

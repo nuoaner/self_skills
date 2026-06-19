@@ -3,35 +3,35 @@
 Use this when the user wants a reusable prompt for another coding agent.
 
 ```text
-请基于当前项目完成以下任务，并严格按工程化方式执行：
+Please complete the following task in the current project using disciplined engineering practices.
 
-任务目标：
-- <用 1-2 句话说明要解决的问题和期望结果>
+Task goal:
+- <Describe the problem and expected result in 1-2 sentences.>
 
-执行要求：
-1. 先阅读现有项目结构和相关文件，不要在未检查现有实现前新增平行模块。
-2. 优先复用已有组件、工具函数、类型、配置、样式、接口约定和测试方式。
-3. 在动手前说明最小实现方案：涉及文件、模块职责、输入输出、失败场景和验证方式。
-4. 先实现一个最小可工作的闭环，再逐步扩展，不要一次性铺开大量未验证改动。
-5. 保持函数和文件职责清晰，避免把 I/O、业务逻辑、格式化、持久化和配置混在一起。
-6. 处理边界情况：空值、非法输入、权限、网络/文件/数据库失败、重复提交或兼容性问题。
-7. 不要硬编码密钥、用户本机路径、端口、模型名、阈值或环境配置；需要配置时使用项目已有配置方式。
-8. 不要做与本任务无关的大重构、目录迁移或风格重写。
+Execution requirements:
+1. Read the existing project structure and related files before adding new modules or parallel flows.
+2. Prefer existing components, utilities, types, configuration, styles, API conventions, and test patterns.
+3. Before editing, state the smallest implementation shape: files touched, module responsibilities, inputs, outputs, failure cases, and verification method.
+4. Implement one minimal working closed loop first, then expand gradually. Do not spread a large unverified diff.
+5. Keep functions and files focused. Avoid mixing I/O, business logic, formatting, persistence, and configuration.
+6. Handle boundary cases: empty values, invalid input, permissions, network/file/database failures, duplicate submission, and compatibility issues.
+7. Do not hardcode secrets, user-specific paths, ports, model names, thresholds, or environment configuration. Use the project's existing configuration path.
+8. Do not perform broad refactors, directory migrations, or style rewrites unrelated to this task.
 
-验收标准：
-1. <可观察的功能结果>
-2. <测试、构建、lint、脚本、截图、接口返回或手动验证方式>
-3. 原有关键行为不回退。
+Acceptance criteria:
+1. <Observable functional result>
+2. <Test, build, lint, script, screenshot, API response, or manual verification method>
+3. Existing critical behavior does not regress.
 
-完成后请报告：
-- 实际修改了什么
-- 运行了哪些验证，结果是什么
-- 哪些内容没有验证
-- 仍然存在的风险或后续建议
+After completion, report:
+- What changed
+- Which verification commands or checks ran, and their results
+- What was not verified
+- Remaining risks or recommended follow-up
 ```
 
 ## Short Version
 
 ```text
-请先检查现有实现并复用已有结构，再按最小可验证闭环实现。动手前说明涉及文件、模块边界、输入输出、失败场景和验证方式。实现时保持职责清晰、避免重复造轮子、处理边界情况、不要做无关重构。完成后给出验证证据和剩余风险。
+Inspect existing implementation and reuse existing structure first, then implement the smallest verifiable closed loop. Before editing, state the touched files, module boundaries, inputs, outputs, failure cases, and verification method. Keep responsibilities clear, avoid duplicate mechanisms, handle edge cases, and avoid unrelated refactors. After completion, provide verification evidence and residual risk.
 ```

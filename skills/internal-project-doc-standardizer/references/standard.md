@@ -1,120 +1,124 @@
-# 内部项目文档规范
+# Internal Project Documentation Standard
 
-## 1. 文档定位
+## 1. Required Files
 
-README.md 是项目入口文档，不承载全部细节。详细需求、接口、数据库、部署、测试、变更记录应拆分到 `docs/` 目录。
+A standard internal project should include:
 
-## 2. 字段填写规则
+```text
+README.md
+agent.md
+docs/standard.md
+docs/requirements.md
+docs/architecture.md
+docs/api.md
+docs/database.md
+docs/deploy.md
+docs/test.md
+docs/changelog.md
+```
 
-| 标识 | 含义 | 要求 |
-|---|---|---|
-| 必填 | 所有项目都必须填写 | 不允许留空或保留“待填写” |
-| 条件必填 | 满足条件时必须填写 | 例如有接口就必须写接口文档 |
-| 可选 | 根据项目情况填写 | 无相关内容时可写“暂无” |
-| 不适用 | 当前项目不涉及 | 必须说明“不适用”的原因 |
+## 2. README Role
 
-## 3. 文档维护原则
+`README.md` is the project entrance. It should stay concise and point to detailed docs instead of becoming a full requirements, API, database, deployment, or testing document.
 
-- README.md 必须保持为项目入口、快速启动和文档索引。
-- 不允许 README 长期堆积接口、数据库、测试等详细内容。
-- 每次功能、接口、数据库、部署方式或运行方式变化，都必须同步更新对应文档。
-- 不允许长期保留无责任人、无计划时间的 TODO。
-- 涉及密钥、token、密码、私有证书的信息不得写入文档，只能写入 `.env`，并在 `.env.example` 中提供字段名示例。
+## 3. Document Responsibilities
 
-## 4. 状态枚举
-
-### 4.1 项目状态
-
-只能使用：
-
-- 规划中
-- 开发中
-- 联调中
-- 测试中
-- 已上线
-- 维护中
-- 暂停
-- 已归档
-
-### 4.2 功能状态
-
-只能使用：
-
-- 待规划
-- 待实现
-- 开发中
-- 待联调
-- 待测试
-- 已完成
-- 已废弃
-
-### 4.3 接口状态
-
-只能使用：
-
-- 待设计
-- 待实现
-- 已实现
-- 待联调
-- 已上线
-- 已废弃
-
-### 4.4 数据库状态
-
-只能使用：
-
-- 待设计
-- 已设计
-- 已迁移
-- 已上线
-- 已废弃
-
-### 4.5 测试状态
-
-只能使用：
-
-- 未测试
-- 测试中
-- 通过
-- 不通过
-- 阻塞
-- 不适用
-
-### 4.6 问题状态
-
-只能使用：
-
-- 待处理
-- 处理中
-- 已解决
-- 暂不处理
-- 已关闭
-
-## 5. README 最低合规标准
-
-任何项目的 README.md 至少必须包含：
-
-- 项目名称和一句话介绍
-- 项目负责人
-- 当前状态
-- 本地运行方式
-- 工程结构
-- 当前功能进度
-- 文档索引
-- 已知问题
-- 下一步计划
-- AI / Agent 使用提示
-
-## 6. docs 拆分规则
-
-| 内容类型 | 放置位置 |
+| File | Responsibility |
 |---|---|
-| 项目概述、快速开始、文档索引 | README.md |
-| 详细需求、用户角色、功能验收 | docs/requirements.md |
-| 技术栈、架构、工程结构、技术决策 | docs/architecture.md |
-| 接口总表、接口详情、状态码 | docs/api.md |
-| 数据表、字段、关系、迁移记录 | docs/database.md |
-| 运行环境、环境变量、部署、回滚 | docs/deploy.md |
-| 测试用例、测试记录、缺陷记录 | docs/test.md |
-| 版本记录、功能完成记录 | docs/changelog.md |
-| AI/Agent 执行记录 | agent.md |
+| `README.md` | Entry summary, quick start, structure, progress, and doc index |
+| `agent.md` | AI/Agent collaboration memory and execution log |
+| `docs/requirements.md` | Goals, roles, features, and acceptance criteria |
+| `docs/architecture.md` | Tech stack, architecture, structure, and decisions |
+| `docs/api.md` | API list, request/response contracts, and errors |
+| `docs/database.md` | Tables, fields, relationships, and migrations |
+| `docs/deploy.md` | Environment, local run, build, deploy, and rollback |
+| `docs/test.md` | Test checklist, test records, defects, and acceptance |
+| `docs/changelog.md` | Version changes and completed work |
+
+## 4. Required Status Enums
+
+Use only these status values.
+
+### 4.1 Project Status
+
+- `planned`
+- `in-development`
+- `joint-debugging`
+- `testing`
+- `online`
+- `maintenance`
+- `paused`
+- `archived`
+
+### 4.2 Feature Status
+
+- `pending-planning`
+- `pending-implementation`
+- `in-development`
+- `pending-joint-debugging`
+- `pending-testing`
+- `completed`
+- `deprecated`
+
+### 4.3 API Status
+
+- `pending-design`
+- `pending-implementation`
+- `implemented`
+- `pending-joint-debugging`
+- `online`
+- `deprecated`
+
+### 4.4 Database Status
+
+- `pending-design`
+- `designed`
+- `migrated`
+- `online`
+- `deprecated`
+
+### 4.5 Test Status
+
+- `untested`
+- `testing`
+- `passed`
+- `failed`
+- `blocked`
+- `not-applicable`
+
+### 4.6 Issue Status
+
+- `pending`
+- `in-progress`
+- `resolved`
+- `deferred`
+- `closed`
+
+## 5. Minimum README Compliance
+
+Every project README.md must include:
+
+- Project name and one-sentence summary
+- Project owner
+- Current status
+- Local run instructions
+- Project structure
+- Current feature progress
+- Documentation index
+- Known issues
+- Next steps
+- AI / Agent usage prompt
+
+## 6. docs Split Rules
+
+| Content Type | Location |
+|---|---|
+| Project overview, quick start, documentation index | README.md |
+| Detailed requirements, roles, feature acceptance | docs/requirements.md |
+| Tech stack, architecture, structure, technical decisions | docs/architecture.md |
+| API list, API details, status codes | docs/api.md |
+| Tables, fields, relationships, migration records | docs/database.md |
+| Runtime environment, env vars, deploy, rollback | docs/deploy.md |
+| Test cases, test records, defect records | docs/test.md |
+| Version records, feature completion records | docs/changelog.md |
+| AI/Agent execution records | agent.md |

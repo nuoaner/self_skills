@@ -1,28 +1,28 @@
-# 变更记录与完成记录
+# Changelog And Completion Record
 
-## 1. 版本变更记录
+## 1. Version Changes
 
-| 版本 | 日期 | 变更内容 | 负责人 |
+| Version | Date | Change | Owner |
 |---|---|---|---|
-| v0.1.0 | 待填写 | 初始化项目 | 待填写 |
+| v0.1.0 | TBD | Initial project setup | TBD |
 
-## 2. 功能完成记录
+## 2. Feature Completion Records
 
-### F-待填写 功能名称：待填写
+### F-TBD Feature Name: TBD
 
-- 完成时间：待填写
-- 负责人：待填写
-- 涉及文件：待填写
-- 实现内容：待填写
-- 验收标准：待填写
-- 验证方式：待填写
-- 验证结果：通过 / 不通过
-- 关联接口：待填写
-- 关联数据库：待填写
-- 备注：待填写
+- Completed at: TBD
+- Owner: TBD
+- Related files: TBD
+- Implementation summary: TBD
+- Acceptance criteria: TBD
+- Verification method: TBD
+- Verification result: passed / failed
+- Related APIs: TBD
+- Related database objects: TBD
+- Notes: TBD
 
-## 3. 问题修复记录
+## 3. Issue Fix Records
 
-| 问题编号 | 修复时间 | 修复内容 | 涉及文件 | 验证结果 | 负责人 |
+| Issue ID | Fixed At | Fix Summary | Related Files | Verification Result | Owner |
 |---|---|---|---|---|---|
-| I-001 | 待填写 | 待填写 | 待填写 | 通过 / 不通过 | 待填写 |
+| I-001 | TBD | TBD | TBD | passed / failed | TBD |

@@ -1,6 +1,6 @@
 ---
 name: wechat-article-image-planner
-description: Use when a finalized or near-final WeChat Official Account article needs cover art, inline illustrations, summary posters, visual prompts, image placement, or optional imagegen2 generation. Trigger on Chinese requests such as 公众号配图, 公众号封面, 文章配图, 给这篇文章配图, 根据定稿生成图片, 用 imagegen2 给公众号生图.
+description: Use when a finalized or near-final WeChat Official Account article needs cover art, inline illustrations, summary posters, visual prompts, image placement, or optional imagegen2 generation. Trigger on Chinese-language requests about WeChat article image planning, WeChat cover images, article illustrations, adding images to an article, generating images from a finalized draft, or using imagegen2 for WeChat article visuals.
 ---
 
 # WeChat Article Image Planner
@@ -19,7 +19,7 @@ Use `references/visual-planning-playbook.md` when deciding image types, visual t
 2. Identify article type, audience, emotional arc, and core message.
 3. Extract 3-7 visual anchors: people, scenes, objects, metaphors, data, quotes, or turning points.
 4. Produce an image plan before generating anything.
-5. Ask for confirmation before live generation unless the user already said "directly generate", "直接生图", or "用 imagegen2".
+5. Ask for confirmation before live generation unless the user already said "directly generate" or explicitly asked to use `imagegen2`.
 6. Use `imagegen2` for real generation. Do not recreate its API code.
 7. Report saved image paths and where each image should be inserted.
 

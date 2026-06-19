@@ -190,35 +190,20 @@ def section_present(text: str, patterns: list[str]) -> bool:
 
 def review_readme(readme: Path | None) -> list[tuple[str, str]]:
     if readme is None:
-        return [("HIGH", "根目录缺少 README 文件。")]
+        return [("HIGH", "Root directory is missing a README file.")]
 
     text = read_text(readme)
     findings: list[tuple[str, str]] = []
     checks = [
-        (
-            "项目介绍",
-            [r"项目介绍", r"简介", r"overview", r"introduction", r"about"],
-        ),
-        (
-            "项目管理工具",
-            [r"项目管理", r"package manager", r"npm", r"pnpm", r"yarn", r"maven", r"gradle", r"cargo", r"make"],
-        ),
-        (
-            "语法检查工具",
-            [r"语法检查", r"lint", r"eslint", r"prettier", r"ruff", r"black", r"checkstyle", r"type-check", r"test"],
-        ),
-        (
-            "重要依赖及其版本",
-            [r"依赖", r"dependencies", r"版本", r"version", r"node\s*\d+", r"python\s*\d+", r"java\s*\d+"],
-        ),
-        (
-            "架构图",
-            [r"架构图", r"architecture", r"mermaid", r"plantuml", r"!\[.*\]\(.*\)", r"```mermaid"],
-        ),
+        ("project introduction", [r"overview", r"introduction", r"about", r"project"]),
+        ("project management tools", [r"package manager", r"npm", r"pnpm", r"yarn", r"maven", r"gradle", r"cargo", r"make"]),
+        ("syntax or lint checking tools", [r"lint", r"eslint", r"prettier", r"ruff", r"black", r"checkstyle", r"type-check", r"test"]),
+        ("important dependencies and versions", [r"dependencies", r"version", r"node\s*\d+", r"python\s*\d+", r"java\s*\d+"]),
+        ("architecture diagram or architecture section", [r"architecture", r"mermaid", r"plantuml", r"!\[.*\]\(.*\)", r"```mermaid"]),
     ]
     for label, patterns in checks:
         if not section_present(text, patterns):
-            findings.append(("MEDIUM", f"README 缺少或未清晰说明：{label}。"))
+            findings.append(("MEDIUM", f"README is missing or unclear about: {label}."))
     return findings
 
 
@@ -228,31 +213,31 @@ def review(root: Path) -> list[tuple[str, str]]:
 
     too_deep = [path for path in dirs if len(path.parts) > 2]
     for path in too_deep[:20]:
-        findings.append(("HIGH", f"文件夹嵌套超过两层：{path.as_posix()}。"))
+        findings.append(("HIGH", f"Folder nesting exceeds two levels: {path.as_posix()}."))
     if len(too_deep) > 20:
-        findings.append(("HIGH", f"还有 {len(too_deep) - 20} 个目录超过两层，建议继续排查。"))
+        findings.append(("HIGH", f"{len(too_deep) - 20} additional folders exceed the two-level nesting rule."))
 
     root_files = [path for path in files if len(path.parts) == 1]
     if not any(is_config_file(path) for path in root_files):
-        findings.append(("HIGH", "根目录未发现常见工程配置文件。"))
+        findings.append(("HIGH", "Root directory has no common engineering config file."))
     if not any(is_entry_file(path) for path in files):
-        findings.append(("HIGH", "未发现明显程序入口文件。"))
+        findings.append(("HIGH", "No likely program entry file was found."))
 
     readme = find_readme(root, files)
     findings.extend(review_readme(readme))
 
     for path in dirs:
         if has_connector(path.name):
-            findings.append(("MEDIUM", f"文件夹名不应使用连接符号：{path.as_posix()}。"))
+            findings.append(("MEDIUM", f"Folder name should avoid connector symbols: {path.as_posix()}."))
 
     for path in files:
         name = path.name
         if path.suffix.lower() not in DOC_EXTS and has_non_ascii(name):
-            findings.append(("MEDIUM", f"非文档文件名应只使用英文：{path.as_posix()}。"))
+            findings.append(("MEDIUM", f"Non-document file name should use English only: {path.as_posix()}."))
         if path.suffix.lower() in CODE_EXTS and "-" in path.stem:
-            findings.append(("MEDIUM", f"代码文件连接符建议使用下划线：{path.as_posix()}。"))
+            findings.append(("MEDIUM", f"Code file connector should use underscores: {path.as_posix()}."))
         if path.suffix.lower() not in CODE_EXTS and path.suffix.lower() not in DOC_EXTS and "_" in path.stem:
-            findings.append(("LOW", f"非代码文件连接符建议使用减号：{path.as_posix()}。"))
+            findings.append(("LOW", f"Non-code file connector should use hyphens: {path.as_posix()}."))
 
     return findings
 
@@ -270,20 +255,20 @@ def main() -> int:
     findings = review(root)
     print(f"# Project Structure Review\n\nProject: `{root}`\n")
     if not findings:
-        print("**结论**\n\n通过。未发现违反团队项目结构、命名和 README 基线规范的问题。")
+        print("**Conclusion**\n\nPass. No baseline project structure, naming, or README issues were found.")
         return 0
 
     severity_order = {"HIGH": 0, "MEDIUM": 1, "LOW": 2}
     findings.sort(key=lambda item: (severity_order[item[0]], item[1]))
-    print("**结论**\n\n不通过或需要整改。请优先处理 High 和 Medium 项。\n")
-    print("**问题清单**")
+    print("**Conclusion**\n\nNeeds remediation. Prioritize High and Medium findings.\n")
+    print("**Issues**")
     for severity, message in findings:
         print(f"- [{severity}] {message}")
-    print("\n**整改建议**")
-    print("1. 先补齐根目录 README、工程配置文件和入口文件。")
-    print("2. 将源代码目录嵌套控制在两层以内，生成目录和依赖目录可忽略。")
-    print("3. 统一命名：文件夹不用连接符，代码文件用下划线，非代码文件用减号。")
-    print("4. 在 README 中补充项目介绍、管理工具、语法检查工具、关键依赖版本和架构图。")
+    print("\n**Remediation**")
+    print("1. Add or fix the root README, engineering config files, and program entry files first.")
+    print("2. Keep source-owned folder nesting within two levels; generated and dependency folders can be ignored.")
+    print("3. Normalize naming: folders avoid connectors, code files use underscores, non-code files use hyphens.")
+    print("4. Add project introduction, management tools, lint/syntax tools, key dependency versions, and an architecture section or diagram to README.")
     return 1
 
 

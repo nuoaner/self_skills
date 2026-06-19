@@ -53,26 +53,26 @@ For detailed scoring, read `references/paradigm-checklist.md`.
 Use this structure for reviews:
 
 ```text
-总体判断：
-<成熟 / 基本可用 / 风险较高 / 不建议继续扩展，附一句理由>
+Overall judgment:
+<mature / basically usable / high risk / not recommended for further expansion>, with one sentence explaining why.
 
-评分：
-| 维度 | 分数(0-2) | 依据 | 建议 |
+Score:
+| Dimension | Score (0-2) | Evidence | Recommendation |
 |---|---:|---|---|
 
-主要优点：
+Main strengths:
 - ...
 
-主要问题：
+Main issues:
 - ...
 
-优先级建议：
-- 交付前必须处理：
-- 下一轮建议处理：
-- 后续可增强：
+Priority recommendations:
+- Must fix before delivery:
+- Should fix in the next iteration:
+- Later improvements:
 
-如需交给 AI 实现：
-<可复制 prompt，必要时读取 references/prompt-templates.md>
+If this should be handed to an AI agent for implementation:
+<copy-ready prompt; read references/prompt-templates.md when needed>
 ```
 
 ## When to Read References
@@ -101,8 +101,8 @@ Before finalizing:
 
 ## Common Failure Modes
 
-- Saying "架构不清晰" without naming the actual boundary problem.
+- Saying "the architecture is unclear" without naming the actual boundary problem.
 - Focusing only on code style while ignoring contracts, tests, delivery, and observability.
 - Treating temporary compatibility code as final design.
 - Suggesting broad refactors without migration path or regression protection.
-- Letting an AI prompt say "全部优化完善" without scope, contract, or acceptance criteria.
+- Letting an AI prompt say "optimize everything" without scope, contract, or acceptance criteria.

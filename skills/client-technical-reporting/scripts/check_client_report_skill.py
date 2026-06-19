@@ -23,17 +23,17 @@ REQUIRED_SECTIONS = [
 ]
 
 REQUIRED_REPORT_HEADINGS = [
-    "1. 本次做了什么",
-    "2. 迁移方式",
-    "3. 主要改动位置",
-    "4. 真实接口后续在哪改",
-    "5. 模块问题定位",
-    "6. 后续联调需确认的事项",
-    "7. 总结",
+    "1. What was completed in this phase",
+    "2. Migration approach",
+    "3. Main changed locations",
+    "4. Where to connect real APIs later",
+    "5. Module issue diagnosis",
+    "6. Follow-up items requiring joint confirmation",
+    "7. Summary",
 ]
 
 BAD_PATTERNS = [
-    ("replacement character", re.compile(r"\ufffd")),
+    ("replacement character, CJK text, or mojibake", re.compile(r"\ufffd|[\u3400-\u9fff\uf900-\ufaff]")),
     ("absolute Windows path", re.compile(r"[A-Za-z]:[\\/]|C:/|C:\\\\")),
     ("possible secret", re.compile(r"sk-[A-Za-z0-9]{20,}|api[_-]?key\s*[:=]|password\s*[:=]|secret\s*[:=]|token\s*[:=]", re.I)),
 ]

@@ -13,7 +13,7 @@ REQUIRED_SKILL_TERMS = [
     "Article first, images second",
     "Output Contract",
     "IMAGEGEN2_API_KEY",
-    "公众号配图",
+    "WeChat article image planning",
 ]
 
 REQUIRED_PLAYBOOK_TERMS = [
@@ -22,6 +22,8 @@ REQUIRED_PLAYBOOK_TERMS = [
     "Prompt Structure",
     "QA Checklist",
 ]
+
+BAD_TEXT_RE = re.compile(r"\ufffd|[\u3400-\u9fff\uf900-\ufaff]")
 
 
 def fail(message: str) -> int:
@@ -43,6 +45,8 @@ def main() -> int:
     playbook_text = playbook.read_text(encoding="utf-8")
     agent_text = agent.read_text(encoding="utf-8")
 
+    if BAD_TEXT_RE.search(skill_text + playbook_text + agent_text):
+        return fail("replacement characters, CJK text, or mojibake remain")
     if "[TODO" in skill_text + playbook_text + agent_text:
         return fail("TODO placeholder remains")
     if not re.search(r"^name: wechat-article-image-planner$", skill_text, re.M):

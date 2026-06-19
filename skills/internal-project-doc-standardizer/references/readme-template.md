@@ -1,141 +1,113 @@
-# 项目名称
+# Project Name
 
-> 一句话介绍项目：这个项目是什么，解决什么问题，给谁使用。
+One-sentence summary of what this project does and who it serves.
 
-## 1. 项目基本信息
+## Project Basic Information
 
-| 项目项 | 内容 |
+| Field | Value |
 |---|---|
-| 项目名称 | 待填写 |
-| 当前状态 | 规划中 / 开发中 / 联调中 / 测试中 / 已上线 / 维护中 / 暂停 / 已归档 |
-| 产品负责人 | 待填写 |
-| 技术负责人 | 待填写 |
-| 主要开发者 | 待填写 |
-| 测试负责人 | 待填写 |
-| 代码仓库 | 待填写 |
-| 测试环境 | 待填写 |
-| 生产环境 | 待填写 |
+| Project name | TBD |
+| Owner | TBD |
+| Current status | planned |
+| Main users | TBD |
+| Repository | TBD |
+| Last updated | TBD |
 
-## 2. 项目概述
+Allowed project status values: `planned`, `in-development`, `joint-debugging`, `testing`, `online`, `maintenance`, `paused`, `archived`.
 
-### 2.1 背景
+## Project Overview
 
-- 当前问题：待填写
-- 目标用户：待填写
-- 项目价值：待填写
+### Goal
 
-### 2.2 项目目标
+- TBD
 
-| 目标编号 | 目标描述 | 验收方式 | 优先级 |
-|---|---|---|---|
-| G-001 | 待填写 | 待填写 | 高 / 中 / 低 |
-| G-002 | 待填写 | 待填写 | 高 / 中 / 低 |
+### Scope
 
-### 2.3 项目边界
+In scope:
 
-| 范围类型 | 内容 |
-|---|---|
-| 本期会做 | 待填写 |
-| 本期不做 | 待填写 |
-| 后续可能扩展 | 待填写 |
-| 明确不支持 | 待填写 |
+- TBD
 
-## 3. 快速开始
+Out of scope:
 
-### 3.1 环境要求
+- TBD
 
-| 环境 | 版本 / 说明 |
-|---|---|
-| Node.js | 待填写 / 不适用 |
-| Python / Java / Go / 其他 | 待填写 / 不适用 |
-| 数据库 | 待填写 / 不适用 |
-| 其他依赖 | 待填写 / 不适用 |
+### Core Value
 
-### 3.2 本地运行
+- TBD
+
+## Quick Start
+
+### Environment
+
+- Runtime: TBD
+- Package manager: TBD
+- Database or middleware: TBD
+
+### Install
 
 ```bash
-# 1. 安装依赖
-待填写
-
-# 2. 配置环境变量
-cp .env.example .env
-
-# 3. 启动项目
-待填写
+<install command>
 ```
 
-### 3.3 构建 / 部署
+### Local Run
 
 ```bash
-待填写
+<run command>
 ```
 
-详细部署说明见：[docs/deploy.md](docs/deploy.md)
+### Build
 
-## 4. 工程结构
+```bash
+<build command>
+```
+
+### Test
+
+```bash
+<test command>
+```
+
+## Project Structure
 
 ```text
-project-name/
-  docs/                  # 项目详细文档
-  frontend/              # 前端项目，可选
-  backend/               # 后端项目，可选
-  database/              # 数据库脚本，可选
-  scripts/               # 工具脚本、自动化脚本，可选
-  tests/                 # 测试代码或测试用例，可选
-  .env.example           # 环境变量示例，不包含真实密钥
-  README.md              # 项目入口文档
-  agent.md               # AI/Agent 协作记录
+.
+├── README.md
+├── agent.md
+├── docs/
+└── src/
 ```
 
-详细工程规范见：[docs/architecture.md](docs/architecture.md)
+## Current Progress
 
-## 5. 当前进度
-
-功能状态只能使用：`待规划` / `待实现` / `开发中` / `待联调` / `待测试` / `已完成` / `已废弃`。
-
-| 功能编号 | 模块 | 功能名称 | 优先级 | 状态 | 负责人 | 计划完成时间 | 备注 |
-|---|---|---|---|---|---|---|---|
-| F-001 | 基础工程 | 初始化项目结构 | 高 | 待实现 | 待填写 | 待填写 | 待填写 |
-| F-002 | 用户模块 | 用户登录 | 高 | 待实现 | 待填写 | 待填写 | 待填写 |
-| F-003 | 核心业务 | 核心功能 1 | 高 | 待实现 | 待填写 | 待填写 | 待填写 |
-
-详细需求与功能说明见：[docs/requirements.md](docs/requirements.md)
-
-## 6. 文档索引
-
-| 文档 | 内容 | 维护时机 |
+| Feature | Status | Notes |
 |---|---|---|
-| [docs/standard.md](docs/standard.md) | 文档规范、字段规则、状态枚举 | 项目初始化 / 规范变更时 |
-| [docs/requirements.md](docs/requirements.md) | 项目背景、目标、用户角色、功能清单、验收标准 | 需求变化 / 功能变更时 |
-| [docs/architecture.md](docs/architecture.md) | 技术栈、架构说明、工程结构、技术决策 | 技术选型 / 架构变化时 |
-| [docs/api.md](docs/api.md) | 接口总表、接口详情、状态码 | 新增 / 修改接口时 |
-| [docs/database.md](docs/database.md) | 数据表、字段、关系、迁移记录 | 新增 / 修改数据库时 |
-| [docs/deploy.md](docs/deploy.md) | 环境变量、运行、构建、部署、回滚 | 部署方式变化时 |
-| [docs/test.md](docs/test.md) | 测试清单、测试记录、缺陷记录、验收结论 | 测试 / 发布前 |
-| [docs/changelog.md](docs/changelog.md) | 版本变更、功能完成记录、问题修复 | 每次版本变更时 |
-| [agent.md](agent.md) | AI/Agent 操作记录、上下文、执行结果 | 每次 AI/Agent 执行任务后 |
+| TBD | pending-planning | TBD |
 
-## 7. 已知问题与下一步
+Allowed feature status values: `pending-planning`, `pending-implementation`, `in-development`, `pending-joint-debugging`, `pending-testing`, `completed`, `deprecated`.
 
-### 7.1 已知问题
+## Documentation Index
 
-| 编号 | 问题描述 | 影响范围 | 优先级 | 状态 | 负责人 | 计划解决时间 |
-|---|---|---|---|---|---|---|
-| I-001 | 待填写 | 待填写 | 高 / 中 / 低 | 待处理 | 待填写 | 待填写 |
+- [Requirements](docs/requirements.md)
+- [Architecture](docs/architecture.md)
+- [API](docs/api.md)
+- [Database](docs/database.md)
+- [Deploy](docs/deploy.md)
+- [Testing](docs/test.md)
+- [Changelog](docs/changelog.md)
 
-### 7.2 下一步计划
+## Known Issues
 
-| 任务编号 | 任务内容 | 优先级 | 负责人 | 计划完成时间 | 依赖 |
-|---|---|---|---|---|---|
-| N-001 | 待填写 | 高 / 中 / 低 | 待填写 | 待填写 | 待填写 |
+| Issue | Status | Owner | Notes |
+|---|---|---|---|
+| TBD | pending | TBD | TBD |
 
-## 8. AI / Agent 使用提示
+Allowed issue status values: `pending`, `in-progress`, `resolved`, `deferred`, `closed`.
 
-让 AI 或 Agent 开始任务前，请先发送：
+## Next Steps
 
-```text
-请先阅读 README.md、agent.md 以及本次任务相关的 docs 文档。
-本次只处理我指定的任务，不要扩展无关功能。
-开始写代码前，请先说明你理解的任务目标、准备修改的文件以及每个文件的作用。
-完成后请同步更新 README.md、相关 docs 文档和 agent.md。
-```
+1. TBD
+2. TBD
+
+## AI / Agent Usage Prompt
+
+Before working on this project, read `README.md`, `agent.md`, and the relevant files under `docs/`. Keep changes scoped to the user request, preserve existing project facts, and update `agent.md` after Agent-assisted work.

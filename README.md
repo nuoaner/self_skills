@@ -1,132 +1,121 @@
 # self_skills
 
-> 中文为主的个人 Codex Skills 仓库，用来沉淀工程开发、项目文档、Prompt 打磨、商业化评审和交付汇报中的常用工作流。
+Personal Codex skills for practical engineering workflows, documentation hygiene, prompt hardening, product commercialization review, client-facing reporting, Scoop packaging, and WeChat article image planning.
 
-## 简介
+This repository keeps only self-maintained skills. It is not a mirror of official Codex system skills or third-party plugin-cache skills.
 
-这个仓库只收录我自己维护、愿意长期迭代的 Codex skills。它不是官方 skill 或第三方 skill 的合集，而是一套围绕真实项目协作整理出来的工作习惯工具：
+## What This Repository Helps With
 
-- 让 AI 写代码前先澄清边界、复用已有结构、控制复杂度，并做最小闭环验证。
-- 把模糊中文需求改成另一个 AI Agent 可以直接执行的 prompt。
-- 按内部规范整理 `README.md`、`docs/` 和 `agent.md`。
-- 在项目提交、交付或评审前检查仓库结构和文档完整性。
-- 从市场经理角度评估产品吸引力、用户留存、市场匹配和商业化成熟度。
-- 把迁移、改造、接口替换和联调工作整理成甲方能看懂的技术汇报。
+- Make AI coding work more disciplined: inspect first, reuse existing structure, define boundaries, implement small verified slices, and avoid broad unverified rewrites.
+- Turn rough task requests into implementation-ready prompts for another coding agent.
+- Standardize internal project documentation around `README.md`, `docs/`, and `agent.md`.
+- Review repository structure before submission, handoff, or acceptance.
+- Evaluate products, landing pages, READMEs, and features from a market and commercialization perspective.
+- Convert migration, refactor, API replacement, and joint-debugging work into client-facing technical reports.
+- Create and maintain Scoop manifests from trusted upstream sources.
+- Plan cover art, inline illustrations, posters, and image-generation prompts for finalized WeChat articles.
 
-## Skills 列表
+## Skills
 
-| Skill | 主要用途 | 适合场景 |
+| Skill | Purpose | Best Use |
 |---|---|---|
-| `ai-coding-discipline` | 工程化编码纪律 | 写功能、修 bug、重构、架构设计时，要求 AI 先检查现有结构、复用已有实现、按最小闭环实现并验证 |
-| `ai-coding-paradigm` | 工程范式分析与 Prompt 加固 | 分析代码质量、模块边界、测试、契约、可观测性、安全和发布流程 |
-| `client-technical-reporting` | 甲方技术汇报整理 | 迁移、改造、接口替换、问题定位或联调阶段后，整理甲方可读、技术可追踪的汇报材料 |
-| `app-to-scoop` | Scoop 打包与清单维护 | 把 GitHub 仓库、Release、官网、下载页、直链或已有 manifest 转成或修复为可用的 Scoop `bucket/app.json` |
-| `internal-project-doc-standardizer` | 内部项目文档标准化 | 创建或审查 `README.md`、`docs/`、`agent.md`，检查状态枚举、模板和文档合规性 |
-| `market-commercialization-strategist` | 市场经理与商业化策略 | 设计项目、产品、页面、功能、README 或商业方案时，评估用户吸引力、留存依赖、市场匹配、定价和商业成熟度 |
-| `project-prompt-polisher` | 中文任务 Prompt 打磨 | 把口语化产品、前端、后端、文档、测试、重构或自动化需求改成可执行 prompt |
-| `project-structure-review` | 项目结构审查 | 项目提交、交付、验收、申请或团队交接前，检查目录结构、命名、README 和工程说明 |
-| `wechat-article-image-planner` | 公众号文章配图规划 | 在公众号文章定稿后，规划封面、文中插图和总结海报，并按需生成 imagegen2 可执行提示词 |
+| `ai-coding-discipline` | Disciplined implementation gate | Feature work, bug fixes, refactors, and careful coding prompts |
+| `ai-coding-paradigm` | Engineering maturity and architecture review | Code quality, module boundaries, testing, observability, security, delivery, and prompt hardening |
+| `app-to-scoop` | Scoop manifest creation and repair | Turn GitHub releases, official download pages, direct URLs, or existing manifests into usable `bucket/app.json` files |
+| `client-technical-reporting` | Client-facing technical reports | Summarize migration, refactor, API replacement, issue diagnosis, and joint-debugging work for customers |
+| `internal-project-doc-standardizer` | Internal README/docs/agent.md standardization | Create, audit, split, sync, or repair project documentation |
+| `market-commercialization-strategist` | Market and commercialization review | Evaluate positioning, user attraction, retention, pricing, landing pages, and commercial readiness |
+| `project-prompt-polisher` | Implementation-ready prompt rewriting | Rewrite rough Chinese task requests into clear, executable prompts |
+| `project-structure-review` | Repository submission-readiness review | Check structure, naming, README completeness, tooling, dependencies, and architecture documentation |
+| `wechat-article-image-planner` | WeChat article visual planning | Plan cover images, inline images, summary posters, placement, and optional imagegen2 prompts |
 
-## 推荐使用方式
+## Recommended Usage
 
-### 写代码前
+### Before Coding
 
-优先使用：
+Use:
 
 ```text
 ai-coding-discipline
 ```
 
-适合让 Codex 在实现前先看现有代码、拆模块、明确边界、做增量验证。当前版本已经压缩为轻量入口，详细执行清单、压力场景和通用 prompt 模板放在 `references/` 中。
+This skill keeps implementation work narrow, evidence-based, and compatible with existing project patterns.
 
-### 分析项目质量
+### Reviewing Engineering Quality
 
-优先使用：
+Use:
 
 ```text
 ai-coding-paradigm
 ```
 
-适合从工程范式角度检查项目：需求边界、模块职责、接口契约、测试、日志、安全、发布和回滚。
+It evaluates requirements, boundaries, contracts, tests, observability, security, delivery readiness, and AI handoff clarity.
 
-### 整理项目文档
+### Standardizing Project Documentation
 
-优先使用：
+Use:
 
 ```text
 internal-project-doc-standardizer
 ```
 
-### 生成 Scoop manifest
+It helps maintain a short entry README, detailed `docs/` files, and an `agent.md` collaboration record.
 
-优先使用：
+### Creating Scoop Manifests
+
+Use:
 
 ```text
 app-to-scoop
 ```
 
-适合把 GitHub 仓库、Release 页面、官网下载页、官方 CDN、镜像直链、已有 Scoop manifest 或 Scoop 报错信息，整理成完整的 `bucket/app.json`，并补充 `checkver`、`autoupdate`、`bin`、`shortcuts`、`persist` 和本地测试命令。
+It classifies the source, selects a trustworthy Windows asset, builds a complete manifest, and provides local verification commands.
 
-适合初始化或检查标准项目文档结构：
+### Polishing Chinese Task Prompts
 
-```text
-README.md
-agent.md
-docs/standard.md
-docs/requirements.md
-docs/architecture.md
-docs/api.md
-docs/database.md
-docs/deploy.md
-docs/test.md
-docs/changelog.md
-```
-
-### 打磨中文需求
-
-优先使用：
+Use:
 
 ```text
 project-prompt-polisher
 ```
 
-示例：
+Example:
 
 ```text
-用 project-prompt-polisher 帮我把这个需求改成 Codex 能直接执行的 prompt：登录接口帮我完善一下。
+Use project-prompt-polisher to turn this rough request into a Codex-ready implementation prompt: improve the login API.
 ```
 
-### 做市场与商业化评审
+### Reviewing Commercial Potential
 
-优先使用：
+Use:
 
 ```text
 market-commercialization-strategist
 ```
 
-适合在产品设计、功能规划、落地页、README、商业方案或定价前，检查项目是否有清晰目标用户、用户吸引力、留存机制、市场差异、付费理由和商业化成熟度。
+It reviews user attraction, ethical retention, market fit, monetization, pricing, trust, support, and readiness to scale.
 
-### 给甲方做技术汇报
+### Writing Client-Facing Technical Reports
 
-优先使用：
+Use:
 
 ```text
 client-technical-reporting
 ```
 
-适合在一次迁移、改造、接口替换、问题修复或联调阶段后，按“本次做了什么、迁移方式、主要改动位置、真实接口后续在哪改、模块问题定位、后续联调需确认事项、总结”的结构整理给甲方。
+It turns technical work into a structured report that explains what changed, where it changed, how real APIs should be connected, how to diagnose problems, and what needs client confirmation.
 
-### 项目提交前审查
+### Checking Repository Structure
 
-优先使用：
+Use:
 
 ```text
 project-structure-review
 ```
 
-适合检查项目是否具备可交付的 README、目录结构、依赖说明、工程配置和架构说明。
+It checks whether a project is ready for submission, handoff, review, or acceptance.
 
-## 仓库结构
+## Repository Structure
 
 ```text
 self_skills/
@@ -134,10 +123,11 @@ self_skills/
   scripts/
     audit_skills.py
   skills/
+    README.md
     TRIGGER_TESTS.md
-    app-to-scoop/
     ai-coding-discipline/
     ai-coding-paradigm/
+    app-to-scoop/
     client-technical-reporting/
     internal-project-doc-standardizer/
     market-commercialization-strategist/
@@ -146,82 +136,78 @@ self_skills/
     wechat-article-image-planner/
 ```
 
-每个 skill 通常遵循以下结构：
+Most skills follow this layout:
 
 ```text
 skill-name/
   SKILL.md
-  agents/openai.yaml        # Codex UI 元数据
-  references/               # 可选：模板、规范、详细参考
-  scripts/                  # 可选：只读审计或辅助脚本
+  agents/openai.yaml
+  references/
+  scripts/
 ```
 
-## 安装方式
+## Installation
 
-克隆仓库：
+Clone the repository:
 
 ```powershell
 git clone https://github.com/nuoaner/self_skills.git
 ```
 
-复制单个 skill 到 Codex skills 目录：
+Copy one skill into the Codex skills directory:
 
 ```powershell
 Copy-Item -Recurse .\self_skills\skills\project-prompt-polisher "$env:USERPROFILE\.codex\skills\project-prompt-polisher"
 ```
 
-复制全部 skills：
+Copy all skills:
 
 ```powershell
 Copy-Item -Recurse .\self_skills\skills\* "$env:USERPROFILE\.codex\skills"
 ```
 
-安装或更新后，重启 Codex 让新 skill 生效。
+Restart Codex after installing or updating skills.
 
-## 质量检查
+## Quality Checks
 
-仓库提供一套只读审计脚本，用来检查 skill 元数据、`agents/openai.yaml`、触发测试样例、明显乱码、敏感信息和过长 `SKILL.md`：
+Run the read-only repository audit:
 
 ```powershell
 python .\scripts\audit_skills.py
 ```
 
-触发测试样例集中维护在：
+Trigger boundary examples live in:
 
 ```text
 skills/TRIGGER_TESTS.md
 ```
 
-如果修改了某个 skill，也建议运行该 skill 自带的 `scripts/check_*.py`，再运行官方 `quick_validate.py`。
+When changing a skill, also run that skill's bundled `scripts/check_*.py` script when present, then run the repository audit again.
 
-## 维护边界
+## Maintenance Boundaries
 
-这个仓库不收录：
+This repository does not maintain:
 
-- Codex 官方系统 skills，例如 `.codex/skills/.system`
-- 插件缓存 skills，例如 `.codex/plugins/cache`
-- 第三方仓库安装的 skills
+- Official Codex system skills, such as `.codex/skills/.system`
+- Plugin-cache skills, such as `.codex/plugins/cache`
+- Third-party skills copied without a clear maintenance reason
 
-第三方 skills 应保留原始来源链接，不直接复制到这里长期维护。
+Third-party skills should retain links to their original source instead of being copied here for long-term maintenance.
 
-## 质量状态
+## Quality Status
 
-| Skill | 状态 | 说明 |
+| Skill | Status | Notes |
 |---|---|---|
-| `ai-coding-discipline` | 稳定 | 已压缩为轻量执行闸门，细节下沉到 references，并包含只读自检脚本 |
-| `ai-coding-paradigm` | 稳定 | 工程成熟度评审 skill，包含十维评分清单、AI prompt 模板和自检脚本 |
-| `app-to-scoop` | 可用 | 面向 Scoop 打包与修复，覆盖 GitHub、官网、镜像、已有 manifest 和常见报错，并附带本地辅助脚本 |
-| `client-technical-reporting` | 可用 | 轻量甲方技术汇报 skill，适合迁移、接口替换、模块问题定位和联调事项整理 |
-| `internal-project-doc-standardizer` | 稳定 | audit/generate/split/sync/repair 五模式文档闸门，包含模板、审查脚本和 skill 自检脚本 |
-| `market-commercialization-strategist` | 可用 | 轻量 `SKILL.md` + 重型 Markdown 手册，适合市场经理视角、产品商业化和网页端复用 |
-| `project-prompt-polisher` | 稳定 | 轻量入口 + 多场景 Prompt 模板 + 自检脚本，适合高频打磨中文任务 prompt |
-| `project-structure-review` | 稳定 | 有只读审查脚本，适合直接用于项目交付前检查 |
-| `wechat-article-image-planner` | 可用 | 定稿公众号文章的配图规划 skill，包含视觉锚点提取、封面/插图/海报规划、imagegen2 参数建议和自检脚本 |
+| `ai-coding-discipline` | Stable | Lightweight execution gate with supporting references and a self-check script |
+| `ai-coding-paradigm` | Stable | Engineering maturity review with scoring checklist, prompt templates, and a self-check script |
+| `app-to-scoop` | Usable | Broad Scoop packaging workflow with helper scripts for hashing, archive inspection, and local manifest tests |
+| `client-technical-reporting` | Usable | Structured client-facing reporting skill for migration, API replacement, module diagnosis, and follow-up confirmations |
+| `internal-project-doc-standardizer` | Stable | Five-mode documentation workflow with templates, an audit script, and a self-check script |
+| `market-commercialization-strategist` | Usable | Market-manager lens with a lightweight default mode and a deeper playbook |
+| `project-prompt-polisher` | Stable | Prompt hardening workflow with reusable patterns and a self-check script |
+| `project-structure-review` | Stable | Read-only repository structure audit with a bundled review script |
+| `wechat-article-image-planner` | Usable | Visual planning workflow for finalized WeChat articles with imagegen2-ready prompts |
 
 ## English Summary
 
-`self_skills` is a personal Codex skills collection focused on practical engineering workflows.
-
-It includes skills for disciplined coding, engineering paradigm analysis, Scoop manifest packaging, client-facing technical reporting, internal project documentation standardization, market commercialization strategy, Chinese prompt polishing, project structure review, and WeChat article image planning.
-
-This repository intentionally keeps only self-maintained skills. Official Codex system skills, plugin cache skills, and third-party skills should stay linked to their original sources.
+`self_skills` is a personal Codex skills collection focused on practical engineering workflows. It includes disciplined coding, engineering paradigm analysis, Scoop manifest packaging, client-facing technical reporting, internal documentation standardization, market commercialization strategy, Chinese prompt polishing, project structure review, and WeChat article image planning.

@@ -1,41 +1,41 @@
-# Agent 协作记录
+# Agent Collaboration Record
 
-## 1. 最近上下文
+## 1. Recent Context
 
-- 项目名称：待填写
-- 当前阶段：待填写
-- 最近任务：待填写
-- 当前重点：待填写
-- 需要避免：待填写
+- Project name: TBD
+- Current phase: TBD
+- Recent task: TBD
+- Current focus: TBD
+- Avoid: TBD
 
-## 2. 执行规则
+## 2. Execution Rules
 
-每次 AI/Agent 执行任务前必须：
+Before each AI/Agent task:
 
-1. 先读取项目根目录下的 `README.md`。
-2. 再读取本文件 `agent.md`。
-3. 根据任务类型读取相关 docs 文档。
-4. 开始写代码前说明任务目标、准备修改的文件、每个文件的作用。
-5. 本次只处理用户指定任务，不扩展无关功能。
+1. Read the project root `README.md`.
+2. Read this `agent.md`.
+3. Read relevant docs based on the task type.
+4. Before coding, state the goal, files to modify, and each file's responsibility.
+5. Only handle the user-specified task. Do not expand unrelated features.
 
-每次 AI/Agent 执行任务后必须：
+After each AI/Agent task:
 
-1. 记录用户需求。
-2. 记录实际修改的文件。
-3. 记录完成结果。
-4. 记录验证方式和验证结果。
-5. 同步更新 README.md 或相关 docs 文档。
-6. 如果发现新问题，记录到 README.md 或 docs/test.md。
+1. Record the user request.
+2. Record modified files.
+3. Record the result.
+4. Record verification method and result.
+5. Sync README.md or relevant docs when needed.
+6. If new issues are found, record them in README.md or docs/test.md.
 
-## 3. 执行记录
+## 3. Execution Log
 
-### YYYY-MM-DD HH:mm
+### YYYY-MM-DD
 
-- 用户需求：待填写
-- 执行目标：待填写
-- 修改文件：待填写
-- 操作内容：待填写
-- 验证方式：待填写
-- 验证结果：待填写
-- 遗留问题：待填写
-- 下一步建议：待填写
+- User request: TBD
+- Goal: TBD
+- Modified files: TBD
+- Operations: TBD
+- Verification: TBD
+- Result: TBD
+- Remaining issues: TBD
+- Suggested next step: TBD

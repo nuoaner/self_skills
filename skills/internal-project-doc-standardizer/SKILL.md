@@ -1,6 +1,6 @@
 ---
 name: internal-project-doc-standardizer
-description: Use when standardizing an internal project README, creating or auditing project documentation, splitting README details into docs, updating agent.md, checking documentation compliance, or handling Chinese requests such as README标准化, 项目文档规范化, 初始化标准文档, 检查文档是否合规, 同步README和docs.
+description: Use when standardizing an internal project README, creating or auditing project documentation, splitting README details into docs, updating agent.md, checking documentation compliance, syncing README and docs, or handling Chinese-language requests about README standardization, project documentation standards, standard document initialization, documentation compliance checks, or README/docs synchronization.
 ---
 
 # Internal Project Doc Standardizer
@@ -79,26 +79,26 @@ Use only these status values:
 
 | Field | Values |
 |---|---|
-| Project status | `规划中`, `开发中`, `联调中`, `测试中`, `已上线`, `维护中`, `暂停`, `已归档` |
-| Feature status | `待规划`, `待实现`, `开发中`, `待联调`, `待测试`, `已完成`, `已废弃` |
-| API status | `待设计`, `待实现`, `已实现`, `待联调`, `已上线`, `已废弃` |
-| Database status | `待设计`, `已设计`, `已迁移`, `已上线`, `已废弃` |
-| Test status | `未测试`, `测试中`, `通过`, `不通过`, `阻塞`, `不适用` |
-| Issue status | `待处理`, `处理中`, `已解决`, `暂不处理`, `已关闭` |
+| Project status | `planned`, `in-development`, `joint-debugging`, `testing`, `online`, `maintenance`, `paused`, `archived` |
+| Feature status | `pending-planning`, `pending-implementation`, `in-development`, `pending-joint-debugging`, `pending-testing`, `completed`, `deprecated` |
+| API status | `pending-design`, `pending-implementation`, `implemented`, `pending-joint-debugging`, `online`, `deprecated` |
+| Database status | `pending-design`, `designed`, `migrated`, `online`, `deprecated` |
+| Test status | `untested`, `testing`, `passed`, `failed`, `blocked`, `not-applicable` |
+| Issue status | `pending`, `in-progress`, `resolved`, `deferred`, `closed` |
 
 ## Delivery Template
 
 Use this response structure after documentation work:
 
 ```text
-本次文档处理：
-- 模式：audit/generate/split/sync/repair
-- 目标：
-- 修改文件：
-- 验证方式：
-- 结果：
-- 未确认事项：
-- 下一步：
+Documentation work:
+- Mode: audit/generate/split/sync/repair
+- Goal:
+- Modified files:
+- Verification:
+- Result:
+- Unconfirmed items:
+- Next step:
 ```
 
 ## Safety Rules
@@ -106,7 +106,7 @@ Use this response structure after documentation work:
 - Do not write real secrets, tokens, passwords, private keys, certificates, or production connection strings into docs.
 - Use `.env.example` for variable names and placeholder examples only.
 - If a required field is unknown, write a clear placeholder and list it as an open issue instead of inventing facts.
-- Do not leave long-lived TODO rows without owner and planned time.
+- Do not leave long-lived placeholder rows without owner and planned time.
 - Preserve existing project-specific facts and paths.
 - Do not convert README into a full requirements, API, database, deployment, or test document.
 
@@ -126,6 +126,6 @@ Before claiming the docs are ready:
 
 - Updating README but forgetting `docs/requirements.md`, `docs/api.md`, or `docs/changelog.md`.
 - Leaving detailed API/database/deploy/test content in README.
-- Using non-standard status labels such as `完成`, `进行中`, or `未开始`.
+- Using non-standard status labels such as `done`, `doing`, or `not-started`.
 - Keeping real connection strings or keys in examples.
 - Treating `agent.md` as optional after Agent-assisted documentation changes.
