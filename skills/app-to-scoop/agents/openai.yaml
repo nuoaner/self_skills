@@ -1,0 +1,4 @@
+interface:
+  display_name: "App to Scoop"
+  short_description: "Package GitHub and official app downloads into Scoop manifests."
+  default_prompt: "Use $app-to-scoop to turn this app source into a Scoop manifest with validation notes and local test commands."

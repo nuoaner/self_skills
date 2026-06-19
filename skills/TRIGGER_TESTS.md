@@ -35,6 +35,17 @@ Should not trigger:
 - "把这个 README 翻译成英文。"
 - "生成一张产品宣传海报。"
 
+## app-to-scoop
+
+Should trigger:
+- "用 app-to-scoop 把这个 GitHub Release 做成 Scoop manifest。"
+- "帮我把这个官网下载页打包成 bucket/app.json，并补 checkver 和 autoupdate。"
+- "这个 Scoop manifest 安装报 Hash check failed，帮我修一下。"
+
+Should not trigger:
+- "解释一下 Scoop 是什么。"
+- "帮我写一个 winget manifest。"
+
 ## client-technical-reporting
 
 Should trigger:

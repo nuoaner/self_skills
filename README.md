@@ -20,6 +20,7 @@
 | `ai-coding-discipline` | 工程化编码纪律 | 写功能、修 bug、重构、架构设计时，要求 AI 先检查现有结构、复用已有实现、按最小闭环实现并验证 |
 | `ai-coding-paradigm` | 工程范式分析与 Prompt 加固 | 分析代码质量、模块边界、测试、契约、可观测性、安全和发布流程 |
 | `client-technical-reporting` | 甲方技术汇报整理 | 迁移、改造、接口替换、问题定位或联调阶段后，整理甲方可读、技术可追踪的汇报材料 |
+| `app-to-scoop` | Scoop 打包与清单维护 | 把 GitHub 仓库、Release、官网、下载页、直链或已有 manifest 转成或修复为可用的 Scoop `bucket/app.json` |
 | `internal-project-doc-standardizer` | 内部项目文档标准化 | 创建或审查 `README.md`、`docs/`、`agent.md`，检查状态枚举、模板和文档合规性 |
 | `market-commercialization-strategist` | 市场经理与商业化策略 | 设计项目、产品、页面、功能、README 或商业方案时，评估用户吸引力、留存依赖、市场匹配、定价和商业成熟度 |
 | `project-prompt-polisher` | 中文任务 Prompt 打磨 | 把口语化产品、前端、后端、文档、测试、重构或自动化需求改成可执行 prompt |
@@ -55,6 +56,16 @@ ai-coding-paradigm
 ```text
 internal-project-doc-standardizer
 ```
+
+### 生成 Scoop manifest
+
+优先使用：
+
+```text
+app-to-scoop
+```
+
+适合把 GitHub 仓库、Release 页面、官网下载页、官方 CDN、镜像直链、已有 Scoop manifest 或 Scoop 报错信息，整理成完整的 `bucket/app.json`，并补充 `checkver`、`autoupdate`、`bin`、`shortcuts`、`persist` 和本地测试命令。
 
 适合初始化或检查标准项目文档结构：
 
@@ -124,6 +135,7 @@ self_skills/
     audit_skills.py
   skills/
     TRIGGER_TESTS.md
+    app-to-scoop/
     ai-coding-discipline/
     ai-coding-paradigm/
     client-technical-reporting/
@@ -198,6 +210,7 @@ skills/TRIGGER_TESTS.md
 |---|---|---|
 | `ai-coding-discipline` | 稳定 | 已压缩为轻量执行闸门，细节下沉到 references，并包含只读自检脚本 |
 | `ai-coding-paradigm` | 稳定 | 工程成熟度评审 skill，包含十维评分清单、AI prompt 模板和自检脚本 |
+| `app-to-scoop` | 可用 | 面向 Scoop 打包与修复，覆盖 GitHub、官网、镜像、已有 manifest 和常见报错，并附带本地辅助脚本 |
 | `client-technical-reporting` | 可用 | 轻量甲方技术汇报 skill，适合迁移、接口替换、模块问题定位和联调事项整理 |
 | `internal-project-doc-standardizer` | 稳定 | audit/generate/split/sync/repair 五模式文档闸门，包含模板、审查脚本和 skill 自检脚本 |
 | `market-commercialization-strategist` | 可用 | 轻量 `SKILL.md` + 重型 Markdown 手册，适合市场经理视角、产品商业化和网页端复用 |
@@ -209,6 +222,6 @@ skills/TRIGGER_TESTS.md
 
 `self_skills` is a personal Codex skills collection focused on practical engineering workflows.
 
-It includes skills for disciplined coding, engineering paradigm analysis, client-facing technical reporting, internal project documentation standardization, market commercialization strategy, Chinese prompt polishing, project structure review, and WeChat article image planning.
+It includes skills for disciplined coding, engineering paradigm analysis, Scoop manifest packaging, client-facing technical reporting, internal project documentation standardization, market commercialization strategy, Chinese prompt polishing, project structure review, and WeChat article image planning.
 
 This repository intentionally keeps only self-maintained skills. Official Codex system skills, plugin cache skills, and third-party skills should stay linked to their original sources.
