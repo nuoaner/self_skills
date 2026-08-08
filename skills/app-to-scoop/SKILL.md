@@ -88,3 +88,11 @@ Follow this order unless the user explicitly asks for a narrower task:
 7. Generate version detection.
 8. Generate `autoupdate` only if the final downloadable URL can be templated reliably.
 9. Output the full manifest, local confirmation items, and local test commands.
+
+## Local Helper Scripts
+
+Use the bundled scripts for deterministic local checks instead of recreating their logic:
+
+- `scripts/hash-url.ps1`: compute or verify a download hash through the local Scoop environment.
+- `scripts/inspect-release-archive.ps1`: inspect archive layout before deciding executable paths, extraction fields, shortcuts, or persistence paths.
+- `scripts/test-manifest.ps1`: run a conservative local install/check/uninstall verification cycle for the manifest.
