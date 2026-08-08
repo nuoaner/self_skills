@@ -75,6 +75,43 @@ README must stay short enough to act as a project entrance. It should include:
 
 Move detailed requirements, API, database, deployment, testing, and changelog content into `docs/`.
 
+## Required Status Enums
+
+Use only these status values:
+
+| Field | Values |
+|---|---|
+| Project status | `planned`, `in-development`, `joint-debugging`, `testing`, `online`, `maintenance`, `paused`, `archived` |
+| Feature status | `pending-planning`, `pending-implementation`, `in-development`, `pending-joint-debugging`, `pending-testing`, `completed`, `deprecated` |
+| API status | `pending-design`, `pending-implementation`, `implemented`, `pending-joint-debugging`, `online`, `deprecated` |
+| Database status | `pending-design`, `designed`, `migrated`, `online`, `deprecated` |
+| Test status | `untested`, `testing`, `passed`, `failed`, `blocked`, `not-applicable` |
+| Issue status | `pending`, `in-progress`, `resolved`, `deferred`, `closed` |
+
+## Delivery Template
+
+Use this response structure after documentation work:
+
+```text
+Documentation work:
+- Mode: audit/generate/split/sync/repair
+- Goal:
+- Modified files:
+- Verification:
+- Result:
+- Unconfirmed items:
+- Next step:
+```
+
+## Safety Rules
+
+- Do not write real secrets, tokens, passwords, private keys, certificates, or production connection strings into docs.
+- Use `.env.example` for variable names and placeholder examples only.
+- If a required field is unknown, write a clear placeholder and list it as an open issue instead of inventing facts.
+- Do not leave long-lived placeholder rows without owner and planned time.
+- Preserve existing project-specific facts and paths.
+- Do not convert README into a full requirements, API, database, deployment, or test document.
+
 ## Quality Gate
 
 Before claiming the docs are ready:
@@ -86,3 +123,11 @@ Before claiming the docs are ready:
 - Confirm status labels use the required enums.
 - Confirm examples do not contain real secrets.
 - Confirm `agent.md` records the documentation change.
+
+## Common Mistakes
+
+- Updating README but forgetting `docs/requirements.md`, `docs/api.md`, or `docs/changelog.md`.
+- Leaving detailed API/database/deploy/test content in README.
+- Using non-standard status labels such as `done`, `doing`, or `not-started`.
+- Keeping real connection strings or keys in examples.
+- Treating `agent.md` as optional after Agent-assisted documentation changes.
