@@ -14,6 +14,7 @@ Treat this skill as a packaging workflow, not a generic Scoop tutorial. Start fr
 Always:
 
 - Prefer official sources over third-party download sites.
+- Verify current upstream information before creating or repairing manifests.
 - Prefer portable archives over installers.
 - Avoid web installers unless no offline package exists.
 - Do not use GitHub source archives unless the project is script-based.
@@ -25,12 +26,22 @@ Always:
 - Use `checkver.url` plus `regex` for official websites.
 - Use `architecture` for `x64`/`x86`/`arm64` differences.
 - Use `bin` for CLI tools.
-- Use `shortcuts` for GUI apps.
+- Use `shortcuts` for GUI launchers.
 - Use both `bin` and `shortcuts` when the app supports both CLI and GUI use.
 - Use `persist` for user configuration and data.
 - Preserve working fields when editing an existing manifest.
 - Always output a complete manifest when creating or repairing a package.
 - Always provide local test commands.
+
+## Verification Rule
+
+Before making claims about version, release assets, URLs, hashes, download availability, or current packaging status:
+
+1. Check the current upstream source when available.
+2. Mark unavailable information as requiring local confirmation.
+3. Do not rely only on historical examples or remembered release patterns.
+
+A generated manifest can contain placeholders for locally verified values, but it must clearly identify what still needs confirmation.
 
 ## Input Types
 
@@ -142,10 +153,10 @@ scoop install my-bucket/app
 
 ## Local Helper Scripts
 
-Use these bundled scripts when local confirmation is needed:
+Use the bundled scripts for deterministic local checks instead of recreating their logic:
 
-- `scripts/hash-url.ps1`: compute a URL hash through Scoop.
-- `scripts/test-manifest.ps1`: run a conservative install/check/uninstall cycle.
-- `scripts/inspect-release-archive.ps1`: inspect archive layout before deciding `bin`, `shortcuts`, `extract_dir`, or `persist`.
+- `scripts/hash-url.ps1`: compute or verify a download hash through the local Scoop environment.
+- `scripts/inspect-release-archive.ps1`: inspect archive layout before deciding executable paths, extraction fields, shortcuts, or persistence paths.
+- `scripts/test-manifest.ps1`: run a conservative local install/check/uninstall verification cycle for the manifest.
 
 If a field cannot be verified from the source alone, say so directly and leave a clear local verification step instead of guessing.

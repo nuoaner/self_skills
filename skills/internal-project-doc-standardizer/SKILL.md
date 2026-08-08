@@ -28,11 +28,13 @@ Choose one mode before editing:
 1. Read the target project's `README.md` first if it exists.
 2. Read `agent.md` if it exists.
 3. Read only the relevant `docs/` files for the selected mode.
-4. For audit or repair, run:
+4. For audit or repair, run the bundled audit script from this skill's directory:
 
 ```bash
-python scripts/audit_docs.py <project-root>
+python <skill-directory>/scripts/audit_docs.py <project-root>
 ```
+
+Do not assume the user's project directory contains this script. Resolve the script path from the installed skill location.
 
 5. State the documentation goal and files to change before editing.
 6. Edit only the required docs.
@@ -114,7 +116,7 @@ Documentation work:
 
 Before claiming the docs are ready:
 
-- Run `scripts/audit_docs.py` when auditing or repairing an existing project.
+- Run the bundled audit script from the skill directory when auditing or repairing an existing project.
 - Confirm required files exist or clearly explain why a file is not applicable.
 - Confirm README has the required entry sections.
 - Confirm links in the documentation index point to real files.
