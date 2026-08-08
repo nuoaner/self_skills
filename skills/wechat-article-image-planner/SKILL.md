@@ -1,11 +1,11 @@
 ---
 name: wechat-article-image-planner
-description: Use when a finalized or near-final WeChat Official Account article needs cover art, inline illustrations, summary posters, visual prompts, image placement, or optional imagegen2 generation. Trigger on Chinese-language requests about WeChat article image planning, WeChat cover images, article illustrations, adding images to an article, generating images from a finalized draft, or using imagegen2 for WeChat article visuals.
+description: Use when a finalized or near-final WeChat Official Account article needs cover art, inline illustrations, summary posters, visual prompts, image placement, or optional image generation. Trigger on Chinese-language requests about WeChat article image planning, WeChat cover images, article illustrations, adding images to an article, generating images from a finalized draft, or using an available image generation tool for WeChat article visuals.
 ---
 
 # WeChat Article Image Planner
 
-Plan visuals after the article draft is stable. This skill does not write the long-form article; it turns a finalized WeChat article into a publishable image plan and, only when requested, calls `imagegen2` to generate images.
+Plan visuals after the article draft is stable. This skill does not write the long-form article; it turns a finalized WeChat article into a publishable image plan and, only when requested, uses an available image generation capability.
 
 ## Core Rule
 
@@ -13,15 +13,29 @@ Article first, images second. If the article is still rough, ask the user to fin
 
 Use `references/visual-planning-playbook.md` when deciding image types, visual tone, prompt structure, or QA criteria.
 
+## Image Generation Capability
+
+Prefer available image generation tools in the current environment.
+
+Priority:
+
+1. Use the environment's native image generation capability when available.
+2. Use an installed image generation skill or helper tool if available.
+3. If no image generation capability exists, provide production-ready prompts and image specifications only.
+
+Do not assume a specific local path, API key location, operating system, or image tool implementation unless it is confirmed in the current environment.
+
+Never ask the user to paste API keys into chat.
+
 ## Workflow
 
 1. Read the article or article file.
 2. Identify article type, audience, emotional arc, and core message.
 3. Extract 3-7 visual anchors: people, scenes, objects, metaphors, data, quotes, or turning points.
 4. Produce an image plan before generating anything.
-5. Ask for confirmation before live generation unless the user already said "directly generate" or explicitly asked to use `imagegen2`.
-6. Use `imagegen2` for real generation. Do not recreate its API code.
-7. Report saved image paths and where each image should be inserted.
+5. Ask for confirmation before generation unless the user explicitly requests direct generation.
+6. Generate images through the available capability when possible.
+7. Report saved image paths and where each image should be inserted when the environment provides them.
 
 ## Output Contract
 
@@ -39,28 +53,6 @@ Always provide:
 - Cover: `16:9`, `2K`, `png`, `quality medium` or `high`.
 - Inline conceptual image: `4:3` or `1:1`, `1K`, `png`, `quality medium`.
 - Mobile poster or closing summary: `9:16`, `2K`, `png`, `quality high`.
-- If the user provides a brand/reference image, use `imagegen2 edit`; otherwise use `imagegen2 generate`.
-
-## imagegen2 Commands
-
-Text-to-image:
-
-```powershell
-python "$env:USERPROFILE\.codex\skills\imagegen2\scripts\imagegen2.py" generate `
-  --prompt "<prompt>" `
-  --aspect 16:9 --clarity 2K --quality medium --format png
-```
-
-Reference/edit image:
-
-```powershell
-python "$env:USERPROFILE\.codex\skills\imagegen2\scripts\imagegen2.py" edit `
-  --prompt "<prompt>" `
-  --image "<reference-image-path>" `
-  --aspect 1:1 --clarity 1K --quality medium --format png
-```
-
-If `IMAGEGEN2_API_KEY` is missing, stop before live generation and tell the user to set it locally. Never ask the user to paste a key into chat.
 
 ## Avoid
 
