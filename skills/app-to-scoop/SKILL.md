@@ -83,11 +83,73 @@ Follow this order unless the user explicitly asks for a narrower task:
    - `.msi`
    - silent-capable installer `.exe`
    - source archive only for script-based tools
-5. Map architecture labels.
-6. Determine entry fields.
-7. Generate version detection.
+5. Map architecture labels:
+   - `x64` / `win64` / `amd64` -> `64bit`
+   - `x86` / `win32` / `i386` / `ia32` -> `32bit`
+   - `arm64` / `aarch64` -> `arm64`
+6. Determine entry fields:
+   - `bin` for CLI entrypoints
+   - `shortcuts` for GUI launchers
+   - `persist` for settings, plugins, profiles, downloads, or user data
+   - `env_set` for required environment variables
+   - `extract_dir`, `extract_to`, or installer blocks when unpacking needs help
+   - `post_install` only for cleanup or small deterministic fixes
+   - `notes` for manual caveats or dependencies
+7. Generate version detection:
+   - GitHub projects: `"checkver": { "github": "https://github.com/owner/repo" }`
+   - Official sites: `"checkver": { "url": "...", "regex": "..." }`
 8. Generate `autoupdate` only if the final downloadable URL can be templated reliably.
 9. Output the full manifest, local confirmation items, and local test commands.
+
+## Output Format
+
+Use this structure in responses:
+
+## Analysis Result
+
+- Source type:
+- App name:
+- App type:
+- Current version:
+- Download source:
+- Selected asset:
+- Architecture:
+- Entry type:
+- Persist decision:
+- Checkver plan:
+- Autoupdate plan:
+
+## Manifest
+
+```json
+{
+  "...": "..."
+}
+```
+
+## Needs Local Confirmation
+
+- Whether the hash has been computed locally.
+- Whether the executable path is correct.
+- Whether `extract_dir` or `extract_to` is correct.
+- Whether the `persist` paths really exist.
+- Whether the license field is accurate.
+- Whether the download URL redirects in a way that changes packaging behavior.
+
+## Test Commands
+
+```powershell
+scoop install .\bucket\app.json
+scoop checkver app
+scoop uninstall app
+```
+
+## Add To Your Bucket
+
+```powershell
+scoop bucket add my-bucket D:\path\to\bucket
+scoop install my-bucket/app
+```
 
 ## Local Helper Scripts
 
@@ -96,3 +158,5 @@ Use the bundled scripts for deterministic local checks instead of recreating the
 - `scripts/hash-url.ps1`: compute or verify a download hash through the local Scoop environment.
 - `scripts/inspect-release-archive.ps1`: inspect archive layout before deciding executable paths, extraction fields, shortcuts, or persistence paths.
 - `scripts/test-manifest.ps1`: run a conservative local install/check/uninstall verification cycle for the manifest.
+
+If a field cannot be verified from the source alone, say so directly and leave a clear local verification step instead of guessing.
