@@ -42,3 +42,8 @@ Report:
 - remaining risks or blockers
 
 Do not claim completion from inspection alone.
+
+## Supporting Resources
+
+- Read `references/discipline-checklist.md` when the change spans multiple files, boundaries, failure modes, or verification steps and a fuller execution checklist is useful.
+- Read `references/pressure-scenarios.md` only when maintaining or testing this skill's resistance to shortcuts and unsafe engineering pressure.

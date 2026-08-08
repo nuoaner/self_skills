@@ -38,6 +38,10 @@ If the user's primary request is to rewrite a rough task into a Codex-ready impl
 - Consider tests, logs, permissions, environment variables, rollback, and API compatibility.
 - Separate immediate delivery risks from long-term improvements.
 
+## Supporting Resources
+
+- Read `references/paradigm-checklist.md` for scored maturity reviews, large multi-module audits, or any review that needs a defensible dimension-by-dimension quality judgment.
+
 ## Common Failure Modes
 
 - Saying "the architecture is unclear" without identifying the boundary problem.
