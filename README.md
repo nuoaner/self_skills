@@ -15,6 +15,8 @@
   <img src="https://img.shields.io/github/stars/nuoaner/self_skills?style=flat-square" alt="GitHub stars" />
 </p>
 
+**[简体中文](README.md) · [English](README_EN.md)**
+
 [快速开始](#-快速开始) · [Skill 一览](#-skill-一览) · [怎么选 Skill](#-怎么选-skill) · [使用示例](#-使用示例) · [质量体系](#-质量体系) · [仓库结构](#-仓库结构)
 
 <sub>Self-maintained · Chinese-first · Codex-oriented</sub>
@@ -300,6 +302,7 @@ scripts/check_*.py
 ```text
 self_skills/
 ├─ README.md
+├─ README_EN.md
 ├─ scripts/
 │  └─ audit_skills.py
 └─ skills/
@@ -396,21 +399,6 @@ Release、下载地址、市场价格、竞品状态、法规、产品能力等�
 - references / scripts 资源卫生检查
 
 完整变更请看 [`skills/CHANGELOG.md`](skills/CHANGELOG.md)。
-
----
-
-<details>
-<summary><strong>English Summary</strong></summary>
-
-<br />
-
-`self_skills` is a self-maintained collection of Codex / AI Agent skills for practical engineering and delivery workflows.
-
-It currently contains 9 skills covering disciplined implementation, engineering maturity reviews, prompt polishing, internal documentation governance, repository readiness reviews, client-facing technical reporting, market commercialization analysis, Scoop packaging, and WeChat article visual planning.
-
-The repository treats skills as maintainable software assets rather than isolated prompts: each skill has explicit trigger boundaries, semantic versioning, supporting resources where needed, and repository-level audits for structure and resource hygiene.
-
-</details>
 
 ---
 
