@@ -14,8 +14,9 @@ Use this skill to review repository readiness. Treat standards as review criteri
 1. Identify the project type and delivery goal.
 2. Inspect repository structure, README, configuration, dependencies, tooling, and entry points.
 3. Apply relevant conventions for the detected ecosystem.
-4. Report concrete issues with paths, impact, and remediation.
-5. Do not modify files unless the user explicitly asks for fixes.
+4. Run `scripts/review_project.py <project-root>` when filesystem access is available, then review its findings against the detected ecosystem instead of accepting them mechanically.
+5. Report concrete issues with paths, impact, and remediation.
+6. Do not modify files unless the user explicitly asks for fixes.
 
 ## Review Principles
 
@@ -52,4 +53,4 @@ Pass / fail / mostly pass, with the main reason.
 - Suggestions that are helpful but not blocking.
 ```
 
-Use bundled review scripts when available, but treat automated findings as evidence to review rather than final judgment.
+The bundled `scripts/review_project.py` script is a read-only first pass. Treat automated findings as evidence to review rather than final judgment.
