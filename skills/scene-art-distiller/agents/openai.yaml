@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scene Art Distiller"
+  short_description: "Create original conceptual art from photos without retaining photographic pixels."
+  default_prompt: "Use $scene-art-distiller to transform this photo into an original editorial artwork."
