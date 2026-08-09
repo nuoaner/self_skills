@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scene Paper Collage"
+  short_description: "Turn a real photo into a tactile editorial paper-collage poster while preserving the photographic anchor."
+  default_prompt: "Use $scene-paper-collage to transform this photo into a source-faithful paper-collage poster with simplified illustration, one structural accent hue, active negative space, and a tactile paper transition."
