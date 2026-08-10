@@ -2,22 +2,23 @@
 
 # 🧰 self_skills
 
-**为 Codex / AI Agent 沉淀的一套个人 Skills 工具箱**
+**面向 Codex / AI Agent 的个人 Skills 工作流仓库**
 
-把反复出现的工程习惯、交付标准和工作流程，整理成可复用、可审计、可版本化的 Skills。
+把反复出现的工程习惯、交付标准、商业判断和视觉工作流，沉淀成可复用、可审计、可持续迭代的 Skills。
 
-工程开发 · Prompt 打磨 · 文档治理 · 项目评审 · 商业化 · 客户交付 · Scoop · 公众号配图
+工程开发 · Prompt · 文档治理 · 项目评审 · 商业化 · 客户交付 · Scoop · 内容视觉 · AI 生图
 
 <p>
-  <img src="https://img.shields.io/badge/Skills-9-2563eb?style=flat-square" alt="9 Skills" />
-  <img src="https://img.shields.io/badge/Version-v2.0.0-0ea5e9?style=flat-square" alt="Version v2.0.0" />
+  <img src="https://img.shields.io/badge/Skill%20entries-18-2563eb?style=flat-square" alt="18 Skill entries" />
+  <img src="https://img.shields.io/badge/Productionized-10-16a34a?style=flat-square" alt="10 Productionized Skills" />
+  <img src="https://img.shields.io/badge/Visual%20Lab-7-f59e0b?style=flat-square" alt="7 Visual Lab Skills" />
+  <img src="https://img.shields.io/badge/Core%20baseline-v2.0.0-0ea5e9?style=flat-square" alt="Core baseline v2.0.0" />
   <img src="https://img.shields.io/github/last-commit/nuoaner/self_skills?style=flat-square" alt="Last commit" />
-  <img src="https://img.shields.io/github/stars/nuoaner/self_skills?style=flat-square" alt="GitHub stars" />
 </p>
 
 **[简体中文](README.md) · [English](README_EN.md)**
 
-[快速开始](#-快速开始) · [Skill 一览](#-skill-一览) · [怎么选 Skill](#-怎么选-skill) · [使用示例](#-使用示例) · [质量体系](#-质量体系) · [仓库结构](#-仓库结构)
+[仓库定位](#-仓库定位) · [Skill 一览](#-skill-一览) · [怎么选](#-怎么选-skill) · [快速开始](#-快速开始) · [原创规则](#-第三方参考与原创规则) · [质量体系](#-质量体系) · [仓库结构](#-仓库结构)
 
 <sub>Self-maintained · Chinese-first · Codex-oriented</sub>
 
@@ -25,93 +26,129 @@
 
 ---
 
-## ✨ 这是什么
+## ✨ 仓库定位
 
-`self_skills` 不是一个“提示词收藏夹”，而是一套面向真实项目协作的个人 Skill 仓库。
+`self_skills` 不是“提示词收藏夹”，也不是第三方 Skill 镜像站。
 
-这里沉淀的是我希望 AI **长期稳定执行** 的工作方式，例如：
+这个仓库保存的是我愿意长期维护的 AI 工作方式：把一类重复问题拆成明确职责、稳定流程、边界条件、验证路径和可复用资源，让 Codex / AI Agent 在真实项目里少猜、少跑偏、少重复造轮子。
 
-- 写代码前先读现有实现，复用已有结构，不随手造第二套机制。
-- 把口语化需求整理成另一个 Agent 可以直接执行的任务说明。
-- 对架构、测试、可观测性、安全和交付风险做有证据的工程评审。
-- 让 README、`docs/`、`agent.md` 和项目状态保持一致。
-- 在项目交付前检查结构、文档、依赖和运行说明是否完整。
-- 对市场、竞品、定价等时效性信息先验证，再做商业判断。
-- 把技术改造整理成客户能看懂、研发能追踪的交付汇报。
-- 把 GitHub Release / 官网下载源整理成可维护的 Scoop manifest。
-- 在公众号文章定稿后规划封面、插图、海报和生成提示词。
+当前 `skills/` 下共有 **18 个 Skill 条目**，按成熟度分为三层：
 
-> **核心原则：** 一个 Skill 负责一类明确问题；能复用规则就不重复写，能验证就不靠猜，能用脚本稳定执行就不靠临场发挥。
+1. **Productionized（10）**：已按仓库工程规范整理，可作为正式工作流维护。
+2. **Visual Lab（7）**：视觉能力实验区，先验证方法和职责边界，再逐步补齐完整 Skill 工程结构。
+3. **Reference Index（1）**：外部优秀案例索引，只保留来源和选型信息，不把第三方内容冒充为本仓库原创 Skill。
+
+> **核心原则：** 一个 Skill 负责一类明确问题；能复用就不重复，能验证就不猜，能抽象方法就不复制别人实现。
 
 ---
 
 ## 🧩 Skill 一览
 
-| 类别 | Skill | 主要用途 | 适合场景 | 版本 | 状态 |
-|---|---|---|---|---|---|
-| Engineering | [`ai-coding-discipline`](skills/ai-coding-discipline/SKILL.md) | 工程化执行纪律 | 写功能、修 Bug、重构、调试，要求复用现有结构并增量验证 | `2.0.0` | Stable |
-| Engineering | [`ai-coding-paradigm`](skills/ai-coding-paradigm/SKILL.md) | 工程成熟度 / 架构评审 | 模块边界、测试、可观测性、安全、交付和技术风险评审 | `2.0.0` | Stable |
-| Prompt | [`project-prompt-polisher`](skills/project-prompt-polisher/SKILL.md) | 可执行 Prompt 打磨 | 把模糊中文需求整理成 Codex / Agent 可直接执行的任务 | `2.0.0` | Stable |
-| Documentation | [`internal-project-doc-standardizer`](skills/internal-project-doc-standardizer/SKILL.md) | 内部项目文档标准化 | 创建、审查、拆分、同步或修复 README / docs / agent.md | `2.0.0` | Stable |
-| Review | [`project-structure-review`](skills/project-structure-review/SKILL.md) | 项目交付结构评审 | 提交、验收、交接前检查仓库结构、README、依赖和工程说明 | `2.0.0` | Stable |
-| Delivery | [`client-technical-reporting`](skills/client-technical-reporting/SKILL.md) | 客户技术汇报 | 迁移、改造、接口替换、问题定位和联调后的对客报告 | `2.0.0` | Usable |
-| Business | [`market-commercialization-strategist`](skills/market-commercialization-strategist/SKILL.md) | 市场与商业化评审 | 定位、吸引力、留存、竞品、定价、商业闭环和成熟度分析 | `2.0.0` | Usable |
-| Packaging | [`app-to-scoop`](skills/app-to-scoop/SKILL.md) | Scoop manifest 创建与维护 | GitHub Release、官网、直链或已有 manifest 的生成 / 修复 | `2.0.0` | Usable |
-| Content | [`wechat-article-image-planner`](skills/wechat-article-image-planner/SKILL.md) | 公众号文章视觉规划 | 文章定稿后的封面、插图、海报、位置与图片生成提示词 | `2.0.0` | Usable |
+### Productionized Skills
 
-> 每个 Skill 的具体触发条件和执行规则，以对应目录中的 `SKILL.md` 为准。
+| 类别 | Skill | 主要用途 | 版本 |
+|---|---|---|---|
+| Engineering | [`ai-coding-discipline`](skills/ai-coding-discipline/SKILL.md) | 写功能、修 Bug、重构、调试时保持复用、边界和增量验证 | `2.0.0` |
+| Engineering | [`ai-coding-paradigm`](skills/ai-coding-paradigm/SKILL.md) | 架构、测试、可观测性、安全、交付和技术风险评审 | `2.0.0` |
+| Prompt | [`project-prompt-polisher`](skills/project-prompt-polisher/SKILL.md) | 把模糊需求整理成 Codex / Agent 可直接执行的任务说明 | `2.0.0` |
+| Documentation | [`internal-project-doc-standardizer`](skills/internal-project-doc-standardizer/SKILL.md) | 创建、审查、拆分、同步或修复 README / docs / agent.md | `2.0.0` |
+| Review | [`project-structure-review`](skills/project-structure-review/SKILL.md) | 交付、验收、交接前检查仓库结构、依赖和运行说明 | `2.0.0` |
+| Delivery | [`client-technical-reporting`](skills/client-technical-reporting/SKILL.md) | 把迁移、改造、接口替换、问题定位整理成对客技术汇报 | `2.0.0` |
+| Business | [`market-commercialization-strategist`](skills/market-commercialization-strategist/SKILL.md) | 定位、吸引力、留存、竞品、定价和商业化成熟度分析 | `2.0.0` |
+| Packaging | [`app-to-scoop`](skills/app-to-scoop/SKILL.md) | 从 GitHub Release / 官网等来源生成或维护 Scoop manifest | `2.0.0` |
+| Content | [`wechat-article-image-planner`](skills/wechat-article-image-planner/SKILL.md) | 为定稿公众号文章规划封面、插图、海报和生成提示词 | `2.0.0` |
+| Visual AI | [`visual-story-image-director`](skills/visual-story-image-director/SKILL.md) | 把现有照片/场景转成故事化、编辑化、品牌化视觉资产 | `2.0.0` |
+
+### Visual Lab
+
+这些条目已经有明确能力方向，但目前属于**实验 / 细化阶段**，更适合显式点名使用或继续补齐，不应和已工程化 Skill 混为一谈。
+
+| Skill | 能力方向 |
+|---|---|
+| [`creative-reference-analyzer`](skills/creative-reference-analyzer/SKILL.md) | 从参考图中提取构图、视觉语法和传播逻辑，不复制原图 |
+| [`image-prompt-engineer`](skills/image-prompt-engineer/SKILL.md) | 把“高级一点、好看一点”之类模糊生图需求整理成结构化生成规格 |
+| [`consistent-character-designer`](skills/consistent-character-designer/SKILL.md) | 管理人物 / IP / 吉祥物在多张图片中的身份与视觉一致性 |
+| [`brand-visual-system-designer`](skills/brand-visual-system-designer/SKILL.md) | 从单张图升级到可重复使用的品牌视觉语言与生成规则 |
+| [`ai-poster-art-director`](skills/ai-poster-art-director/SKILL.md) | 用传播目标、信息层级、视觉隐喻和版式空间指导 AI 海报 |
+| [`product-visual-designer`](skills/product-visual-designer/SKILL.md) | 面向落地页、营销、电商等场景做产品价值表达和转化型视觉 |
+| [`ai-image-quality-reviewer`](skills/ai-image-quality-reviewer/SKILL.md) | 从主体准确、构图、层级、一致性、可用性和情绪效果评审生成图 |
+
+### Reference Index
+
+- [`image-generation-collection`](skills/image-generation-collection/SKILL.md)：用于记录值得继续研究的外部 AI 生图 Skill / 仓库和选型信息。这里的第三方项目仍以**原始来源**为准，不复制其 Skill 内容到本仓库后冒充原创。
+
+> 每个正式 Skill 的触发条件和执行规则，以对应目录中的 `SKILL.md` 为准；Visual Lab 条目当前以显式调用和方法验证为主。
 
 ---
 
 ## 🧭 怎么选 Skill
 
-如果你不确定该用哪个，可以按下面的路径判断：
+### 工程 / 项目工作
 
 ```text
-我现在要做什么？
-│
-├─ 直接修改 / 调试 / 重构代码
-│  └─ ai-coding-discipline
-│
-├─ 不改代码，只想评估工程质量 / 架构 / 风险
-│  └─ ai-coding-paradigm
-│
-├─ 我有一段模糊需求，想整理成 Codex 能执行的 Prompt
-│  └─ project-prompt-polisher
-│
-├─ README / docs / agent.md 需要创建、同步或治理
-│  └─ internal-project-doc-standardizer
-│
-├─ 项目准备提交 / 交付 / 验收，想检查仓库是否规范
-│  └─ project-structure-review
-│
-├─ 技术工作完成了，需要给客户写交付 / 联调 / 迁移汇报
-│  └─ client-technical-reporting
-│
-├─ 想评估定位、用户吸引力、竞品、定价或商业化路径
-│  └─ market-commercialization-strategist
-│
-├─ 想把一个 Windows 应用做成 Scoop manifest
-│  └─ app-to-scoop
-│
-└─ 公众号文章已经基本定稿，需要封面和文中配图方案
-   └─ wechat-article-image-planner
+直接修改、调试、重构代码
+└─ ai-coding-discipline
+
+不改代码，只评估架构、工程质量或风险
+└─ ai-coding-paradigm
+
+把口语化需求整理成 Codex 可执行任务
+└─ project-prompt-polisher
+
+README / docs / agent.md 需要治理
+└─ internal-project-doc-standardizer
+
+项目准备交付 / 验收 / 交接
+└─ project-structure-review
+
+技术工作完成，需要对客户汇报
+└─ client-technical-reporting
+
+评估产品定位、竞品、定价、商业闭环
+└─ market-commercialization-strategist
+
+把 Windows 应用整理成 Scoop manifest
+└─ app-to-scoop
 ```
 
-### 三个最容易混淆的 Engineering Skill
+### 内容 / 视觉工作
 
 ```text
-project-prompt-polisher
-    ↓ 负责“把需求说清楚”
+公众号文章已定稿，要规划整套封面和文中配图
+└─ wechat-article-image-planner
 
-ai-coding-discipline
-    ↓ 负责“把代码改好并验证”
+已有照片 / 场景，要做故事化、杂志化、拼贴、品牌叙事视觉
+└─ visual-story-image-director
 
-ai-coding-paradigm
-    ↓ 负责“判断工程设计和交付质量好不好”
+先分析一张参考图为什么有效
+└─ creative-reference-analyzer   [Lab]
+
+需求太模糊，需要先整理成生图规格
+└─ image-prompt-engineer         [Lab]
+
+角色要跨多张图保持一致
+└─ consistent-character-designer [Lab]
+
+要建立品牌长期视觉语言
+└─ brand-visual-system-designer  [Lab]
+
+要做活动 / 宣传 / 社媒海报
+└─ ai-poster-art-director        [Lab]
+
+要做产品营销 / 落地页 / 电商视觉
+└─ product-visual-designer       [Lab]
+
+图片已经生成，需要做质量验收和迭代建议
+└─ ai-image-quality-reviewer     [Lab]
 ```
 
-这三个 Skill 在 v2 中已经明确拆分职责，尽量避免相互抢触发。
+一个常用的视觉链路可以是：
+
+```text
+参考分析 → 需求结构化 → 专项视觉设计 → 生成 / 编辑 → 质量评审
+```
+
+Visual Lab 的目标不是把流程越拆越碎，而是先验证这些职责是否值得独立成 Skill；出现明显重叠时优先合并，而不是继续堆 Skill 数量。
 
 ---
 
@@ -124,37 +161,36 @@ git clone https://github.com/nuoaner/self_skills.git
 cd self_skills
 ```
 
-### 2. 安装单个 Skill
+### 2. 推荐：按需安装单个 Productionized Skill
 
-例如安装 `project-prompt-polisher`：
-
-```powershell
-Copy-Item -Recurse .\skills\project-prompt-polisher "$env:USERPROFILE\.codex\skills\project-prompt-polisher"
-```
-
-### 3. 安装全部 Skill
+例如安装 `visual-story-image-director`：
 
 ```powershell
-Copy-Item -Recurse .\skills\* "$env:USERPROFILE\.codex\skills"
+$skill = "visual-story-image-director"
+Copy-Item -Recurse ".\skills\$skill" "$env:USERPROFILE\.codex\skills\$skill" -Force
 ```
+
+### 3. 不建议直接复制 `skills/*`
+
+`skills/` 目录除了 Skill 文件夹，还包含 `README.md`、`CHANGELOG.md`、`TRIGGER_TESTS.md`，并且目前有 Visual Lab / Reference Index 条目。
+
+因此更推荐：
+
+- 只安装你实际要用的 Skill；
+- 正式环境优先安装 Productionized Skills；
+- Lab 条目先用于显式测试和能力验证，成熟后再补齐工程结构。
 
 ### 4. 更新
-
-先拉取仓库最新版本：
 
 ```powershell
 git pull
 ```
 
-再重新复制需要更新的 Skill 到 Codex Skill 目录。
-
-> 安装或更新后，建议重启 Codex，让 Skill 元数据和指令重新加载。
+更新后重新复制对应 Skill 目录，并重启 Codex 以重新加载元数据和指令。
 
 ---
 
-## 💬 使用示例
-
-Skill 可以显式点名使用，也可以依赖描述进行自动触发。显式调用更适合你希望确定使用某套流程的时候。
+## 🧪 典型调用示例
 
 ### 工程实现
 
@@ -163,137 +199,96 @@ Use ai-coding-discipline to implement this feature in the existing project.
 Reuse existing structures, keep the change narrow, and verify the result.
 ```
 
-### 工程评审
-
-```text
-Use ai-coding-paradigm to review this repository's architecture boundaries,
-testing, observability, security, and delivery risks.
-```
-
 ### Prompt 打磨
 
 ```text
-用 project-prompt-polisher 帮我把这个需求整理成 Codex 能直接执行的 Prompt：
-登录接口帮我完善一下，注意不要影响现有权限逻辑。
+用 project-prompt-polisher 把下面这段口语需求整理成 Codex 能直接执行的增量任务：
+登录接口帮我完善一下，但不要影响现有权限逻辑。
 ```
 
-### 项目文档治理
+### 照片故事化视觉
 
 ```text
-Use internal-project-doc-standardizer to audit this project's README, docs,
-and agent.md, then tell me what is missing or inconsistent.
+用 visual-story-image-director 分析这张照片，保留人物和场景事实，
+把它做成有杂志编辑感的故事视觉，并给出生成/编辑 brief 和 QA 标准。
 ```
 
-### Scoop 打包
+### Visual Lab 显式测试
 
 ```text
-Use app-to-scoop to turn this GitHub Release into a Scoop manifest.
-Verify the current release assets first and do not guess hashes or URLs.
+用 creative-reference-analyzer 分析这张参考图。
+只提炼构图、层级、材质、色彩和传播逻辑，不复制原图和原提示词。
 ```
 
-### 商业化评审
+---
 
-```text
-用 market-commercialization-strategist 评估这个产品的目标用户、核心吸引力、
-竞品差异、定价逻辑和商业化成熟度。涉及当前市场数据的结论先验证来源。
-```
+## 🧬 第三方参考与原创规则
 
-<details>
-<summary><strong>更多典型使用场景</strong></summary>
+这个仓库允许研究优秀外部 Skill，但**不做换名字式搬运**。
 
-<br />
+### 可以借鉴
 
-**客户交付汇报**
+- 问题拆解方式
+- 工作流阶段
+- 质量评估维度
+- 可迁移的设计 / 工程原则
+- 值得验证的交互方式和边界设计
 
-```text
-Use client-technical-reporting to turn this migration and API replacement work
-into a client-facing delivery report with follow-up confirmation items.
-```
+### 不应直接复制
 
-**项目交付前检查**
+- 第三方 `SKILL.md` 文案
+- 原始 prompt block / 模板块
+- 原案例文字与示例输出
+- 独特术语体系和命名
+- 为了“看起来不一样”而轻微改写的目录结构或执行步骤
 
-```text
-Use project-structure-review to check whether this repository is ready for
-handoff, including README, dependencies, tooling, structure, and run instructions.
-```
+### 纳入本仓库前应做到
 
-**公众号配图规划**
+1. 先判断仓库里是否已有相近能力，能整合就不重复创建。
+2. 重新定义本仓库自己的目标用户、输入、输出、边界和触发条件。
+3. 用自己的语言重写流程、规则、示例和术语。
+4. 新增能够证明该 Skill 有独立价值的案例或验证路径。
+5. 如果只是值得关注的外部项目，放进 Reference Index 并保留原始来源，不伪装成自研。
 
-```text
-用 wechat-article-image-planner 为这篇已经定稿的公众号文章规划封面、
-3 张文中插图和结尾海报，并给出每张图的插入位置与生成提示词。
-```
-
-</details>
+`visual-story-image-director` 已把这一原则写进自身 Core Rules：**Borrow principles, not implementation.**
 
 ---
 
 ## 🛡️ 质量体系
 
-这个仓库不是只维护 Skill 内容，也维护 Skill 本身的“工程质量”。
-
-### 版本管理
-
-每个 Skill 根目录都有独立的 `VERSION`：
+### Productionized Skill 的目标结构
 
 ```text
-skills/<skill-name>/VERSION
+skill-name/
+├─ SKILL.md          # YAML frontmatter + 核心流程 + 边界
+├─ VERSION           # 语义版本
+├─ agents/
+│  └─ openai.yaml    # Agent / UI 元数据
+├─ references/       # 可选：规则、模板、检查表、领域知识
+├─ scripts/          # 可选：确定性检查或辅助操作
+├─ examples/         # 可选：验证过的案例
+└─ assets/           # 可选：最终输出所需静态资源
 ```
 
-当前统一基线：**`2.0.0`**。
+### Trigger 边界
 
-仓库级变更记录见：[`skills/CHANGELOG.md`](skills/CHANGELOG.md)。
-
-### Trigger 边界测试
-
-[`skills/TRIGGER_TESTS.md`](skills/TRIGGER_TESTS.md) 维护每个 Skill 的：
-
-- `Should trigger`
-- `Should not trigger`
-
-目的不是测试“文案好不好看”，而是减少 Skill 之间的**过度触发、漏触发和职责重叠**。
+[`skills/TRIGGER_TESTS.md`](skills/TRIGGER_TESTS.md) 用 `Should trigger / Should not trigger` 约束已工程化 Skill 的职责边界，减少过度触发、漏触发和 Skill 互抢。
 
 ### 仓库审计
-
-运行只读审计：
 
 ```powershell
 python .\scripts\audit_skills.py
 ```
 
-当前审计会检查：
+审计目标包括目录命名、frontmatter、`agents/openai.yaml`、`VERSION`、引用资源、脚本说明、乱码和敏感字段等。
 
-- Skill 数量与目录命名
-- `SKILL.md` frontmatter
-- `agents/openai.yaml`
-- `VERSION` 与语义版本格式
-- `skills/CHANGELOG.md`
-- Trigger 测试完整性
-- 未被 `SKILL.md` 引用的 references
-- 未被说明的运行脚本
-- UTF-8 / 常见乱码
-- 疑似真实密钥或敏感字段
-- `SKILL.md` 是否过长
+> **当前状态说明：** 2026-08-10 新增的 Visual Lab / Reference Index 条目尚未全部补齐 Productionized 结构，因此仓库级审计可能会把它们报告为待完善项。这是当前真实状态，不应在 README 中继续宣称“18 个条目全部通过 v2 工程审计”。
 
-正常情况下会看到类似：
+### 版本策略
 
-```text
-Skills discovered: 9
-Version baseline: 2.0.0 (9 skills)
-Skill audit passed
-```
-
-### Skill 自检脚本
-
-部分 Skill 带有自己的维护检查脚本：
-
-```text
-scripts/check_*.py
-```
-
-修改 Skill 后，优先运行对应的 `scripts/check_*.py`，最后再运行仓库级 `scripts/audit_skills.py`。
-
-> `agents/openai.yaml` 当前保留 Codex 使用中的 legacy top-level metadata。仓库审计同时兼容 legacy 格式和 `interface.*` 格式，因此后续可以单独迁移，而不需要一次性破坏现有环境。
+- Productionized Skills 当前共享基线仍为 **`2.0.0`**。
+- Lab 条目没有强行伪造版本号；等职责和结构稳定后再进入正式版本管理。
+- 仓库级变更记录见 [`skills/CHANGELOG.md`](skills/CHANGELOG.md)。
 
 ---
 
@@ -303,6 +298,7 @@ scripts/check_*.py
 self_skills/
 ├─ README.md
 ├─ README_EN.md
+├─ assets/
 ├─ scripts/
 │  └─ audit_skills.py
 └─ skills/
@@ -310,6 +306,7 @@ self_skills/
    ├─ CHANGELOG.md
    ├─ TRIGGER_TESTS.md
    │
+   ├─ # Productionized
    ├─ ai-coding-discipline/
    ├─ ai-coding-paradigm/
    ├─ app-to-scoop/
@@ -318,87 +315,42 @@ self_skills/
    ├─ market-commercialization-strategist/
    ├─ project-prompt-polisher/
    ├─ project-structure-review/
-   └─ wechat-article-image-planner/
+   ├─ visual-story-image-director/
+   ├─ wechat-article-image-planner/
+   │
+   ├─ # Visual Lab
+   ├─ ai-image-quality-reviewer/
+   ├─ ai-poster-art-director/
+   ├─ brand-visual-system-designer/
+   ├─ consistent-character-designer/
+   ├─ creative-reference-analyzer/
+   ├─ image-prompt-engineer/
+   ├─ product-visual-designer/
+   │
+   └─ image-generation-collection/   # Reference Index
 ```
-
-大多数 Skill 遵循下面的结构：
-
-```text
-skill-name/
-├─ SKILL.md
-├─ VERSION
-├─ agents/
-│  └─ openai.yaml
-├─ references/     # 可选：按需加载的知识 / 模板 / 规则
-├─ scripts/        # 可选：确定性检查或辅助脚本
-└─ assets/         # 可选：最终输出需要使用的静态资源
-```
-
-### 文件职责
-
-| 文件 / 目录 | 作用 |
-|---|---|
-| `SKILL.md` | Skill 入口，定义触发条件、核心流程、约束和资源导航 |
-| `VERSION` | 当前 Skill 的语义版本 |
-| `agents/openai.yaml` | Agent / UI 元数据 |
-| `references/` | 详细规则、模板、检查表、领域知识，按需加载 |
-| `scripts/` | 稳定、可重复、适合程序执行的检查或辅助操作 |
-| `assets/` | 模板、图片等最终输出资源，不作为主要推理上下文 |
 
 ---
 
 ## 🧠 维护原则
 
-### 1. 一个 Skill 解决一类明确问题
-
-如果两个 Skill 经常对同一请求同时“觉得自己该上”，优先重新划分触发边界，而不是继续往 description 里堆关键词。
-
-### 2. `SKILL.md` 是控制面，不是知识仓库
-
-核心流程放在 `SKILL.md`；大量规则、模板和背景知识放进 `references/`；确定性操作尽量交给 `scripts/`。
-
-### 3. 不猜时效性事实
-
-Release、下载地址、市场价格、竞品状态、法规、产品能力等会变化的信息，需要当前证据时就先验证。
-
-### 4. 不为了“完整”而复制第三方 Skill
-
-这个仓库只维护自己愿意长期负责的 Skill，不作为官方 Skill 或第三方插件缓存的镜像。
-
-### 5. 修改后必须留下验证路径
-
-一个 Skill 的改动应该能够通过 trigger tests、self-check 或 repository audit 中至少一种方式被重新检查。
+1. **一个 Skill 解决一类明确问题。** 触发边界比 Skill 数量更重要。
+2. **`SKILL.md` 是控制面，不是知识仓库。** 大规则放 `references/`，确定性操作放 `scripts/`。
+3. **时效性事实先验证。** Release、下载地址、市场价格、竞品状态、法规、产品能力都不能靠旧记忆猜。
+4. **第三方只借鉴方法，不复制实现。** 需要保留原项目时用 Reference Index + 原始来源链接。
+5. **先验证再工程化。** Visual Lab 通过真实任务验证后，再决定合并、删除或升级成 Productionized Skill。
+6. **修改后留下复查路径。** Trigger tests、self-check、案例或 repository audit 至少有一种可重复验证方式。
 
 ---
 
 ## 🚧 维护边界
 
-这个仓库**不负责长期维护**：
+本仓库不负责长期维护：
 
 - Codex 官方系统 Skills，例如 `.codex/skills/.system`
 - 插件缓存，例如 `.codex/plugins/cache`
 - 没有明确维护理由的第三方 Skill 副本
-
-第三方 Skill 更适合保留原始来源链接，而不是复制进本仓库后形成无法追踪的分叉版本。
-
----
-
-## 📦 当前版本
-
-**v2.0.0** 是当前统一 Skill 基线，重点完成了：
-
-- Coding execution / engineering review / prompt polishing 职责拆分
-- 中文内容审计兼容
-- Trigger 边界测试整理
-- 市场分析实时证据门
-- Scoop upstream freshness gate
-- 文档 Skill 的脚本路径可移植性
-- 公众号配图 Skill 的图片工具解耦
-- 每 Skill 独立 `VERSION`
-- Repository-level `CHANGELOG.md`
-- references / scripts 资源卫生检查
-
-完整变更请看 [`skills/CHANGELOG.md`](skills/CHANGELOG.md)。
+- 只为了增加数量而拆出来、但没有独立职责的 Skill
 
 ---
 
@@ -406,6 +358,6 @@ Release、下载地址、市场价格、竞品状态、法规、产品能力等�
 
 **Make repeated good decisions reusable.**
 
-<sub>Built for real project work, not prompt collecting.</sub>
+<sub>Build our own workflows. Keep references traceable. Verify what matters.</sub>
 
 </div>
