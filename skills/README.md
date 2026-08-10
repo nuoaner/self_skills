@@ -28,6 +28,6 @@ This directory contains personal Codex skills.
 
 ### Example Preview
 
-![Window-side Summer Afternoon preview](visual-story-image-director/assets/window-side-summer-afternoon-preview.svg)
+![Window-side Summer Afternoon preview](visual-story-image-director/assets/window-side-summer-afternoon.jpg)
 
 See the full case: [`window-side-summer-afternoon.md`](visual-story-image-director/examples/window-side-summer-afternoon.md)
