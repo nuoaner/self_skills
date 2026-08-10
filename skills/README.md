@@ -21,3 +21,7 @@ This directory contains personal Codex skills.
 ## Content
 
 - `wechat-article-image-planner`: plan cover art, inline illustrations, summary posters, visual prompts, placement, and optional imagegen2 generation for finalized WeChat Official Account articles.
+
+## Visual AI
+
+- `visual-story-image-director`: transform ordinary images into story-driven visual assets through AI art direction, scene understanding, composition planning, and purpose-driven generation.
