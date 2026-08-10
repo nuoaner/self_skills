@@ -1,5 +1,9 @@
 # Case: Window-side Summer Afternoon
 
+> This is an original illustrative repository example. It is not a source photograph and is not copied from an external Skill.
+
+![Window-side Summer Afternoon preview](../assets/window-side-summer-afternoon-preview.svg)
+
 ## Input Scene
 
 A single-person indoor portrait beside a window. Soft natural light falls across the subject. A wooden table and a small bowl of green grapes are visible. The overall feeling is quiet, fresh, and summery.
