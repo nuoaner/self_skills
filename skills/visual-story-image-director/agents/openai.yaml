@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual Story Image Director"
+  short_description: "Turn source scenes into story-driven visual art direction"
+  default_prompt: "Use $visual-story-image-director to analyze the source scene, preserve its identity anchors, choose one purposeful visual direction, and produce a generation or edit brief with QA criteria."
