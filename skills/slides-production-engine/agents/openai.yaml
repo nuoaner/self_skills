@@ -1,0 +1,3 @@
+interface:
+  display_name: "Slides Production Engine"
+  short_description: "PPTX template inventory, package QA, font preflight, and delivery gates"

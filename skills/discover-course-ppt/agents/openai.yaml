@@ -1,0 +1,14 @@
+interface:
+  display_name: 求之科技课程 PPT
+  short_description: 按求之科技品牌资产和教学规则生成可直接授课的技术课程 PPT
+  default_prompt: 使用 $discover-course-ppt 把我的课程材料制作成求之科技品牌课程 PPT。正式版式优先套用教师模板固定网格和成熟页型；先完整覆盖知识再决定页数；概念讲清职责、输入、输出和机制；抽象知识优先配图；流程与闭环逐节点解释并保证箭头语义准确；页面饱满但不堆字；草稿缺图可保留设计型占位，正式交付优先消除占位；所有数据和外部素材可追溯，并生成简洁教学备注。
+  brand_color: '#089CA3'
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
