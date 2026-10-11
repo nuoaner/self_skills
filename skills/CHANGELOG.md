@@ -44,3 +44,12 @@ This changelog tracks changes in this repository. Version files are a repository
 - Four deterministic documentation-profile regression tests cover lean/full behavior, unrelated table text, invalid status, and secret screening.
 
 - Added `scripts/package_selected.py`: create one Core-only Skill ZIP for explicit upload, without installation, overwriting, following symlinks, or bundling Lab/Reference entries; added four packaging regression tests.
+
+### Visitor onboarding and phase-two evidence pilot (stacked PR)
+
+- Redesigned Chinese and English landing READMEs as task-first navigation pages with 5 actionable Core recommendations, copy-ready invocations, honest quality proof, and a discoverable Lab directory.
+- Added `skills/CHOOSING.md` with user goals, inputs, outputs, limits, and maturity explanations for all 18 entries. Disclosed that no repository-wide license is currently declared.
+- Added regression checks for README links, Core discovery, catalog inventory, and distinction between static CI checks versus real A/B/C outcomes.
+- Replaced two vague task eval prompts with self-contained Chinese problems and added a small synthetic Python documentation fixture.
+- Added opt-in `scripts/pilot_codex_eval.py` for read-only A/B/C Codex runs (plan by default, explicit billing authorization for runs); traces are private and require human quality adjudication.
+- Added `evals/PILOT.md` and a review template; **no real paid model runs or skill-effectiveness claims are included**.
