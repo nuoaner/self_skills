@@ -135,8 +135,9 @@ def main() -> int:
     if not root.exists() or not root.is_dir():
         print(f"Project root not found: {root}", file=sys.stderr)
         return 2
-    print(json.dumps(audit(root), ensure_ascii=False, indent=2))
-    return 0
+    result = audit(root)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0 if result["ok"] else 1
 
 
 if __name__ == "__main__":
