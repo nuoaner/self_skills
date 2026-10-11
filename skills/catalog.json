@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "policy": "Repository tiers represent maintainer priority, not externally certified agent improvement.",
+  "entries": [
+    {
+      "name": "app-to-scoop",
+      "tier": "core",
+      "action": "retain",
+      "rationale": "Scoop packaging has version, hash, asset-selection, and manifest rules that need dependable tools.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "internal-project-doc-standardizer",
+      "tier": "core",
+      "action": "strengthen",
+      "rationale": "Custom documentation schemas and project status conventions are reusable, but the fixed file set needs flexibility.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "project-prompt-polisher",
+      "tier": "core",
+      "action": "strengthen",
+      "rationale": "Frequent rough-requirement-to-agent handoff work with an identifiable non-regression contract.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "visual-story-image-director",
+      "tier": "core",
+      "action": "retain",
+      "rationale": "Distinct source-scene preservation rules and editorial storytelling criteria.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "wechat-article-image-planner",
+      "tier": "core",
+      "action": "strengthen",
+      "rationale": "Article-specific image selection and placement guidance with end-to-end deliverables.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "ai-coding-discipline",
+      "tier": "lab",
+      "action": "merge_candidate",
+      "rationale": "Most rules are generic coding practices better scoped in project AGENTS.md.",
+      "agent_evidence": "not_measured",
+      "successor": "project AGENTS.md / reusable guidance"
+    },
+    {
+      "name": "ai-coding-paradigm",
+      "tier": "lab",
+      "action": "strengthen",
+      "rationale": "Engineering maturity analysis might add depth but needs no-skill comparisons.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "client-technical-reporting",
+      "tier": "lab",
+      "action": "merge_candidate",
+      "rationale": "Fixed client-report structure can become an opt-in template instead of an always-on skill.",
+      "agent_evidence": "not_measured",
+      "successor": "client report template"
+    },
+    {
+      "name": "market-commercialization-strategist",
+      "tier": "lab",
+      "action": "strengthen",
+      "rationale": "Useful evidence discipline, yet scope is wide and independent uplift untested.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "project-structure-review",
+      "tier": "lab",
+      "action": "merge_candidate",
+      "rationale": "Overlaps architecture and delivery review; maintain compatible invocation during transition.",
+      "agent_evidence": "not_measured",
+      "successor": "ai-coding-paradigm"
+    },
+    {
+      "name": "ai-image-quality-reviewer",
+      "tier": "lab",
+      "action": "merge_candidate",
+      "rationale": "Visual QA dimensions fit as a reusable reference in an existing visual workflow.",
+      "agent_evidence": "not_measured",
+      "successor": "visual QA reference"
+    },
+    {
+      "name": "ai-poster-art-director",
+      "tier": "lab",
+      "action": "strengthen",
+      "rationale": "Poster hierarchy may justify a specialty after portfolio and task evaluation.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "brand-visual-system-designer",
+      "tier": "lab",
+      "action": "strengthen",
+      "rationale": "System-wide brand consistency differs from one-off image prompting, but the current sketch is thin.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "consistent-character-designer",
+      "tier": "lab",
+      "action": "strengthen",
+      "rationale": "Character identity across scenes is specialized; needs reliable repeatable test assets.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "creative-reference-analyzer",
+      "tier": "lab",
+      "action": "merge_candidate",
+      "rationale": "A reference analysis step already occurs in the visual-story workflow.",
+      "agent_evidence": "not_measured",
+      "successor": "visual-story-image-director"
+    },
+    {
+      "name": "image-prompt-engineer",
+      "tier": "lab",
+      "action": "retire_candidate",
+      "rationale": "Mostly generic prompt structuring with no demonstrated independent value.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "product-visual-designer",
+      "tier": "lab",
+      "action": "strengthen",
+      "rationale": "Product evidence and visual conversion merit specialized user-task tests.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "image-generation-collection",
+      "tier": "reference",
+      "action": "index_only",
+      "rationale": "A curated external repository index, not a runnable skill.",
+      "agent_evidence": "not_measured"
+    }
+  ]
+}

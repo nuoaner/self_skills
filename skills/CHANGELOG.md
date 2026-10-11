@@ -1,6 +1,6 @@
 # Skills Changelog
 
-This changelog tracks repository-wide skill versions and behavior changes. Each skill keeps its current semantic version in a root-level `VERSION` file.
+This changelog tracks changes in this repository. Version files are a repository convention for previously formalized packages; experimental drafts and reference indexes do not require them.
 
 ## 2.0.0 - 2026-08-08
 
@@ -27,3 +27,12 @@ This changelog tracks repository-wide skill versions and behavior changes. Each 
 - Replaced seven outdated specialized validators with lightweight resource/metadata integrity checks.
 - Added repeatable regression tests, CI syntax checks, per-entry audit decisions and an A/B/C agent evaluation protocol.
 - **No behavior improvement is claimed until runtime comparisons are measured.**
+
+### Core/Lab/Reference portfolio upgrade
+
+- Adopted an explicit Core (5 provisional candidates) / Lab (12 opt-in entries) / Reference (1 non-installable index) taxonomy driven by `skills/catalog.json`.
+- Generated `skills/CATALOG.md`; README files now point to the catalog instead of duplicating mutable skill counts.
+- Added 25 labeled positive/negative/task cases for core skills and a score reporter that requires actual run evidence; no fabricated Agent benchmark results.
+- Added catalog and evaluation validators with unit tests, and a read-only PowerShell smoke test in CI.
+- Clarified ChatGPT-specific metadata for two core skills and tightened key trigger descriptions; aligned Scoop guidance with safe-by-default validation.
+- Recorded candidate consolidations without removing any public skill names or files.

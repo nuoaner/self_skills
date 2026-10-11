@@ -1,11 +1,11 @@
 ---
 name: app-to-scoop
-description: Use when Codex needs to create, review, debug, or maintain Scoop manifests from GitHub repositories, GitHub releases, official app websites, download pages, direct download links, CDN links, mirror sites, existing Scoop manifests, or Scoop error messages, including generating bucket/app.json files, selecting Windows release assets, configuring architecture-specific URLs and hashes, adding checkver or autoupdate, defining bin, shortcuts, persist, and installer behavior, or troubleshooting Scoop install and update failures.
+description: Create, validate, or repair Windows Scoop manifests using verified GitHub Releases, official downloads, existing manifests, or packaging errors. Handle assets, hashes, checkver, and launcher/persist fields. Do not use for general Scoop explanations or to install Scoop.
 ---
 
 # App To Scoop
 
-Turn app distribution sources into complete Scoop manifests and supporting local test steps.
+Turn app distribution sources into complete Scoop manifests with read-only validation by default. Installation tests are optional, require explicit authorization, and should run in disposable environments.
 
 ## Core Behavior
 
@@ -31,7 +31,7 @@ Always:
 - Use `persist` for user configuration and data.
 - Preserve working fields when editing an existing manifest.
 - Always output a complete manifest when creating or repairing a package.
-- Always provide local test commands.
+- Always provide read-only local validation first; describe installation as an optional, explicitly authorized test.
 
 ## Verification Rule
 
@@ -138,11 +138,19 @@ Use this structure in responses:
 
 ## Test Commands
 
+Use the bundled static validator first:
+
 ```powershell
-scoop install .\bucket\app.json
-scoop checkver app
-scoop uninstall app
+.\scripts\test-manifest.ps1 -ManifestPath .\bucket\app.json
 ```
+
+Only in an isolated test environment and with explicit authorization:
+
+```powershell
+.\scripts\test-manifest.ps1 -ManifestPath .\bucket\app.json -AllowInstall
+```
+
+The helper never uninstalls automatically. Perform cleanup manually after reviewing what was installed.
 
 ## Add To Your Bucket
 
@@ -157,6 +165,6 @@ Use the bundled scripts for deterministic local checks instead of recreating the
 
 - `scripts/hash-url.ps1`: compute or verify a download hash through the local Scoop environment.
 - `scripts/inspect-release-archive.ps1`: inspect archive layout before deciding executable paths, extraction fields, shortcuts, or persistence paths.
-- `scripts/test-manifest.ps1`: run a conservative local install/check/uninstall verification cycle for the manifest.
+- `scripts/test-manifest.ps1`: run static validation by default; optional explicit installation without automatic uninstall.
 
 If a field cannot be verified from the source alone, say so directly and leave a clear local verification step instead of guessing.

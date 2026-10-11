@@ -1,37 +1,10 @@
 # Skills Index
 
-This directory contains personal Codex skills.
+Use [CATALOG.md](CATALOG.md) to see every Core, Lab and Reference entry, its provisional disposition and evidence status.
 
-## Engineering
+- Edit [catalog.json](catalog.json) as the single classification source, then run `python scripts/catalog.py sync` from the repository root.
+- Install only a selected core folder; Lab may contain incomplete prototypes or compatibility-only entries.
+- A Core entry is priority-maintained, not experimentally proven to outperform the base Agent.
+- Merges and retirement need evidence and a compatibility path; no Skill name is removed automatically.
 
-- `ai-coding-discipline`: execution-gate skill for disciplined implementation, reuse, boundaries, incremental verification, and maintainability.
-- `ai-coding-paradigm`: engineering analysis and AI-assisted development prompting.
-- `market-commercialization-strategist`: market-manager lens for user attraction, retention, product-market fit, monetization, landing pages, README positioning, and commercial maturity.
-
-## Documentation
-
-- `client-technical-reporting`: Chinese client-facing technical delivery reports for migration, API replacement, changed locations, troubleshooting, joint debugging confirmations, and summaries.
-- `internal-project-doc-standardizer`: internal README/docs/agent.md standardization.
-- `project-structure-review`: repository structure and submission readiness review.
-
-## Prompting
-
-- `project-prompt-polisher`: rewrite rough Chinese task requests into executable prompts across product, UI/frontend, backend/API, docs, tests, refactors, automation, and handoff work.
-
-## Content
-
-- `wechat-article-image-planner`: plan cover art, inline illustrations, summary posters, visual prompts, placement, and optional image generation for finalized WeChat Official Account articles.
-
-## Visual AI
-
-- `visual-story-image-director`: transform ordinary images into story-driven visual assets through AI art direction, scene understanding, composition planning, and purpose-driven generation.
-
-### Example Preview
-
-![Window-side Summer Afternoon preview](visual-story-image-director/assets/window-side-summer-afternoon.jpg)
-
-See the full case: [`window-side-summer-afternoon.md`](visual-story-image-director/examples/window-side-summer-afternoon.md)
-
-## Maturity and regression testing
-
-The repository contains 10 productionized packages, 7 Visual Lab experiments and one non-installable reference index; only production packages have full metadata/version requirements. Visual Lab entries require demonstrated agent behavior before promotion. See `../docs/modernization-audit-2026-10-11.md` and `../docs/agent-evaluation-protocol.md`. Run `python -m unittest discover -s tests -v` at repository root. This test does not measure model behavior.
+Review [governance](../docs/portfolio-policy.md), [evaluation cases](../evals/README.md), and [audit baseline](../docs/modernization-audit-2026-10-11.md) before publishing.

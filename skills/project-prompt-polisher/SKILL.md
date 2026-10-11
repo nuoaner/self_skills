@@ -1,6 +1,6 @@
 ---
 name: project-prompt-polisher
-description: Use when the user asks to polish, optimize, rewrite, clarify, strengthen, structure, or refine a rough Chinese task request or AI coding prompt into an implementation-ready prompt for product, UI/frontend, backend/API, database, documentation, testing, debugging, refactoring, automation, repository cleanup, or agent handoff work.
+description: Use when the user wants a rough Chinese product, coding, or project request rewritten into a copy-ready task prompt for another Agent. Clarify scope, constraints, acceptance criteria, and unknowns. Do not use when the user asks to implement changes directly.
 ---
 
 # Project Prompt Polisher

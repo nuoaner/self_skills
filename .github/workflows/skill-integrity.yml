@@ -1,27 +1,45 @@
-name: Skill integrity
+name: Skill portfolio integrity
 on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  regression:
+  linux-structural:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run read-only regression tests
+      - name: Verify catalog and generated index
+        run: |
+          python scripts/catalog.py check
+          python scripts/catalog.py check-docs
+      - name: Verify skill packages and evaluation cases
+        run: |
+          python scripts/audit_skills.py
+          python scripts/eval_cases.py validate
+      - name: Run deterministic regression tests
         run: python -m unittest discover -s tests -v
-      - name: Compile Python scripts
-        run: python - <<'PY'
+      - name: Verify all Python files parse
+        run: |
+          python - <<'PY'
           from pathlib import Path
           import ast
-          for path in Path('scripts').rglob('*.py'):
-              ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
-          for path in Path('skills').rglob('*.py'):
-              ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
-          print('Python syntax checked')
+          for directory in ("scripts", "skills", "tests"):
+              for path in Path(directory).rglob("*.py"):
+                  ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+          print("All Python syntax valid")
           PY
+  windows-safe-scoop:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Scoop helper read-only default
+        shell: pwsh
+        run: |
+          '{"version":"1.0.0","url":"https://example.invalid/portable.zip","hash":"0000000000000000000000000000000000000000000000000000000000000000"}' | Set-Content -LiteralPath safe-manifest.json -Encoding utf8
+          ./skills/app-to-scoop/scripts/test-manifest.ps1 -ManifestPath ./safe-manifest.json

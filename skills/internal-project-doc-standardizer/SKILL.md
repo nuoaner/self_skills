@@ -1,6 +1,6 @@
 ---
 name: internal-project-doc-standardizer
-description: Use when standardizing an internal project README, creating or auditing project documentation, splitting README details into docs, updating agent.md, checking documentation compliance, syncing README and docs, or handling Chinese-language requests about README standardization, project documentation standards, standard document initialization, documentation compliance checks, or README/docs synchronization.
+description: Use when organizing, auditing, creating, or synchronizing a project's README and internal docs under a consistent documentation convention. Keep facts traceable; do not trigger on code implementation or client marketing reports.
 ---
 
 # Internal Project Doc Standardizer
