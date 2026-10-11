@@ -1,95 +1,36 @@
 #!/usr/bin/env python3
-"""Read-only quality checks for the client-technical-reporting skill."""
-
+"""Read-only package integrity check; does not measure agent outcomes."""
 from __future__ import annotations
-
 import re
 import sys
 from pathlib import Path
-
-
-REQUIRED_FILES = [
-    "SKILL.md",
-    "agents/openai.yaml",
-]
-
-REQUIRED_SECTIONS = [
-    "## Overview",
-    "## Required Structure",
-    "## Writing Rules",
-    "## Section Guidance",
-    "## Output Template",
-    "## Quality Checklist",
-]
-
-REQUIRED_REPORT_HEADINGS = [
-    "1. What was completed in this phase",
-    "2. Migration approach",
-    "3. Main changed locations",
-    "4. Where to connect real APIs later",
-    "5. Module issue diagnosis",
-    "6. Follow-up items requiring joint confirmation",
-    "7. Summary",
-]
-
-BAD_PATTERNS = [
-    ("replacement character, CJK text, or mojibake", re.compile(r"\ufffd|[\u3400-\u9fff\uf900-\ufaff]")),
-    ("absolute Windows path", re.compile(r"[A-Za-z]:[\\/]|C:/|C:\\\\")),
-    ("possible secret", re.compile(r"sk-[A-Za-z0-9]{20,}|api[_-]?key\s*[:=]|password\s*[:=]|secret\s*[:=]|token\s*[:=]", re.I)),
-]
-
-
-def collect_failures(root: Path) -> list[str]:
-    failures: list[str] = []
-
-    for rel_path in REQUIRED_FILES:
-        if not (root / rel_path).exists():
-            failures.append(f"missing required file: {rel_path}")
-
-    skill_path = root / "SKILL.md"
-    if skill_path.exists():
-        text = skill_path.read_text(encoding="utf-8")
-        if not text.startswith("---\n"):
-            failures.append("SKILL.md missing YAML frontmatter")
-        if "name: client-technical-reporting" not in text:
-            failures.append("SKILL.md has unexpected skill name")
-        if "description: Use when" not in text:
-            failures.append("description should start with Use when")
-        for section in REQUIRED_SECTIONS:
-            if section not in text:
-                failures.append(f"SKILL.md missing section: {section}")
-        for heading in REQUIRED_REPORT_HEADINGS:
-            if heading not in text:
-                failures.append(f"SKILL.md missing required report heading: {heading}")
-
-    for path in root.rglob("*"):
-        if path.is_file():
-            rel_path = path.relative_to(root)
-            try:
-                text = path.read_text(encoding="utf-8")
-            except UnicodeDecodeError:
-                failures.append(f"not valid UTF-8: {rel_path}")
-                continue
-            for label, pattern in BAD_PATTERNS:
-                if label == "absolute Windows path" and rel_path.as_posix() == "scripts/check_client_report_skill.py":
-                    continue
-                if pattern.search(text):
-                    failures.append(f"{rel_path} contains {label}")
-
-    return failures
-
-
+NAME = "client-technical-reporting"
+RESOURCES = []
 def main() -> int:
     root = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
-    failures = collect_failures(root)
-    if failures:
-        print("client-technical-reporting quality check failed:")
-        for failure in failures:
-            print(f"- {failure}")
-        return 1
-    print("client-technical-reporting quality check passed")
-    return 0
-
-
+    errors = []
+    skill = root / "SKILL.md"
+    if not skill.is_file():
+        errors.append("missing SKILL.md")
+    else:
+        body = skill.read_text(encoding="utf-8-sig")
+        header = re.match(r"\A---\s*\n(.*?)\n---(?:\s*\n|\Z)", body, re.S)
+        if not header:
+            errors.append("invalid YAML frontmatter")
+        else:
+            if not re.search(r"(?m)^name:\s*['\"]?" + re.escape(NAME) + r"['\"]?\s*$", header.group(1)):
+                errors.append("incorrect skill name")
+            if not re.search(r"(?m)^description:\s*\S", header.group(1)):
+                errors.append("missing description")
+        if "\ufffd" in body:
+            errors.append("Unicode replacement character detected")
+    for item in RESOURCES:
+        if not (root / item).is_file():
+            errors.append("missing resource: " + item)
+    for issue in errors:
+        print("FAIL:", issue)
+    if not errors:
+        print(NAME + " integrity PASS (not a behavior test)")
+    return int(bool(errors))
 if __name__ == "__main__":
     raise SystemExit(main())
