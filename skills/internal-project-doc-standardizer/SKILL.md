@@ -7,7 +7,7 @@ description: Use when organizing, auditing, creating, or synchronizing a project
 
 ## Overview
 
-Use this skill to make an internal project documentation set consistent, reviewable, and maintainable. `README.md` is the entry document, `docs/` contains detailed documents, and `agent.md` records AI/Agent collaboration history.
+Use this skill to make an internal project documentation set consistent, reviewable, and maintainable. `README.md` is the project entry. Add `docs/` and an `agent.md` collaboration log only when the project policy or actual complexity warrants them.
 
 Keep work scoped to documentation unless the user explicitly asks for code changes. Preserve project facts; do not invent owners, dates, APIs, deployment paths, or test results.
 
@@ -18,32 +18,30 @@ Choose one mode before editing:
 | Mode | Use When | Expected Output |
 |---|---|---|
 | `audit` | The user asks whether docs are complete or compliant | Findings, risk level, missing files/sections, next actions |
-| `generate` | The project lacks standard docs | Create README, agent.md, and docs templates from references |
+| `generate` | The project lacks standard docs | Create only relevant entry docs; use the full set for larger projects |
 | `split` | README is too large or mixes API/database/test details | Move details into docs while keeping README as entry |
 | `sync` | Features, APIs, database, deploy, or tests changed | Update README, relevant docs, changelog, and agent.md |
 | `repair` | Existing docs have stale, unsafe, or inconsistent content | Fix structure, links, placeholders, status enums, and secret examples |
 
 ## Required Workflow
 
-1. Read the target project's `README.md` first if it exists.
-2. Read `agent.md` if it exists.
-3. Read only the relevant `docs/` files for the selected mode.
-4. For audit or repair, run the bundled audit script from this skill's directory:
+Choose a documentation profile based on project size and the user's stated standard:
+
+- **Lean** (default for small, ordinary repositories): maintain a truthful README, essential usage instructions, and only needed supporting docs.
+- **Full** (when the user explicitly requests the internal standard or a regulated/complex handoff): apply the complete documentation template and status vocabulary.
+
+Read the README and only the docs relevant to the change. For auditing or repairing, run the bundled script from the installed Skill directory:
 
 ```bash
-python <skill-directory>/scripts/audit_docs.py <project-root>
+python <skill-directory>/scripts/audit_docs.py <project-root> --profile lean
+python <skill-directory>/scripts/audit_docs.py <project-root> --profile full
 ```
 
-Do not assume the user's project directory contains this script. Resolve the script path from the installed skill location.
-
-5. State the documentation goal and files to change before editing.
-6. Edit only the required docs.
-7. Update `agent.md` after Agent-assisted documentation work.
-8. Report verification evidence, remaining gaps, and next action.
+The script defaults to `full` for backward compatibility; select `lean` explicitly for small repositories. Both profiles remain read-only. Edit relevant documentation only, then report concrete verification and unknown facts. Record Agent collaboration in `agent.md` only when required by project policy or when that file already exists.
 
 ## Standard File Set
 
-Use these references as templates or source rules:
+These files are **available templates**, not mandatory output for every repository. Load and create only what the selected profile and real project require:
 
 | File | Purpose |
 |---|---|
@@ -60,24 +58,11 @@ Use these references as templates or source rules:
 
 ## README Entry Rules
 
-README must stay short enough to act as a project entrance. It should include:
-
-- Project name and one-sentence summary
-- Project basic information and owner fields
-- Current project status
-- Project overview, goals, and boundaries
-- Quick start and local run commands
-- Project structure
-- Current feature progress
-- Documentation index
-- Known issues and next plan
-- AI / Agent usage prompt
-
-Move detailed requirements, API, database, deployment, testing, and changelog content into `docs/`.
+For small projects, a useful README explains what the software does, how to install/run it, the important limits, and where existing documentation lives. Do not create empty sections or invented owner/status fields to satisfy a template. For full-standard handoffs, include additional ownership, architecture, progress, documentation index, and issue information when grounded in real evidence. Move long API/database/deployment details into relevant docs instead of bloating the README.
 
 ## Required Status Enums
 
-Use only these status values:
+For projects using the full internal standard, prefer these status values. For an existing or lean project, preserve its documented conventions unless normalization is explicitly requested:
 
 | Field | Values |
 |---|---|
@@ -90,7 +75,7 @@ Use only these status values:
 
 ## Delivery Template
 
-Use this response structure after documentation work:
+Use this more detailed report format for substantial audits. For a simple edit, report only changed files, verification and remaining gaps:
 
 ```text
 Documentation work:
@@ -117,12 +102,12 @@ Documentation work:
 Before claiming the docs are ready:
 
 - Run the bundled audit script from the skill directory when auditing or repairing an existing project.
-- Confirm required files exist or clearly explain why a file is not applicable.
-- Confirm README has the required entry sections.
+- Confirm files required by the **chosen profile** exist; never fail a lean project merely for omitting unrelated templates.
+- Confirm the README explains the actual project and matches the selected profile.
 - Confirm links in the documentation index point to real files.
 - Confirm status labels use the required enums.
 - Confirm examples do not contain real secrets.
-- Confirm `agent.md` records the documentation change.
+- Update `agent.md` if required or already in use; do not force one into every repository.
 
 ## Common Mistakes
 
@@ -130,4 +115,4 @@ Before claiming the docs are ready:
 - Leaving detailed API/database/deploy/test content in README.
 - Using non-standard status labels such as `done`, `doing`, or `not-started`.
 - Keeping real connection strings or keys in examples.
-- Treating `agent.md` as optional after Agent-assisted documentation changes.
+- Creating an empty `agent.md` merely to satisfy a checklist when the project has no collaboration-log policy.

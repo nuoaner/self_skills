@@ -36,3 +36,9 @@ This changelog tracks changes in this repository. Version files are a repository
 - Added catalog and evaluation validators with unit tests, and a read-only PowerShell smoke test in CI.
 - Clarified ChatGPT-specific metadata for two core skills and tightened key trigger descriptions; aligned Scoop guidance with safe-by-default validation.
 - Recorded candidate consolidations without removing any public skill names or files.
+
+### Proportional core workflows
+
+- `internal-project-doc-standardizer` now supports read-only `--profile lean|full`, Chinese/English full-section aliases, and status checks limited to real status table columns. The CLI defaults to full for compatibility; the Skill chooses lean for small repositories.
+- `project-prompt-polisher` uses a compact prompt for narrow tasks and loads long reference patterns only when justified by ambiguity, reuse, or cross-module scope.
+- Four deterministic documentation-profile regression tests cover lean/full behavior, unrelated table text, invalid status, and secret screening.

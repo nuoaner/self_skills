@@ -1,5 +1,7 @@
 # Modernization audit baseline (2026-10-11)
 
+> This is a historical inspection of the former production/lab split, not the active publication inventory. See [current Core / Lab / Reference catalog](../skills/CATALOG.md) and [C governance](portfolio-policy.md) for current provisional decisions. The classifications have changed; older inventories remain as evidence, not current recommendations.
+
 Base commit: `071a082163d942e270b82e0e89ed2b8521fc21d7`.
 
 ## Inventory and status
