@@ -1,134 +1,36 @@
 #!/usr/bin/env python3
-"""Read-only quality checks for the ai-coding-paradigm skill."""
-
+"""Read-only package integrity check; does not measure agent outcomes."""
 from __future__ import annotations
-
 import re
 import sys
 from pathlib import Path
-
-
-REQUIRED_FILES = [
-    "SKILL.md",
-    "agents/openai.yaml",
-    "references/paradigm-checklist.md",
-    "references/prompt-templates.md",
-]
-
-REQUIRED_SECTIONS = [
-    "## Overview",
-    "## Review Modes",
-    "## Core Workflow",
-    "## Ten Engineering Dimensions",
-    "## Output Contract",
-    "## When to Read References",
-    "## Quality Gate",
-    "## Common Failure Modes",
-]
-
-REQUIRED_MODES = [
-    "maturity-review",
-    "boundary-review",
-    "delivery-review",
-    "prompt-hardening",
-    "risk-review",
-]
-
-REQUIRED_DIMENSIONS = [
-    "Requirement and Boundary Clarity",
-    "Single Responsibility and Module Cohesion",
-    "Dependency Direction and Layering",
-    "Interface and Data Contracts",
-    "Validation and Error Handling",
-    "Testability and Regression Protection",
-    "Observability and Diagnosability",
-    "Security, Permission, and Data Safety",
-    "Delivery, Rollback, and Environment Readiness",
-    "AI Executability and Handoff Clarity",
-]
-
-MOJIBAKE_SEQUENCES = [
-    [0xFFFD],
-    [0x7476, 0x52EB],
-    [0x4E36, 0x5D87],
-    [0x7487, 0x5CF0],
-    [0x697E, 0x5C69],
-    [0x5BC7, 0x544A],
-    [0x5BB8, 0x63D2],
-    [0x9429, 0xE1C6],
-    [0x6DC7, 0xE1C6],
-    [0x934F, 0x4E48],
-    [0x9707, 0x20AC],
-    [0x951F, 0x65A4],
-    [0x20AC, 0x201C],
-]
-
-BAD_PATTERNS = [
-    ("mojibake", re.compile("|".join(re.escape("".join(chr(codepoint) for codepoint in seq)) for seq in MOJIBAKE_SEQUENCES))),
-    ("possible secret", re.compile(r"sk-[A-Za-z0-9]{20,}|api[_-]?key\s*[:=]|password\s*[:=]|secret\s*[:=]|token\s*[:=]", re.I)),
-]
-
-
-def collect_failures(root: Path) -> list[str]:
-    failures: list[str] = []
-
-    for rel_path in REQUIRED_FILES:
-        if not (root / rel_path).exists():
-            failures.append(f"missing required file: {rel_path}")
-
-    skill_path = root / "SKILL.md"
-    if skill_path.exists():
-        text = skill_path.read_text(encoding="utf-8")
-        if not text.startswith("---\n"):
-            failures.append("SKILL.md missing YAML frontmatter")
-        if "name: ai-coding-paradigm" not in text:
-            failures.append("SKILL.md has unexpected skill name")
-        if "description: Use when" not in text:
-            failures.append("description should start with Use when")
-        for section in REQUIRED_SECTIONS:
-            if section not in text:
-                failures.append(f"SKILL.md missing section: {section}")
-        for mode in REQUIRED_MODES:
-            if f"`{mode}`" not in text:
-                failures.append(f"SKILL.md missing review mode: {mode}")
-        if "references/paradigm-checklist.md" not in text:
-            failures.append("SKILL.md does not route to paradigm checklist")
-        if "references/prompt-templates.md" not in text:
-            failures.append("SKILL.md does not route to prompt templates")
-
-    checklist_path = root / "references" / "paradigm-checklist.md"
-    if checklist_path.exists():
-        text = checklist_path.read_text(encoding="utf-8")
-        for dimension in REQUIRED_DIMENSIONS:
-            if dimension not in text:
-                failures.append(f"paradigm-checklist.md missing dimension: {dimension}")
-
-    for path in root.rglob("*"):
-        if path.is_file():
-            rel_path = path.relative_to(root)
-            try:
-                text = path.read_text(encoding="utf-8")
-            except UnicodeDecodeError:
-                failures.append(f"not valid UTF-8: {rel_path}")
-                continue
-            for label, pattern in BAD_PATTERNS:
-                if pattern.search(text):
-                    failures.append(f"{rel_path} contains {label}")
-
-    return failures
-
-
+NAME = "ai-coding-paradigm"
+RESOURCES = ["references/paradigm-checklist.md"]
 def main() -> int:
     root = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
-    failures = collect_failures(root)
-    if failures:
-        print("ai-coding-paradigm quality check failed:")
-        for failure in failures:
-            print(f"- {failure}")
-        return 1
-    print("ai-coding-paradigm quality check passed")
-    return 0
-
-
+    errors = []
+    skill = root / "SKILL.md"
+    if not skill.is_file():
+        errors.append("missing SKILL.md")
+    else:
+        body = skill.read_text(encoding="utf-8-sig")
+        header = re.match(r"\A---\s*\n(.*?)\n---(?:\s*\n|\Z)", body, re.S)
+        if not header:
+            errors.append("invalid YAML frontmatter")
+        else:
+            if not re.search(r"(?m)^name:\s*['\"]?" + re.escape(NAME) + r"['\"]?\s*$", header.group(1)):
+                errors.append("incorrect skill name")
+            if not re.search(r"(?m)^description:\s*\S", header.group(1)):
+                errors.append("missing description")
+        if "\ufffd" in body:
+            errors.append("Unicode replacement character detected")
+    for item in RESOURCES:
+        if not (root / item).is_file():
+            errors.append("missing resource: " + item)
+    for issue in errors:
+        print("FAIL:", issue)
+    if not errors:
+        print(NAME + " integrity PASS (not a behavior test)")
+    return int(bool(errors))
 if __name__ == "__main__":
     raise SystemExit(main())

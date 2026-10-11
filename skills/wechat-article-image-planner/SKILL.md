@@ -9,7 +9,7 @@ Plan visuals after the article draft is stable. This skill does not write the lo
 
 ## Core Rule
 
-Article first, images second. If the article is still rough, ask the user to finalize or explicitly approve visual planning from the current draft.
+Article first, images second. Use the provided draft as the working source when the user explicitly requests an image plan or image generation; ask only when missing content prevents a useful result.
 
 Use `references/visual-planning-playbook.md` when deciding image types, visual tone, prompt structure, or QA criteria.
 
@@ -33,7 +33,7 @@ Never ask the user to paste API keys into chat.
 2. Identify article type, audience, emotional arc, and core message.
 3. Extract 3-7 visual anchors: people, scenes, objects, metaphors, data, quotes, or turning points.
 4. Produce an image plan before generating anything.
-5. Ask for confirmation before generation unless the user explicitly requests direct generation.
+5. When the user directly requests generation, proceed without an extra confirmation. For planning-only requests, provide the plan without generating images.
 6. Generate images through the available capability when possible.
 7. Report saved image paths and where each image should be inserted when the environment provides them.
 
@@ -58,5 +58,5 @@ Always provide:
 
 - Do not plan generic "AI tech background" images when the article has concrete scenes.
 - Do not put too much readable Chinese text inside generated images; image models often distort text. Prefer short title overlays after generation if exact text matters.
-- Do not generate images before the user confirms the plan unless they explicitly requested direct generation.
+- Do not turn a planning-only request into unsolicited image generation.
 - Do not use one image prompt for all article sections. Each image must serve a distinct reading moment.

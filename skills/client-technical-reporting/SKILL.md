@@ -13,7 +13,7 @@ The report should answer: what changed, how it was migrated, where it changed, w
 
 ## Required Structure
 
-Always organize the report with these seven sections:
+Use these seven sections for migration or API handoff reports when each is relevant. For a short client update, include only sections supported by the actual work; never invent an API migration or troubleshooting section:
 
 ```text
 1. What was completed in this phase
@@ -176,7 +176,7 @@ The next focus is to confirm [API/fields/permissions/environment] with the clien
 
 Before finalizing, verify:
 
-- Each of the seven required sections exists.
+- Relevant sections answer the client's actual question; omitted sections are not fabricated.
 - Client-facing claims are backed by concrete modules, files, APIs, or observable results.
 - Temporary mock/adaptation points are clearly separated from completed real integration.
 - Follow-up items are written as confirmation points, not blame.

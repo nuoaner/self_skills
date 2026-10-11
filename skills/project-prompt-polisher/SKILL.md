@@ -1,6 +1,6 @@
 ---
 name: project-prompt-polisher
-description: Use when the user asks to polish, optimize, rewrite, clarify, strengthen, structure, or refine a rough Chinese task request or AI coding prompt into an implementation-ready prompt for product, UI/frontend, backend/API, database, documentation, testing, debugging, refactoring, automation, repository cleanup, or agent handoff work.
+description: Use when the user wants a rough Chinese product, coding, or project request rewritten into a copy-ready task prompt for another Agent. Clarify scope, constraints, acceptance criteria, and unknowns. Do not use when the user asks to implement changes directly.
 ---
 
 # Project Prompt Polisher
@@ -30,7 +30,7 @@ Default to a copy-ready Chinese or English prompt that matches the user's langua
 
 ## Output Contract
 
-Use this structure by default:
+For a narrow task, output a concise, copy-ready prompt stating the goal, non-regression boundary, and verification. For multi-module, high-risk, or reusable handoffs, the following fuller structure may help; omit irrelevant fields:
 
 ```text
 Please complete the following changes based on the current project. Keep the existing architecture, code style, business logic, and data flow unchanged unless the requirements below explicitly say otherwise.
@@ -61,13 +61,7 @@ Needs confirmation:
 
 ## When to Read References
 
-Read `references/prompt-patterns.md` when:
-
-- the request spans multiple domains
-- the user asks for a high-quality or reusable prompt
-- the prompt is for another agent, another thread, or a handoff
-- the request involves UI, API, database, docs, tests, refactor, automation, or deployment details
-- the first rewrite would otherwise be generic
+Read `references/prompt-patterns.md` when the request spans domains, the user wants a reusable handoff, or the first rewrite would otherwise be generic. For a short, clear requirement, do not load a long reference solely because it concerns a UI, API, or script.
 
 ## Quality Bar
 
@@ -78,7 +72,7 @@ Before returning, check:
 - Unchanged areas are protected.
 - Scope drift is blocked.
 - Verification is actionable.
-- Missing facts are visible as `Needs confirmation`, not silently invented.
+- Missing implementation-critical facts are marked as unknown rather than invented. Omit a confirmation section entirely when no clarification is needed.
 - The final output is copy-ready and does not include analysis unless requested.
 
 ## Common Failure Modes

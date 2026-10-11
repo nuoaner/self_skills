@@ -1,45 +1,12 @@
-param(
-    [Parameter(Mandatory = $true)]
-    [string]$ManifestPath,
-
-    [string]$AppName
-)
-
-$scoop = Get-Command scoop -ErrorAction SilentlyContinue
-if (-not $scoop) {
-    Write-Error "Scoop is not installed or not on PATH. Install Scoop first, then rerun: https://scoop.sh/"
-    exit 1
-}
-
-$resolvedManifest = Resolve-Path -LiteralPath $ManifestPath -ErrorAction Stop
-
-Write-Host "Installing manifest: $resolvedManifest"
-& $scoop.Source install $resolvedManifest
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "scoop install failed."
-    exit $LASTEXITCODE
-}
-
-if ($AppName) {
-    Write-Host "Running checkver for app: $AppName"
-    & $scoop.Source checkver $AppName
-    if ($LASTEXITCODE -ne 0) {
-        Write-Warning "scoop checkver failed. Verify checkver manually."
-    }
-}
-else {
-    Write-Host "Skipping scoop checkver because -AppName was not provided."
-    Write-Host "Run manually if needed: scoop checkver <app>"
-}
-
-Write-Host "Uninstalling manifest package"
-if ($AppName) {
-    & $scoop.Source uninstall $AppName
-}
-else {
-    Write-Host "Run manually if needed: scoop uninstall <app>"
-}
-
-if ($LASTEXITCODE -ne 0 -and $AppName) {
-    Write-Warning "scoop uninstall reported a non-zero exit code."
-}
+param([Parameter(Mandatory = $true)][string]$ManifestPath, [string]$AppName, [switch]$AllowInstall)
+$ErrorActionPreference = "Stop"
+$path = (Resolve-Path -LiteralPath $ManifestPath).Path
+$manifest = Get-Content -LiteralPath $path -Raw -Encoding UTF8 | ConvertFrom-Json -ErrorAction Stop
+if (-not $manifest.version -or (-not $manifest.url -and -not $manifest.architecture)) { throw "Missing version or download URL." }
+Write-Host "JSON and required fields OK. Static validation only; no download/hash verification."
+if (-not $AllowInstall) { Write-Host "Read-only: no install or uninstall performed."; exit 0 }
+$scoop = Get-Command scoop -ErrorAction Stop
+Write-Warning "Explicit installation requested. Use a disposable environment; this script never uninstalls."
+& $scoop.Source install $path
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+if ($AppName) { & $scoop.Source checkver $AppName; if ($LASTEXITCODE -ne 0) { Write-Warning "checkver failed" } }

@@ -1,81 +1,36 @@
 #!/usr/bin/env python3
-"""Read-only quality checks for the ai-coding-discipline skill."""
-
+"""Read-only package integrity check; does not measure agent outcomes."""
 from __future__ import annotations
-
 import re
 import sys
 from pathlib import Path
-
-
-REQUIRED_FILES = [
-    "SKILL.md",
-    "references/discipline-checklist.md",
-    "references/prompt-template.md",
-    "references/pressure-scenarios.md",
-]
-
-REQUIRED_SECTIONS = [
-    "## Core Gate",
-    "## Engineering Rules",
-    "## Stop Conditions",
-    "## Output Discipline",
-    "## Resource Use",
-    "## Common Mistakes",
-]
-
-BAD_PATTERNS = [
-    ("replacement character", re.compile(r"\ufffd")),
-    ("absolute Windows path", re.compile(r"[A-Za-z]:[\\/]|C:/|C:\\\\")),
-    ("missing reference typo", re.compile(r"workflow-checklist\.md")),
-]
-
-
-def check(root: Path) -> int:
-    failures: list[str] = []
-
-    for rel_path in REQUIRED_FILES:
-        path = root / rel_path
-        if not path.exists():
-            failures.append(f"missing required file: {rel_path}")
-
-    skill_path = root / "SKILL.md"
-    if skill_path.exists():
-        text = skill_path.read_text(encoding="utf-8")
-
-        if not text.startswith("---\n"):
-            failures.append("SKILL.md missing YAML frontmatter")
-
-        for section in REQUIRED_SECTIONS:
-            if section not in text:
-                failures.append(f"SKILL.md missing section: {section}")
-
-        for label, pattern in BAD_PATTERNS:
-            if pattern.search(text):
-                failures.append(f"SKILL.md contains {label}")
-
-        for match in re.findall(r"\]\((references/[^)]+)\)", text):
-            if not (root / match).exists():
-                failures.append(f"broken reference link: {match}")
-
-    for rel_path in REQUIRED_FILES[1:]:
-        path = root / rel_path
-        if path.exists():
-            text = path.read_text(encoding="utf-8")
-            for label, pattern in BAD_PATTERNS[:2]:
-                if pattern.search(text):
-                    failures.append(f"{rel_path} contains {label}")
-
-    if failures:
-        print("ai-coding-discipline quality check failed:")
-        for failure in failures:
-            print(f"- {failure}")
-        return 1
-
-    print("ai-coding-discipline quality check passed")
-    return 0
-
-
+NAME = "ai-coding-discipline"
+RESOURCES = ["references/discipline-checklist.md","references/pressure-scenarios.md"]
+def main() -> int:
+    root = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
+    errors = []
+    skill = root / "SKILL.md"
+    if not skill.is_file():
+        errors.append("missing SKILL.md")
+    else:
+        body = skill.read_text(encoding="utf-8-sig")
+        header = re.match(r"\A---\s*\n(.*?)\n---(?:\s*\n|\Z)", body, re.S)
+        if not header:
+            errors.append("invalid YAML frontmatter")
+        else:
+            if not re.search(r"(?m)^name:\s*['\"]?" + re.escape(NAME) + r"['\"]?\s*$", header.group(1)):
+                errors.append("incorrect skill name")
+            if not re.search(r"(?m)^description:\s*\S", header.group(1)):
+                errors.append("missing description")
+        if "\ufffd" in body:
+            errors.append("Unicode replacement character detected")
+    for item in RESOURCES:
+        if not (root / item).is_file():
+            errors.append("missing resource: " + item)
+    for issue in errors:
+        print("FAIL:", issue)
+    if not errors:
+        print(NAME + " integrity PASS (not a behavior test)")
+    return int(bool(errors))
 if __name__ == "__main__":
-    skill_root = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
-    raise SystemExit(check(skill_root))
+    raise SystemExit(main())

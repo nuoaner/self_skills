@@ -1,3 +1,4 @@
-display_name: Internal Project Doc Standardizer
-short_description: Standardize README, docs, and agent.md
-default_prompt: Use internal-project-doc-standardizer to audit or standardize this project README, docs directory, and agent.md against the internal project documentation standard.
+interface:
+  display_name: "Internal Project Doc Standardizer"
+  short_description: "Review and organize internal repository docs"
+  default_prompt: "Use $internal-project-doc-standardizer to audit and repair this project's README and linked docs without inventing project facts."
