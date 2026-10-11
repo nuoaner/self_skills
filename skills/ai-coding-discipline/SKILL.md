@@ -13,12 +13,7 @@ Use `project-prompt-polisher` when the user only wants a task description rewrit
 
 Before editing code:
 
-1. Understand the outcome, affected workflow, inputs, outputs, state changes, non-goals, and regression risks.
-2. Inspect existing structure, tests, helpers, services, schemas, configuration, errors, logging, validation, naming, and style.
-3. Prefer extending an existing path over creating a parallel mechanism.
-4. Shape the smallest useful change with clear files, responsibilities, contracts, failure behavior, and verification.
-5. Implement one closed loop first, then verify before expanding.
-6. Refactor only after verification passes.
+For a small, low-risk change, inspect the relevant code, make the narrowest useful edit, and run a relevant check directly. For multi-module or high-risk work, establish impacted contracts, dependencies, state transitions, failure modes, and a focused validation plan before editing. Reuse existing patterns when appropriate; do not force incremental micro-steps if one cohesive change is safer and easier to test.
 
 ## Engineering Rules
 
@@ -29,7 +24,7 @@ Before editing code:
 
 ## Stop Conditions
 
-Stop and realign before destructive commands, data deletion, migrations, credentials, secret handling, broad rewrites, or risky unverified shortcuts.
+Treat destructive operations, production data changes, migrations, credential access, and permission changes as high-risk. Inspect impact and backup or rollback options first. Obtain user authorization where a new destructive action is not already explicitly authorized; do not block routine, reversible edits with repeated confirmations.
 
 ## Output Discipline
 
@@ -37,7 +32,7 @@ Report:
 
 - task understanding and assumptions
 - inspected files or modules
-- design shape before substantial edits
+- material design decisions when relevant
 - verification evidence
 - remaining risks or blockers
 
