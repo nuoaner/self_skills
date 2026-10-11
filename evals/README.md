@@ -1,5 +1,7 @@
 # Reproducible agent-evaluation protocol
 
+**Phase 2:** [Read the opt-in two-skill A/B/C pilot](PILOT.md). The `plan` command performs no model call or billing; `run` requires explicit authorization and private trace review.
+
 **No real Agent model run is included in this repository.** Static unit tests and case validation cannot demonstrate skill value.
 
 ## Case registry

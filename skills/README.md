@@ -1,5 +1,7 @@
 # Skills Index
 
+**Choose by task, not by Skill name:** [中文完整选用指南 / practical skill finder](CHOOSING.md). It explains concrete benefits, expected deliverables and out-of-scope scenarios for all 18 entries.
+
 Use [CATALOG.md](CATALOG.md) to see every Core, Lab and Reference entry, its provisional disposition and evidence status.
 
 - Edit [catalog.json](catalog.json) as the single classification source, then run `python scripts/catalog.py sync` from the repository root.

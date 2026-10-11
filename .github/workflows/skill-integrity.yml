@@ -22,6 +22,10 @@ jobs:
         run: |
           python scripts/audit_skills.py
           python scripts/eval_cases.py validate
+      - name: Verify no-cost Codex pilot plan (does not call models)
+        run: |
+          python scripts/pilot_codex_eval.py plan --case project-prompt-polisher-05
+          python scripts/pilot_codex_eval.py plan --case internal-project-doc-standardizer-05
       - name: Run deterministic regression tests
         run: python -m unittest discover -s tests -v
       - name: Verify all Python files parse
