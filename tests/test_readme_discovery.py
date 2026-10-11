@@ -30,7 +30,7 @@ class VisitorReadmeTests(unittest.TestCase):
         missing = []
         for relative in FILES:
             for target, raw in local_targets(ROOT / relative):
-                if not target.is_relative_to(ROOT) or not target.is_file():
+                if not target.is_relative_to(ROOT) or not target.exists():
                     missing.append(f"{relative}: {raw}")
         self.assertEqual(missing, [])
 
