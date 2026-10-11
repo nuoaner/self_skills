@@ -25,6 +25,8 @@ SECRET_RE = re.compile(
 )
 PLACEHOLDER_RE = re.compile(r"\bTODO\b|FIXME", re.I)
 TEXT_SUFFIXES = {".md", ".py", ".yaml", ".yml", ".ps1", ".json", ".txt"}
+LAB_SKILLS = {"ai-image-quality-reviewer", "ai-poster-art-director", "brand-visual-system-designer", "consistent-character-designer", "creative-reference-analyzer", "image-prompt-engineer", "product-visual-designer"}
+REFERENCE_INDEX = {"image-generation-collection"}
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], list[str]]:
@@ -221,9 +223,17 @@ def main() -> int:
         errors.append("skills/TRIGGER_TESTS.md is missing")
 
     skill_dirs = sorted(path for path in SKILLS_DIR.iterdir() if path.is_dir())
-    print(f"Skills discovered: {len(skill_dirs)}")
+    production = [p for p in skill_dirs if p.name not in LAB_SKILLS | REFERENCE_INDEX]
+    lab = [p for p in skill_dirs if p.name in LAB_SKILLS]
+    index = [p for p in skill_dirs if p.name in REFERENCE_INDEX]
+    print(f"Skill entries: {len(skill_dirs)}; production={len(production)}, lab={len(lab)}, index={len(index)}")
+    for skill_dir in lab + index:
+        if not (skill_dir / "SKILL.md").exists():
+            errors.append(f"{skill_dir.name}: missing index/experimental entry document")
+        else:
+            errors.extend(check_text_file(skill_dir / "SKILL.md", ROOT))
 
-    for skill_dir in skill_dirs:
+    for skill_dir in production:
         version, skill_errors, skill_warnings = audit_skill(skill_dir, trigger_text, root_readme_text)
         if version is not None:
             versions[skill_dir.name] = version
@@ -244,7 +254,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("Skill audit passed")
+    print("Production package static audit passed (agent behavior not measured)")
     return 0
 
 

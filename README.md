@@ -361,3 +361,6 @@ self_skills/
 <sub>Build our own workflows. Keep references traceable. Verify what matters.</sub>
 
 </div>
+## 2026-10-11 现代化审计（进行中）
+
+已按实际目录确认：10 个正式 Skill、7 个 Visual Lab 实验条目、1 个外部索引。正式状态不等于已完成真实 Agent 效果评测。审计与逐项决策见 [审计基线](docs/modernization-audit-2026-10-11.md)，对照测试方法见 [Agent 评测协议](docs/agent-evaluation-protocol.md)。`python -m unittest discover -s tests -v` 执行只读回归测试。`scripts/audit_skills.py` 区分三类条目。Scoop manifest 脚本默认仅静态检查，必须显式指定 `-AllowInstall` 才会尝试安装；该脚本不自动卸载。变更通过 [PR #4](https://github.com/nuoaner/self_skills/pull/4) 审核，未直接修改 main。

@@ -31,3 +31,7 @@ This directory contains personal Codex skills.
 ![Window-side Summer Afternoon preview](visual-story-image-director/assets/window-side-summer-afternoon.jpg)
 
 See the full case: [`window-side-summer-afternoon.md`](visual-story-image-director/examples/window-side-summer-afternoon.md)
+
+## Maturity and regression testing
+
+The repository contains 10 productionized packages, 7 Visual Lab experiments and one non-installable reference index; only production packages have full metadata/version requirements. Visual Lab entries require demonstrated agent behavior before promotion. See `../docs/modernization-audit-2026-10-11.md` and `../docs/agent-evaluation-protocol.md`. Run `python -m unittest discover -s tests -v` at repository root. This test does not measure model behavior.

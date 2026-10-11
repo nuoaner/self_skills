@@ -410,3 +410,7 @@ See [`skills/CHANGELOG.md`](skills/CHANGELOG.md) for the complete change history
 <sub>Built for real project work, not prompt collecting.</sub>
 
 </div>
+
+## Modernization audit (2026-10-11, in progress)
+
+Actual inventory: 10 production skill packages, 7 Visual Lab experiments, and 1 external reference index. Production maturity is not proof of improved agent behavior. See the [audit baseline](docs/modernization-audit-2026-10-11.md) and [A/B/C evaluation protocol](docs/agent-evaluation-protocol.md). Run read-only regression tests with `python -m unittest discover -s tests -v`. The repository audit now separates maturity classes. Scoop manifest testing defaults to static, non-installing validation; explicit `-AllowInstall` can install in a test environment but never uninstalls automatically. Proposed changes are under [draft PR #4](https://github.com/nuoaner/self_skills/pull/4), not direct changes to main.

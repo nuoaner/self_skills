@@ -17,3 +17,13 @@ This changelog tracks repository-wide skill versions and behavior changes. Each 
 - Focused on scene understanding, identity anchors, communication goals, and visual QA instead of direct style copying.
 - Added reusable visual analysis guidance and editorial transformation examples.
 
+
+## Unreleased - 2026-10-11 (draft PR #4)
+
+- Separated formal, experimental, and reference entries in repository auditing.
+- Fixed documentation audit failure exit code.
+- Changed Scoop manifest tests to read-only by default and removed automatic uninstall.
+- Removed hard-coded shallow nesting and naming bans from project structure review.
+- Replaced seven outdated specialized validators with lightweight resource/metadata integrity checks.
+- Added repeatable regression tests, CI syntax checks, per-entry audit decisions and an A/B/C agent evaluation protocol.
+- **No behavior improvement is claimed until runtime comparisons are measured.**

@@ -81,3 +81,27 @@ Should trigger:
 
 Should not trigger:
 - "Design a product pricing strategy."
+
+## visual-story-image-director
+
+Should trigger:
+- "Turn this portrait photo into an editorial collage while keeping the person recognizable."
+- "Create a source-grounded art direction brief for my travel photo."
+
+Should not trigger:
+- "Plan the full set of illustrations for this finished WeChat article."
+- "Write a generic Codex implementation prompt."
+
+## Experimental Visual Lab (candidate cases; NOT executed auto-trigger tests)
+
+| Entry | Positive trigger candidate | Negative trigger candidate |
+|---|---|---|
+| ai-image-quality-reviewer | Evaluate defects in this generated marketing image | Render a brand-new image without review |
+| ai-poster-art-director | Layout the poster information hierarchy | Explain a shell command |
+| brand-visual-system-designer | Define a visual system for a brand campaign | Make a one-off code patch |
+| consistent-character-designer | Preserve this mascot across ten scenes | Optimize database indexes |
+| creative-reference-analyzer | Analyze why this image reference communicates clearly | Generate an unrelated product specification |
+| image-prompt-engineer | Convert a vague image request to a generation brief | Audit Python tests |
+| product-visual-designer | Design a product landing-page hero image | Review CI logs |
+
+These are human-readable test specifications, not proof that model routing works. Use the A/B/C protocol for actual performance measurements.
