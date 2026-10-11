@@ -33,6 +33,14 @@ Choose one individual Skill folder from the catalog. Install into your Codex env
 
 Historical `skills/<name>` paths and public invocation names remain intact while usage and migration evidence are gathered. Do not bulk-install lab prototypes or package the whole repository as one ChatGPT Skill.
 
+### Package one Core Skill for ChatGPT
+
+```bash
+python scripts/package_selected.py project-prompt-polisher --output ./skill.zip
+```
+
+The packager allows only one Core Skill, refuses Lab/Reference and existing output, and **does not install or upload** anything. Review and upload the resulting `skill.zip` via ChatGPT's supported UI; a Core classification alone is not approval for public release.
+
 ## Contribution policy
 
 Require differentiated user value, accurate triggers, repeatable verification, and a clear failure/rollback boundary. Put long background references and reusable assets outside the entrypoint; use scripts for deterministic fragile tasks. Do not add folders merely to satisfy a template. Review third-party provenance and license constraints, and never publish credentials or private project data.

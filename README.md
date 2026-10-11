@@ -31,6 +31,16 @@ python -m unittest discover -s tests -v
 
 本仓库原有的 `skills/<name>` 路径和调用名称保持不变；合并候选目前只记录迁移方向，**未执行删除**。参见 [分层与淘汰规则](docs/portfolio-policy.md) 和 [平台兼容性说明](docs/platform-compatibility-2026-10-11.md)。
 
+### 为 ChatGPT 安全生成单项上传包
+
+从仓库根目录执行：
+
+```bash
+python scripts/package_selected.py project-prompt-polisher --output ./skill.zip
+```
+
+它只允许打包已分类为 Core 的**单个 Skill**，不会安装、上传或覆盖已有 ZIP；Lab / Reference 会被拒绝。生成的 `skill.zip` 仍需用户通过 ChatGPT 的 Skill 上传界面手动安装。公开分享前须完成实际评测与素材审查。
+
 ## 贡献、质量与安全
 
 - 新增或修改 Skill，先说明相较无 Skill 的**独立收益**；不要因为可以描述一个流程，就创建一个新的 Skill。

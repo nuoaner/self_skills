@@ -8,3 +8,5 @@ Use [CATALOG.md](CATALOG.md) to see every Core, Lab and Reference entry, its pro
 - Merges and retirement need evidence and a compatibility path; no Skill name is removed automatically.
 
 Review [governance](../docs/portfolio-policy.md), [evaluation cases](../evals/README.md), and [audit baseline](../docs/modernization-audit-2026-10-11.md) before publishing.
+
+For an optional, explicit **one-skill ZIP** upload workflow: `python scripts/package_selected.py project-prompt-polisher --output ./skill.zip` from the repository root. The command excludes Lab and Reference entries and does not overwrite, install, or upload.

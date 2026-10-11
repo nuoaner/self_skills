@@ -13,3 +13,7 @@ node_modules/
 # Local/private agent evaluation evidence; summaries are reviewed separately.
 evals/runs/
 evals/results-private/
+
+# Explicit per-skill upload bundles; do not commit generated archives.
+skill.zip
+dist/
