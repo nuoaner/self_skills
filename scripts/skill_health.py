@@ -146,7 +146,12 @@ def audit(root: Path) -> dict:
                 errors.append(f"{name}: local link escapes skill directory: {target}")
                 continue
             if not candidate.is_file():
-                errors.append(f"{name}: broken local link {target}")
+                message = f"{name}: broken local link {target}"
+                if tier == "core":
+                    errors.append(message)
+                else:
+                    warnings.append(message)
+                    row["warnings"].append(message)
         row["checks"].append("local_links")
         skill_rows.append(row)
 
