@@ -15,7 +15,7 @@ from catalog import validate as validate_catalog
 ROOT = Path(__file__).resolve().parents[1]
 FRONTMATTER = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.S)
 FIELD = re.compile(r"(?m)^([a-z][a-z0-9_-]*):\s*(.*?)\s*$")
-LINK = re.compile(r"!?[^\]]*\]\(([^)]+)\)")
+LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 VERSION = re.compile(r"^\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$")
 
 
