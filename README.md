@@ -107,6 +107,17 @@
 
 > 看见“Core”表示**优先维护且具备可安装结构**，不等于第三方认证，也不等于实战效果已经得到证明。公开复用前仍需验证、审核引用资源和明确授权范围。
 
+## Skill 治理 v2
+
+在现有 Core / Lab / Reference、目录注册表和 A/B/C 评测基础上，新增只读健康检查与统一治理规范。它检查 Skill 元数据、版本、平台元数据、引用链接和 Core 评测用例覆盖；**不运行模型，也不把静态检查结果当成模型效果证明**。
+
+```bash
+python scripts/skill_health.py
+python scripts/skill_health.py --json
+```
+
+治理规范与新 Skill Manifest 模板见 [Skill Governance v2](docs/skill-governance-v2.md) 和 [Manifest 模板](docs/templates/skill-manifest.template.json)。
+
 ## 如何开始使用
 
 ### 1. 按需安装单个 Skill（Codex 示例）
