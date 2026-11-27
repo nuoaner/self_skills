@@ -90,7 +90,8 @@
 | **研发与评审** | [工程质量审查](skills/ai-coding-paradigm/SKILL.md)、[代码执行纪律](skills/ai-coding-discipline/SKILL.md)、[项目结构评审](skills/project-structure-review/SKILL.md) |
 | **品牌与图片设计** | [角色一致性](skills/consistent-character-designer/SKILL.md)、[品牌视觉系统](skills/brand-visual-system-designer/SKILL.md)、[海报设计](skills/ai-poster-art-director/SKILL.md)、[产品视觉](skills/product-visual-designer/SKILL.md) |
 | **视觉分析与通用工具** | [参考图分析](skills/creative-reference-analyzer/SKILL.md)、[图片质量评审](skills/ai-image-quality-reviewer/SKILL.md)、[生图提示词](skills/image-prompt-engineer/SKILL.md) |
-| **业务与客户交付** | [商业化分析](skills/market-commercialization-strategist/SKILL.md)、[客户技术报告](skills/client-technical-reporting/SKILL.md) |\n| **教学与演示文稿** | [求之科技课程 PPT](skills/discover-course-ppt/SKILL.md)、[PPTX 工程质检](skills/slides-production-engine/SKILL.md) |
+| **业务与客户交付** | [商业化分析](skills/market-commercialization-strategist/SKILL.md)、[客户技术报告](skills/client-technical-reporting/SKILL.md) |
+| **教学与演示文稿** | [求之科技课程 PPT](skills/discover-course-ppt/SKILL.md)、[PPTX 工程质检](skills/slides-production-engine/SKILL.md) |
 
 另有 [AI 生图外部资源索引](skills/image-generation-collection/SKILL.md)，只供阅读，不是独立可安装 Skill。**[查看 20 项完整的用途、交付内容和成熟度说明 →](skills/CHOOSING.md)**
 
