@@ -1,1 +1,1 @@
-date,skill,scenario,trigger_mode,task_completed,benefit_over_no_skill,problem_or_friction,redacted_evidence_ref
+date,skill,skill_version,scenario,trigger_mode,task_completed,benefit_over_no_skill,quality_score,friction_category,problem_or_friction,duration_s,tool_calls,safety_violations,redacted_evidence_ref
