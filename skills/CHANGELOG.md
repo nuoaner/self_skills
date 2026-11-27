@@ -18,6 +18,15 @@ This changelog tracks changes in this repository. Version files are a repository
 - Added reusable visual analysis guidance and editorial transformation examples.
 
 
+## Unreleased - 2026-11-27 (Skill Governance v2 phase 2)
+
+- Registered the two previously untracked retained packages, `discover-course-ppt` and `slides-production-engine`, as Lab entries instead of deleting or silently promoting them.
+- Added lexical overlap candidates with a manually declared complement relationship for the two PPT skills; similarity is a review signal, not semantic proof.
+- Added Git-history freshness signals and private, manual usage-log summaries; missing usage data remains unknown rather than zero.
+- Added offline dependency inventory and allowlisted HTTPS checks for the Agent Skills specification and python-pptx documentation.
+- Added a scheduled review workflow that publishes reports as artifacts and never mutates Skill packages.
+- No automatic merge, rename, deletion, dependency upgrade, or model-quality claim is performed.
+
 ## Unreleased - 2026-10-11 (draft PR #4)
 
 - Separated formal, experimental, and reference entries in repository auditing.
