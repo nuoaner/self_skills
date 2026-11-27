@@ -307,7 +307,7 @@ def load_usage(path: Path, known_skills: set[str]) -> tuple[dict[str, dict], lis
     return summaries, warnings
 
 
-def build_report(root: Path, as_of: dt.date, usage_path: Path, relations_path: Path, threshold: float = 0.22) -> dict:
+def build_report(root: Path, as_of: dt.date, usage_path: Path, relations_path: Path, threshold: float = 0.18) -> dict:
     catalog = json.loads((root / "skills" / "catalog.json").read_text(encoding="utf-8"))
     entries = catalog["entries"]
     docs: dict[str, Counter] = {}
@@ -462,7 +462,7 @@ def main() -> int:
     parser.add_argument("--usage-log", type=Path, default=None)
     parser.add_argument("--relations", type=Path, default=None)
     parser.add_argument("--as-of", type=dt.date.fromisoformat, default=dt.date.today())
-    parser.add_argument("--threshold", type=float, default=0.22)
+    parser.add_argument("--threshold", type=float, default=0.18)
     parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
     parser.add_argument("--output", type=Path, help="Optional report output path; no files are written by default.")
     args = parser.parse_args()
