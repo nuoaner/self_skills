@@ -1,7 +1,9 @@
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from skill_health import eval_coverage, local_links, parse_frontmatter
 
 
@@ -9,7 +11,7 @@ class SkillHealthTests(unittest.TestCase):
     def test_frontmatter_reads_name_and_description(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "SKILL.md"
-            path.write_text("---\\nname: demo-skill\\ndescription: A demo skill\\n---\\n# Demo\\n", encoding="utf-8")
+            path.write_text("---\nname: demo-skill\ndescription: A demo skill\n---\n# Demo\n", encoding="utf-8")
             self.assertEqual(parse_frontmatter(path), {"name": "demo-skill", "description": "A demo skill"})
 
     def test_local_links_ignores_external_and_anchors(self):
@@ -20,9 +22,9 @@ class SkillHealthTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "cases.jsonl"
             path.write_text(
-                '{"skill":"demo","kind":"positive"}\\n'
-                '{"skill":"demo","kind":"negative"}\\n'
-                '{"skill":"demo","kind":"task"}\\n',
+                '{"skill":"demo","kind":"positive"}\n'
+                '{"skill":"demo","kind":"negative"}\n'
+                '{"skill":"demo","kind":"task"}\n',
                 encoding="utf-8",
             )
             counts, errors = eval_coverage(path)
