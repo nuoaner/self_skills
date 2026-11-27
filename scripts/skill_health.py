@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only portfolio health checks for self_skills.
-
-This checks repository structure and declared evaluation coverage. It does not
-run an Agent, infer skill quality, or modify files.
-"""
+"""Read-only portfolio health checks for self_skills."""
 from __future__ import annotations
 
 import argparse
@@ -17,10 +13,10 @@ from urllib.parse import unquote, urlsplit
 from catalog import validate as validate_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
-FRONTMATTER = re.compile(r"\\A---\\s*\\n(.*?)\\n---\\s*\\n", re.S)
-FIELD = re.compile(r"(?m)^([a-z][a-z0-9_-]*):\\s*(.*?)\\s*$")
-LINK = re.compile(r"!?\\[[^\\]]*\\]\\(([^)]+)\\)")
-VERSION = re.compile(r"^\\d+\\.\\d+\\.\\d+(?:[-+][0-9A-Za-z.-]+)?$")
+FRONTMATTER = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.S)
+FIELD = re.compile(r"(?m)^([a-z][a-z0-9_-]*):\s*(.*?)\s*$")
+LINK = re.compile(r"!?[^\]]*\]\(([^)]+)\)")
+VERSION = re.compile(r"^\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$")
 
 
 def parse_frontmatter(path: Path) -> dict[str, str] | None:
@@ -31,7 +27,7 @@ def parse_frontmatter(path: Path) -> dict[str, str] | None:
     match = FRONTMATTER.match(text)
     if not match:
         return None
-    return {key: value.strip().strip("\\\"'") for key, value in FIELD.findall(match.group(1))}
+    return {key: value.strip().strip("\"'") for key, value in FIELD.findall(match.group(1))}
 
 
 def local_links(markdown: str) -> list[str]:
@@ -123,7 +119,7 @@ def audit(root: Path) -> dict:
                 errors.append(f"{name}: agents/openai.yaml missing")
             else:
                 agent_text = agent_file.read_text(encoding="utf-8-sig")
-                if not re.search(r"(?m)^\\s*display_name:\\s*\\S", agent_text):
+                if not re.search(r"(?m)^\s*display_name:\s*\S", agent_text):
                     errors.append(f"{name}: agents/openai.yaml display_name missing")
                 else:
                     row["checks"].append("agent_metadata")
@@ -154,24 +150,19 @@ def audit(root: Path) -> dict:
         row["checks"].append("local_links")
         skill_rows.append(row)
 
-    unknown_eval_skills = sorted(set(coverage) - {item["name"] for item in entries})
-    for name in unknown_eval_skills:
+    known = {item["name"] for item in entries}
+    for name in sorted(set(coverage) - known):
         warnings.append(f"evaluation cases refer to uncataloged skill: {name}")
 
     return {
         "status": "fail" if errors else "pass",
         "summary": {
-            "total": len(entries),
-            "core": tiers["core"],
-            "lab": tiers["lab"],
+            "total": len(entries), "core": tiers["core"], "lab": tiers["lab"],
             "reference": tiers["reference"],
             "eval_cases": sum(sum(c.values()) for c in coverage.values()),
-            "errors": len(errors),
-            "warnings": len(warnings),
+            "errors": len(errors), "warnings": len(warnings),
         },
-        "errors": errors,
-        "warnings": warnings,
-        "skills": skill_rows,
+        "errors": errors, "warnings": warnings, "skills": skill_rows,
         "scope_note": "Structural and declared-evaluation checks only; no model behavior or output quality was measured.",
     }
 
