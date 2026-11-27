@@ -96,3 +96,27 @@ python scripts/dependency_watch.py check --strict
 ```
 
 A changed public contract or unreachable source triggers human review. The watcher does not install packages, update versions, modify Skill instructions, or treat a documentation edit as proof of a breaking change.
+
+### Usage log field conventions
+
+The private `evals/usage-log.csv` is manual evidence, not telemetry. Use the template in `evals/usage-log.template.csv` and keep the real log local (it is git-ignored).
+
+| Field | Accepted meaning |
+|---|---|
+| `task_completed` | `yes`, `no`, `partial`, or `unknown` |
+| `benefit_over_no_skill` | `better`, `same`, `worse`, or `unknown`; compare against a real baseline when possible |
+| `quality_score` | Optional human score from 0 to 5 |
+| `friction_category` | `none`, `trigger`, `quality`, `tool`, `latency`, or `other` |
+| `duration_s` / `tool_calls` | Optional observed values, not estimates |
+| `safety_violations` | Non-negative count; describe the incident in a sanitized evidence record |
+| `redacted_evidence_ref` | Reference to sanitized output/review evidence; never paste secrets or customer data |
+
+Directional recommendations require at least five records for that Skill. Even then, the report is a triage aid, not an automatic promotion or retirement decision. No records means usage is unknown; manual logging cannot establish that a Skill is rarely used unless the observation process is known to be complete.
+
+### Report interpretation
+
+- Overlap detection uses multilingual lexical TF-IDF similarity over descriptions, headings, and Skill instructions. The default candidate threshold is 0.18; scores are not semantic duplicate probabilities.
+- The repository records known relationships in `docs/skill-relations.json`. For example, course-specific PPT authoring and generic PPTX engineering QA are declared complementary.
+- Freshness uses `manifest.json:last_reviewed` when present. Otherwise it falls back to the latest Git change date, explicitly labeled as a proxy. Default review intervals are 180 days for Core and 365 days for Lab.
+- Remote dependency checks use only allowlisted HTTPS sources in `docs/dependency-watch.json`. Missing contract phrases, changed version signals, or unreachable sources require human review; the workflow never updates dependencies.
+- Scheduled reports are uploaded as GitHub Actions artifacts and retained for 30 days. They are not committed back into the repository.
