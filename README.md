@@ -119,6 +119,18 @@ python scripts/skill_health.py --json
 
 治理规范与新 Skill Manifest 模板见 [Skill Governance v2](docs/skill-governance-v2.md) 和 [Manifest 模板](docs/templates/skill-manifest.template.json)。
 
+第二阶段还提供组合分析与定期巡检：
+
+```bash
+python scripts/skill_portfolio_report.py
+python scripts/skill_portfolio_report.py --format json
+python scripts/dependency_watch.py inventory
+python scripts/dependency_watch.py validate
+python scripts/dependency_watch.py check --strict
+```
+
+使用记录放在本地的 `evals/usage-log.csv`（已加入 Git 忽略），定期报告通过 GitHub Actions 生成并保存为 Artifact；没有使用记录时不会推断 Skill 使用率。
+
 ## 如何开始使用
 
 ### 1. 按需安装单个 Skill（Codex 示例）
