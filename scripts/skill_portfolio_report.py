@@ -316,21 +316,39 @@ def build_report(root: Path, as_of: dt.date, usage_path: Path, relations_path: P
     relation_rows = load_relations(relations_path)
     overrides = {pair_key(*r.get("skills", [])): r for r in relation_rows if len(r.get("skills", [])) == 2}
     overlaps, known_relations = [], []
+    emitted_relations = set()
     for pair, score in sorted(scores.items(), key=lambda x: x[1], reverse=True):
+        relation = overrides.get(pair_key(*pair))
+        if relation:
+            if score >= threshold:
+                record = {
+                    "skills": list(pair), "similarity": round(score, 3),
+                    "shared_terms": [term.split(":", 1)[-1] for term in shared[pair]],
+                    "relation": relation.get("type", "related"),
+                    "reason": relation.get("reason", ""),
+                }
+                known_relations.append(record)
+                emitted_relations.add(pair_key(*pair))
+            continue
         if score < threshold:
             continue
-        relation = overrides.get(pair_key(*pair))
         record = {
             "skills": list(pair), "similarity": round(score, 3),
             "shared_terms": [term.split(":", 1)[-1] for term in shared[pair]],
+            "review_level": "high" if score >= 0.35 else "medium",
+            "interpretation": "Potential scope overlap only; human review is required before any merge decision.",
         }
-        if relation:
-            record.update({"relation": relation.get("type", "related"), "reason": relation.get("reason", "")})
-            known_relations.append(record)
-        else:
-            record["review_level"] = "high" if score >= 0.35 else "medium"
-            record["interpretation"] = "Potential scope overlap only; human review is required before any merge decision."
-            overlaps.append(record)
+        overlaps.append(record)
+    for key, relation in overrides.items():
+        if key in emitted_relations:
+            continue
+        score = scores.get(key, 0.0)
+        known_relations.append({
+            "skills": list(key), "similarity": round(score, 3),
+            "shared_terms": [term.split(":", 1)[-1] for term in shared.get(key, [])],
+            "relation": relation.get("type", "related"),
+            "reason": relation.get("reason", ""),
+        })
 
     freshness = [review_status(root, item, as_of) for item in entries if item["tier"] != "reference"]
     usage, usage_warnings = load_usage(usage_path, {x["name"] for x in entries})
