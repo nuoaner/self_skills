@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
@@ -22,6 +24,9 @@ jobs:
         run: |
           python scripts/audit_skills.py
           python scripts/eval_cases.py validate
+          python scripts/skill_portfolio_report.py --format json > /tmp/skill-portfolio-report.json
+          python scripts/dependency_watch.py validate
+          python scripts/dependency_watch.py inventory --format json > /tmp/dependency-inventory.json
           python scripts/skill_health.py
       - name: Verify no-cost Codex pilot plan (does not call models)
         run: |
