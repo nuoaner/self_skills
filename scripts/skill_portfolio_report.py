@@ -368,6 +368,15 @@ def build_report(root: Path, as_of: dt.date, usage_path: Path, relations_path: P
         },
         "overlap_candidates": overlaps,
         "declared_relationships": known_relations,
+        "portfolio_actions": [
+            {
+                "skill": item["name"], "tier": item["tier"],
+                "action": item["action"], "agent_evidence": item.get("agent_evidence", "not_measured"),
+                "rationale": item.get("rationale", ""),
+                "successor": item.get("successor"),
+            }
+            for item in entries
+        ],
         "freshness": freshness,
         "usage": usage,
         "usage_warnings": usage_warnings,
@@ -401,6 +410,13 @@ def render_markdown(report: dict) -> str:
     else:
         for row in report["declared_relationships"]:
             lines.append(f"- **{' + '.join(row['skills'])}** — {row['relation']}: {row['reason']} (similarity {row['similarity']:.3f})")
+    lines += ["", "## Existing portfolio decisions", "",
+              "| Skill | Tier | Decision | Evidence | Reason |",
+              "|---|---|---|---|---|"]
+    for row in report["portfolio_actions"]:
+        reason = row["rationale"].replace("|", "\\|")
+        successor = f" (successor: {row['successor']})" if row.get("successor") else ""
+        lines.append(f"| {row['skill']} | {row['tier']} | {row['action']} | {row['agent_evidence']} | {reason}{successor} |")
     lines += ["", "## Maintenance freshness", "",
               "| Skill | Status | Last date | Age | Cadence | Basis |",
               "|---|---|---|---:|---:|---|"]
@@ -408,6 +424,8 @@ def render_markdown(report: dict) -> str:
         age = str(row["age_days"]) if row["age_days"] is not None else "unknown"
         date_value = row["last_date"] or "unknown"
         lines.append(f"| {row['skill']} | {row['status']} | {date_value} | {age} | {row['cadence_days']}d | {row['date_source']} |")
+    lines.append("")
+    lines.append("Git last-change dates are only a freshness proxy when no explicit review date exists; they do not prove a human review.")
     lines += ["", "## Recorded usage evidence", ""]
     if not report["usage"]:
         lines.append("No private usage records found. Usage-based value and low-usage claims are **not measured**.")
