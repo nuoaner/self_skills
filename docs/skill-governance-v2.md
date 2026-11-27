@@ -74,3 +74,25 @@ python -m unittest discover -s tests -v
 ```
 
 Use `python scripts/skill_health.py --json` for machine-readable output and `--strict` when warnings should fail a release gate.
+
+## Phase 2: portfolio intelligence and dependency watch
+
+Phase 2 adds three read-only workflows:
+
+- `python scripts/skill_portfolio_report.py`: lexical scope-overlap candidates, declared complementary relationships, Git-history freshness signals, and summaries from the private usage log.
+- `python scripts/dependency_watch.py inventory`: offline inventory of external URLs and imported/runtime packages found in Skill files.
+- `python scripts/dependency_watch.py check`: bounded, unauthenticated HTTPS checks against the allowlisted public contracts in `docs/dependency-watch.json`.
+
+The report uses Git last-change dates as a proxy only when no explicit `last_reviewed` metadata exists. Usage evidence is read from the git-ignored `evals/usage-log.csv`; do not commit private logs or raw customer traces. The scheduled workflow stores generated reports as workflow artifacts, not repository commits.
+
+Run locally:
+
+```bash
+python scripts/skill_portfolio_report.py
+python scripts/skill_portfolio_report.py --format json
+python scripts/dependency_watch.py inventory
+python scripts/dependency_watch.py validate
+python scripts/dependency_watch.py check --strict
+```
+
+A changed public contract or unreachable source triggers human review. The watcher does not install packages, update versions, modify Skill instructions, or treat a documentation edit as proof of a breaking change.
