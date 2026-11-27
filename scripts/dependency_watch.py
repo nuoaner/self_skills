@@ -118,15 +118,18 @@ def scan_inventory(root: Path) -> dict:
             except (OSError, UnicodeError):
                 continue
             relative = path.relative_to(directory).as_posix()
+            file_urls = set()
             for url in URL_RE.findall(text):
                 url = url.rstrip(".,;:")
                 host = urllib.parse.urlsplit(url).hostname or ""
                 if host not in PLACEHOLDER_HOSTS and "owner/repo" not in url:
-                    urls.add(url)
-            packages.update(command_dependencies(text))
+                    file_urls.add(url)
+            file_packages = command_dependencies(text)
             if path.suffix.lower() == ".py":
-                packages.update(module_dependencies(path))
-            if urls or packages:
+                file_packages.update(module_dependencies(path))
+            urls.update(file_urls)
+            packages.update(file_packages)
+            if file_urls or file_packages:
                 sources.append(relative)
         results.append({
             "skill": name,
