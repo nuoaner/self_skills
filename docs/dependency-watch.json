@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "policy": "Watch only explicitly registered public HTTPS sources. Changes require human review; no dependency is upgraded automatically.",
+  "watch_items": [
+    {
+      "id": "agent-skills-specification",
+      "skill": "repository-wide",
+      "kind": "tool_interface",
+      "url": "https://agentskills.io/specification",
+      "allowed_hosts": ["agentskills.io"],
+      "reviewed_at": "2026-11-27",
+      "checks": [
+        {"label": "name length contract", "pattern": "Max\\s+64\\s+characters"},
+        {"label": "description length contract", "pattern": "Max\\s+1024\\s+characters"},
+        {"label": "directory-name match contract", "pattern": "Must\\s+match\\s+the\\s+parent\\s+directory\\s+name"},
+        {"label": "allowed-tools field", "pattern": "allowed-tools"},
+        {"label": "progressive disclosure guidance", "pattern": "Progressive\\s+disclosure"},
+        {"label": "SKILL.md size guidance", "pattern": "500\\s+lines"}
+      ],
+      "notes": "A missing or materially changed contract phrase means the public Skill format may have changed; inspect the official specification before changing package validation."
+    },
+    {
+      "id": "python-pptx-documentation",
+      "skill": "slides-production-engine",
+      "kind": "runtime_dependency",
+      "url": "https://python-pptx.readthedocs.io/en/latest/",
+      "allowed_hosts": ["python-pptx.readthedocs.io"],
+      "reviewed_at": "2026-11-27",
+      "version_pattern": "Release\\s+v([0-9.]+)",
+      "expected_version": "1.0.0",
+      "checks": [
+        {"label": "PPTX library purpose statement", "pattern": "PowerPoint\\s+\\(\\.pptx\\)\\s+files"}
+      ],
+      "notes": "The version is a documentation signal, not a pinned runtime requirement. Review release notes and compatibility before changing local environments."
+    }
+  ]
+}
