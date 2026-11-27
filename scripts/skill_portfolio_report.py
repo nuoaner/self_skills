@@ -28,6 +28,14 @@ STOP_EN = {
     "their", "should", "must", "will", "can", "help", "helps", "create",
     "make", "build", "workflow", "output", "quality", "requirements",
     "task", "tasks", "content", "based", "provide", "support", "current",
+    "the", "and", "or", "for", "of", "to", "in", "on", "is", "are", "be",
+    "as", "at", "by", "not", "no", "do", "does", "more", "less", "one",
+    "two", "first", "then", "other", "each", "any", "all", "also", "such",
+    "per", "within", "without", "via", "same", "both", "only", "than",
+    "rather", "there", "here", "their", "these", "those", "may", "might",
+    "well", "most", "many", "some", "used", "using", "based", "across",
+    "suitable", "scenarios", "principle", "purpose", "reusable",
+    "visual", "image", "images", "design", "assets", "asset", "communication",
 }
 STOP_ZH = {
     "用户", "使用", "帮助", "生成", "制作", "需要", "可以", "内容", "能力",
@@ -104,7 +112,7 @@ def skill_document(skill_dir: Path) -> tuple[str, str]:
     tick = chr(96)
     body = re.sub(re.escape(tick) + r"[^" + re.escape(tick) + r"]+" + re.escape(tick), " ", body)
     description = metadata.get("description", "")
-    return description + " " + description + " " + headings + " " + body[:7000], description
+    return description + " " + description + " " + description + " " + description + " " + headings + " " + headings + " " + body[:2500], description
 
 
 def cosine_tfidf(documents: dict[str, Counter]) -> tuple[dict[tuple[str, str], float], dict[tuple[str, str], list[str]]]:
@@ -299,7 +307,7 @@ def load_usage(path: Path, known_skills: set[str]) -> tuple[dict[str, dict], lis
     return summaries, warnings
 
 
-def build_report(root: Path, as_of: dt.date, usage_path: Path, relations_path: Path, threshold: float = 0.18) -> dict:
+def build_report(root: Path, as_of: dt.date, usage_path: Path, relations_path: Path, threshold: float = 0.22) -> dict:
     catalog = json.loads((root / "skills" / "catalog.json").read_text(encoding="utf-8"))
     entries = catalog["entries"]
     docs: dict[str, Counter] = {}
@@ -454,7 +462,7 @@ def main() -> int:
     parser.add_argument("--usage-log", type=Path, default=None)
     parser.add_argument("--relations", type=Path, default=None)
     parser.add_argument("--as-of", type=dt.date.fromisoformat, default=dt.date.today())
-    parser.add_argument("--threshold", type=float, default=0.18)
+    parser.add_argument("--threshold", type=float, default=0.22)
     parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
     parser.add_argument("--output", type=Path, help="Optional report output path; no files are written by default.")
     args = parser.parse_args()
