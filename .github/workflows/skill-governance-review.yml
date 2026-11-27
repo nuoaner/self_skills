@@ -40,13 +40,13 @@ jobs:
               printf "\n\n" >> "$GITHUB_STEP_SUMMARY"
             fi
           done
-          if [ "\${{ steps.remote-watch.outcome }}" = "failure" ]; then
+          if [ "${{ steps.remote-watch.outcome }}" = "failure" ]; then
             echo "::warning::A watched public dependency or interface source changed or could not be reached. Inspect the report artifact."
           fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: skill-governance-review-\${{ github.run_id }}
+          name: skill-governance-review-${{ github.run_id }}
           path: reports/
           if-no-files-found: warn
           retention-days: 30
