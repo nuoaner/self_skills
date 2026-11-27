@@ -83,16 +83,16 @@
 
 ## 还有哪些能力？
 
-除 Core 外，仓库还保留 **12 个 Lab 条目**，用于研究、对照和合并验证，其中有些只是初步方法草案，**不建议直接批量安装**。
+除 Core 外，仓库还保留 **14 个 Lab 条目**，用于研究、对照和合并验证，其中有些只是初步方法草案，**不建议直接批量安装**。
 
 | 方向 | 可以探索的能力 |
 |---|---|
 | **研发与评审** | [工程质量审查](skills/ai-coding-paradigm/SKILL.md)、[代码执行纪律](skills/ai-coding-discipline/SKILL.md)、[项目结构评审](skills/project-structure-review/SKILL.md) |
 | **品牌与图片设计** | [角色一致性](skills/consistent-character-designer/SKILL.md)、[品牌视觉系统](skills/brand-visual-system-designer/SKILL.md)、[海报设计](skills/ai-poster-art-director/SKILL.md)、[产品视觉](skills/product-visual-designer/SKILL.md) |
 | **视觉分析与通用工具** | [参考图分析](skills/creative-reference-analyzer/SKILL.md)、[图片质量评审](skills/ai-image-quality-reviewer/SKILL.md)、[生图提示词](skills/image-prompt-engineer/SKILL.md) |
-| **业务与客户交付** | [商业化分析](skills/market-commercialization-strategist/SKILL.md)、[客户技术报告](skills/client-technical-reporting/SKILL.md) |
+| **业务与客户交付** | [商业化分析](skills/market-commercialization-strategist/SKILL.md)、[客户技术报告](skills/client-technical-reporting/SKILL.md) |\n| **教学与演示文稿** | [求之科技课程 PPT](skills/discover-course-ppt/SKILL.md)、[PPTX 工程质检](skills/slides-production-engine/SKILL.md) |
 
-另有 [AI 生图外部资源索引](skills/image-generation-collection/SKILL.md)，只供阅读，不是独立可安装 Skill。**[查看 18 项完整的用途、交付内容和成熟度说明 →](skills/CHOOSING.md)**
+另有 [AI 生图外部资源索引](skills/image-generation-collection/SKILL.md)，只供阅读，不是独立可安装 Skill。**[查看 20 项完整的用途、交付内容和成熟度说明 →](skills/CHOOSING.md)**
 
 ## 质量如何证明？
 
@@ -103,7 +103,7 @@
 | **工程与安全** | 最近一次基线的 Python 回归、目录结构和 Windows 只读测试均通过；最新结果以 CI 为准 | [GitHub Actions](https://github.com/nuoaner/self_skills/actions/workflows/skill-integrity.yml)、[测试代码](tests/) |
 | **触发与任务用例** | 已建立 **35 条**中英文正例、反例和代表任务；这是用例集，不是模型运行成绩 | [测试案例](evals/cases.jsonl)、[评测方法](evals/README.md) |
 | **实际效果（A/B/C）** | **尚未取得可信的模型对照结果**。不会凭静态测试宣称成功率、速度或 Token 提升 | [评测记录与限制](evals/README.md) |
-| **技能去留** | 5 Core 候选 / 12 Lab / 1 参考索引；去留决定可回退，未贸然删除已有调用名称 | [机器可检查的目录](skills/catalog.json)、[维护政策](docs/portfolio-policy.md) |
+| **技能去留** | 5 Core 候选 / 14 Lab / 1 参考索引；去留决定可回退，未贸然删除已有调用名称 | [机器可检查的目录](skills/catalog.json)、[维护政策](docs/portfolio-policy.md) |
 
 > 看见“Core”表示**优先维护且具备可安装结构**，不等于第三方认证，也不等于实战效果已经得到证明。公开复用前仍需验证、审核引用资源和明确授权范围。
 
