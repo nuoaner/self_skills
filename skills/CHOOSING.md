@@ -16,7 +16,7 @@ Core = 优先维护、有完整可安装结构的候选能力；尚无真实 A/B
 | 用现有照片制作视觉叙事 | [visual-story-image-director](visual-story-image-director/SKILL.md) | 原照片、要保留的主体与用途 | 源场景分析、视觉方向、可执行编辑/生成 brief、质量复核 | 没有源图、只要求解释图像工具 API |
 | 根据文章内容安排封面与配图 | [wechat-article-image-planner](wechat-article-image-planner/SKILL.md) | 定稿/接近定稿的公众号文章 | 封面与文中图片清单、插入位置、不同图片的提示词 | 文章还没写，只要帮忙构思选题 |
 
-## 还在验证：Lab（12 项）
+## 还在验证：Lab（14 项）
 
 > Lab 不代表“差”，而是**独立价值、触发范围或可安装性还没有得到充分验证**。有些仍是草案，仅用于查阅；有些保留兼容调用名称。谨慎使用。
 
@@ -27,6 +27,13 @@ Core = 优先维护、有完整可安装结构的候选能力；尚无真实 A/B
 | [ai-coding-paradigm](ai-coding-paradigm/SKILL.md) | 评估架构、测试、安全和交付风险 | 基于证据的技术风险清单和修复建议 | 增强后测量 |
 | [ai-coding-discipline](ai-coding-discipline/SKILL.md) | 开发时复用现有代码、控制改动边界 | 约束回归风险、保留安全边界 | 考虑转入项目级 `AGENTS.md` |
 | [project-structure-review](project-structure-review/SKILL.md) | 判断仓库是否便于交接和验收 | README、依赖、入口与目录检查 | 候选合入工程评审能力 |
+
+### 教学与演示文稿
+
+| Skill | 想解决的事 | 预期帮助 | 当前去向 |
+|---|---|---|---|
+| [discover-course-ppt](discover-course-ppt/SKILL.md) | 按求之科技品牌与教学规则制作技术课程 PPT | 知识覆盖、教学结构、图示语义、讲师备注和品牌规范 | 保留为 Lab；当前快照缺少部分 SKILL.md 所引用的资产与参考文件，补齐后再评估升格 |
+| [slides-production-engine](slides-production-engine/SKILL.md) | 检查 PPTX 模板、字体、包结构和最终交付 | 模板盘点、内容检查、字体预检、结构回归与逐页视觉 QA | 保留为 Lab；定位为课程/品牌课件 Skill 的工程 QA 补充层，待独立评测 |
 
 ### 角色、海报与品牌
 

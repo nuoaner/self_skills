@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "relations": [
+    {
+      "skills": ["discover-course-ppt", "slides-production-engine"],
+      "type": "complements",
+      "reason": "discover-course-ppt owns course-specific teaching structure and brand rules; slides-production-engine owns reusable PPTX package, font, template, and delivery QA. Shared PowerPoint vocabulary is intentional and should not trigger an automatic merge.",
+      "reviewed_at": "2026-11-27"
+    }
+  ]
+}

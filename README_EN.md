@@ -76,7 +76,7 @@ State exactly where each image belongs, why it is needed, and a distinct image p
 
 ## More to explore
 
-The repository also holds **12 Lab entries** for experimentation, overlap reviews and possible consolidation. Some are not install-ready.
+The repository also holds **14 Lab entries** for experimentation, overlap reviews and possible consolidation. Some are not install-ready.
 
 | Area | Experiments |
 |---|---|
@@ -84,6 +84,7 @@ The repository also holds **12 Lab entries** for experimentation, overlap review
 | **Brand and visuals** | [Character consistency](skills/consistent-character-designer/SKILL.md), [Brand systems](skills/brand-visual-system-designer/SKILL.md), [Posters](skills/ai-poster-art-director/SKILL.md), [Product visuals](skills/product-visual-designer/SKILL.md) |
 | **Visual analysis** | [Reference analysis](skills/creative-reference-analyzer/SKILL.md), [Image QA](skills/ai-image-quality-reviewer/SKILL.md), [Image prompts](skills/image-prompt-engineer/SKILL.md) |
 | **Business and reporting** | [Commercialization](skills/market-commercialization-strategist/SKILL.md), [Client technical reports](skills/client-technical-reporting/SKILL.md) |
+| **Teaching and presentations** | [Course PPT authoring](skills/discover-course-ppt/SKILL.md), [PPTX engineering QA](skills/slides-production-engine/SKILL.md) |
 
 The [image-generation collection](skills/image-generation-collection/SKILL.md) is an external **reference index**, not an installable Skill. [See the complete directory with scope and deliverables →](skills/CHOOSING.md).
 
@@ -96,9 +97,23 @@ We distinguish reliable packaging and checks from **actual agent improvement**.
 | **Engineering and safety** | Previous baseline passed structural, Python regression and read-only Windows checks; consult CI for the latest run | [GitHub Actions](https://github.com/nuoaner/self_skills/actions/workflows/skill-integrity.yml) and [test code](tests/) |
 | **Cases** | **35 labeled** English/Chinese positive, negative and representative cases; not agent performance results | [Case registry](evals/cases.jsonl) and [method](evals/README.md) |
 | **Real A/B/C agent outcomes** | **Not measured yet**. We do not publish invented accuracy, time or token improvements | [Evaluation limitations](evals/README.md) |
-| **Portfolio** | 5 Core candidates / 12 Labs / 1 Reference; names remain compatible while evaluating consolidation | [Catalog](skills/catalog.json), [governance](docs/portfolio-policy.md) |
+| **Portfolio** | 5 Core candidates / 14 Labs / 1 Reference; names remain compatible while evaluating consolidation | [Catalog](skills/catalog.json), [governance](docs/portfolio-policy.md) |
 
 Core means **priority-maintained and structurally installable**, not independently certified or empirically superior.
+
+## Skill governance and portfolio review
+
+Run the read-only governance tools locally:
+
+```bash
+python scripts/skill_health.py
+python scripts/skill_portfolio_report.py
+python scripts/dependency_watch.py inventory
+python scripts/dependency_watch.py validate
+python scripts/dependency_watch.py check --strict
+```
+
+Private manual usage records belong in `evals/usage-log.csv`, which is git-ignored. Weekly GitHub Actions reviews publish report artifacts. Missing records are treated as unknown, not as zero usage.
 
 ## Getting started
 

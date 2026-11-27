@@ -53,29 +53,6 @@
       "agent_evidence": "not_measured"
     },
     {
-      "name": "client-technical-reporting",
-      "tier": "lab",
-      "action": "merge_candidate",
-      "rationale": "Fixed client-report structure can become an opt-in template instead of an always-on skill.",
-      "agent_evidence": "not_measured",
-      "successor": "client report template"
-    },
-    {
-      "name": "market-commercialization-strategist",
-      "tier": "lab",
-      "action": "strengthen",
-      "rationale": "Useful evidence discipline, yet scope is wide and independent uplift untested.",
-      "agent_evidence": "not_measured"
-    },
-    {
-      "name": "project-structure-review",
-      "tier": "lab",
-      "action": "merge_candidate",
-      "rationale": "Overlaps architecture and delivery review; maintain compatible invocation during transition.",
-      "agent_evidence": "not_measured",
-      "successor": "ai-coding-paradigm"
-    },
-    {
       "name": "ai-image-quality-reviewer",
       "tier": "lab",
       "action": "merge_candidate",
@@ -98,6 +75,14 @@
       "agent_evidence": "not_measured"
     },
     {
+      "name": "client-technical-reporting",
+      "tier": "lab",
+      "action": "merge_candidate",
+      "rationale": "Fixed client-report structure can become an opt-in template instead of an always-on skill.",
+      "agent_evidence": "not_measured",
+      "successor": "client report template"
+    },
+    {
       "name": "consistent-character-designer",
       "tier": "lab",
       "action": "strengthen",
@@ -113,6 +98,13 @@
       "successor": "visual-story-image-director"
     },
     {
+      "name": "discover-course-ppt",
+      "tier": "lab",
+      "action": "strengthen",
+      "rationale": "Retained domain-specific technical course deck authoring. Current package references assets and guidance files that are not present in this repository snapshot; keep in Lab until its asset contract and independent task evaluation are repaired.",
+      "agent_evidence": "not_measured"
+    },
+    {
       "name": "image-prompt-engineer",
       "tier": "lab",
       "action": "retire_candidate",
@@ -120,10 +112,32 @@
       "agent_evidence": "not_measured"
     },
     {
+      "name": "market-commercialization-strategist",
+      "tier": "lab",
+      "action": "strengthen",
+      "rationale": "Useful evidence discipline, yet scope is wide and independent uplift untested.",
+      "agent_evidence": "not_measured"
+    },
+    {
       "name": "product-visual-designer",
       "tier": "lab",
       "action": "strengthen",
       "rationale": "Product evidence and visual conversion merit specialized user-task tests.",
+      "agent_evidence": "not_measured"
+    },
+    {
+      "name": "project-structure-review",
+      "tier": "lab",
+      "action": "merge_candidate",
+      "rationale": "Overlaps architecture and delivery review; maintain compatible invocation during transition.",
+      "agent_evidence": "not_measured",
+      "successor": "ai-coding-paradigm"
+    },
+    {
+      "name": "slides-production-engine",
+      "tier": "lab",
+      "action": "strengthen",
+      "rationale": "Retained generic PPTX engineering and package-QA layer. It is complementary to domain-specific slide authoring, but still needs a formal release version and independent task evaluation.",
       "agent_evidence": "not_measured"
     },
     {

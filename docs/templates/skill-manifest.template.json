@@ -1,0 +1,24 @@
+{
+  "name": "example-skill",
+  "version": "0.1.0",
+  "owner": "maintainer",
+  "updated_at": "YYYY-MM-DD",
+  "status": "experimental",
+  "maturity_tier": "scaffold",
+  "lifecycle_stage": "scaffold",
+  "review_cadence": "quarterly",
+  "output_contract": "Describe the concrete deliverable and its required format.",
+  "known_limits": [
+    "List limitations that cannot be validated mechanically."
+  ],
+  "dependencies": [],
+  "validation": {
+    "static_checks": [],
+    "routing_cases": {
+      "positive": 2,
+      "negative": 2,
+      "task": 1
+    },
+    "manual_review_required": true
+  }
+}

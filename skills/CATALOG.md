@@ -3,7 +3,7 @@
 Generated from `skills/catalog.json`. Edit the catalog, not this file.
 
 - Core: **5** (priority-maintained candidates, not benchmark-certified)
-- Lab: **12** (opt-in evaluation, including compatibility candidates)
+- Lab: **14** (opt-in evaluation, including compatibility candidates)
 - Reference: **1** (not installable as skills)
 
 | Tier | Skill | Decision | Evidence | Reason |
@@ -21,10 +21,12 @@ Generated from `skills/catalog.json`. Edit the catalog, not this file.
 | lab | [client-technical-reporting](client-technical-reporting/SKILL.md) | merge_candidate | not_measured | Fixed client-report structure can become an opt-in template instead of an always-on skill. |
 | lab | [consistent-character-designer](consistent-character-designer/SKILL.md) | strengthen | not_measured | Character identity across scenes is specialized; needs reliable repeatable test assets. |
 | lab | [creative-reference-analyzer](creative-reference-analyzer/SKILL.md) | merge_candidate | not_measured | A reference analysis step already occurs in the visual-story workflow. |
+| lab | [discover-course-ppt](discover-course-ppt/SKILL.md) | strengthen | not_measured | Retained domain-specific technical course deck authoring. Current package references assets and guidance files that are not present in this repository snapshot; keep in Lab until its asset contract and independent task evaluation are repaired. |
 | lab | [image-prompt-engineer](image-prompt-engineer/SKILL.md) | retire_candidate | not_measured | Mostly generic prompt structuring with no demonstrated independent value. |
 | lab | [market-commercialization-strategist](market-commercialization-strategist/SKILL.md) | strengthen | not_measured | Useful evidence discipline, yet scope is wide and independent uplift untested. |
 | lab | [product-visual-designer](product-visual-designer/SKILL.md) | strengthen | not_measured | Product evidence and visual conversion merit specialized user-task tests. |
 | lab | [project-structure-review](project-structure-review/SKILL.md) | merge_candidate | not_measured | Overlaps architecture and delivery review; maintain compatible invocation during transition. |
+| lab | [slides-production-engine](slides-production-engine/SKILL.md) | strengthen | not_measured | Retained generic PPTX engineering and package-QA layer. It is complementary to domain-specific slide authoring, but still needs a formal release version and independent task evaluation. |
 | reference | [image-generation-collection](image-generation-collection/SKILL.md) | index_only | not_measured | A curated external repository index, not a runnable skill. |
 
 **Reading this catalog:** Tier and action are local maintainers' provisional decisions.
