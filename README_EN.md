@@ -101,6 +101,20 @@ We distinguish reliable packaging and checks from **actual agent improvement**.
 
 Core means **priority-maintained and structurally installable**, not independently certified or empirically superior.
 
+## Skill governance and portfolio review
+
+Run the read-only governance tools locally:
+
+```bash
+python scripts/skill_health.py
+python scripts/skill_portfolio_report.py
+python scripts/dependency_watch.py inventory
+python scripts/dependency_watch.py validate
+python scripts/dependency_watch.py check --strict
+```
+
+Private manual usage records belong in `evals/usage-log.csv`, which is git-ignored. Weekly GitHub Actions reviews publish report artifacts. Missing records are treated as unknown, not as zero usage.
+
 ## Getting started
 
 ### Install a single Skill in Codex (Unix example)
