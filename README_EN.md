@@ -83,7 +83,8 @@ The repository also holds **14 Lab entries** for experimentation, overlap review
 | **Engineering** | [Architecture review](skills/ai-coding-paradigm/SKILL.md), [Coding discipline](skills/ai-coding-discipline/SKILL.md), [Repository handoff review](skills/project-structure-review/SKILL.md) |
 | **Brand and visuals** | [Character consistency](skills/consistent-character-designer/SKILL.md), [Brand systems](skills/brand-visual-system-designer/SKILL.md), [Posters](skills/ai-poster-art-director/SKILL.md), [Product visuals](skills/product-visual-designer/SKILL.md) |
 | **Visual analysis** | [Reference analysis](skills/creative-reference-analyzer/SKILL.md), [Image QA](skills/ai-image-quality-reviewer/SKILL.md), [Image prompts](skills/image-prompt-engineer/SKILL.md) |
-| **Business and reporting** | [Commercialization](skills/market-commercialization-strategist/SKILL.md), [Client technical reports](skills/client-technical-reporting/SKILL.md) |\n| **Teaching and presentations** | [Course PPT authoring](skills/discover-course-ppt/SKILL.md), [PPTX engineering QA](skills/slides-production-engine/SKILL.md) |
+| **Business and reporting** | [Commercialization](skills/market-commercialization-strategist/SKILL.md), [Client technical reports](skills/client-technical-reporting/SKILL.md) |
+| **Teaching and presentations** | [Course PPT authoring](skills/discover-course-ppt/SKILL.md), [PPTX engineering QA](skills/slides-production-engine/SKILL.md) |
 
 The [image-generation collection](skills/image-generation-collection/SKILL.md) is an external **reference index**, not an installable Skill. [See the complete directory with scope and deliverables →](skills/CHOOSING.md).
 
