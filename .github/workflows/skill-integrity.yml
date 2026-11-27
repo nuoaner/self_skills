@@ -25,6 +25,8 @@ jobs:
           python scripts/audit_skills.py
           python scripts/eval_cases.py validate
           python scripts/skill_portfolio_report.py --format json > /tmp/skill-portfolio-report.json
+          python scripts/skill_portfolio_report.py --format markdown > /tmp/skill-portfolio-report.md
+          cat /tmp/skill-portfolio-report.md
           python scripts/dependency_watch.py validate
           python scripts/dependency_watch.py inventory --format json > /tmp/dependency-inventory.json
           python scripts/skill_health.py
